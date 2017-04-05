@@ -18,6 +18,7 @@ GenericController içinde bulunan tüm CRUD metodları virtual olduğundan overr
 Kısacası Projenin ayağa kaldırılması aşamasına gelince Code First yapısında ;
 1. GenericFW.Entities projesinde Class veya Class'lar oluşturulur.
 2. GenericFW Projesinde Areas -> Yonetim -> Controllers altında aşağıdaki gibi  boş bir Controller oluşturulur.
+
 namespace GenericFW.Areas.Yonetim.Controllers
 {
     public class UserController : GenericController<User>
@@ -25,11 +26,12 @@ namespace GenericFW.Areas.Yonetim.Controllers
         
     }
 }
+
 3. Package Manager Console açılır GenericFW.DataAccessLayer projesi seçilir
 4. Add-Migration Startup yazılır Enter'a basılır.
 5. Update-Database yazılır Enter'a Basılır. 
 6. F5 Tuşuyla Proje çalıştırılır.
-7. http://localhost:<PORT>/Yonetim/User Örnek Proje için geçerlidir. 
+7. http://localhost:<PORT_>/Yonetim/User Örnek Proje için geçerlidir. 
 Yonetim alanından sonra Oluşturacağınız Class ismine ne verdiyseniz onu yazıp Enter'a basmanız yeterlidir.
 
 Basit örnek Class GenericFW.Entities Projeninin altında User.cs içindedir
