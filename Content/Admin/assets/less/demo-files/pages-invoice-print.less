@@ -1,0 +1,39 @@
+/**
+ * Pages Invoice Print - Print Version
+ */
+
+@import "../base.less";
+@import "../mixins.less";
+
+@media print {
+	body{
+		font-family: arial;
+	}
+	#left-column{
+		display: none;
+	}
+	#right-column{
+		background: none transparent;
+		border: 0 !important;
+	}
+	#left-column + #right-column{
+		margin: 0;
+	}
+	#right-column .right-column-content{
+		height: auto;
+	}
+	.sender-logo img{
+	
+	}
+	.table thead th{
+		font-weight: bold;
+	}
+	.block .block-content-outer{
+		background: none transparent;
+		border: 0 !important;
+		.boxShadow(0, 0, 0, fadeout(@colorBlack, 100%));
+	}
+	#footer-container{
+		display: none;
+	}
+}

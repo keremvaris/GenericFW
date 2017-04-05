@@ -1,0 +1,12 @@
+﻿@using GenericFW.Areas.Yonetim.GenericVM
+@model TemplateItemModel
+
+
+@{ 
+	var col = Model.CurrentColumn;
+	var prop = col.Property;
+	var modelData = Model.Model.Data[prop.Name];
+}
+<input type="datetime" id="@prop.Name" placeholder="@col.Display.Name" class="form-control" name="@prop.Name" value="@modelData" />
+<span class="col-sm-3 control-label text-danger" data-valmsg-for="@prop.Name" data-valmsg-replace="true"></span>
+

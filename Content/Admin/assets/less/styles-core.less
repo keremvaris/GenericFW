@@ -1,0 +1,4539 @@
+/**
+ * Styles - Core (Main CSS File)
+ */
+
+/*
+
+@Author: Base5Builder;
+@URL: base5builder.com;
+
+This file contains the styling for Circloid's style.
+Edit this file to change the way Circloid looks.
+Alternatively, you could just use the predefinded classes as stated in the documentation
+
+1. General
+2. Typography
+3. Forms
+4. Buttons
+5. Header
+6. Left Column
+6.1 First Level Menu Styles
+6.2 Second Level Menu Styles
+6.3 Third Level Menu Styles
+6.4 Forth Level Menu Styles
+6.5 Fifth Level Menu Styles
+7. Right Column
+8. Blocks
+9. Special Blocks (Like Those On Dashboard, Profile, Widgets, Hybrid-Widgets, etc)
+10. eCommerce
+11. Tables
+12. Tabs
+13. Pills
+14. Accordions/Panels
+15. List Group
+16. Alert Messages
+17. Tooltips/Popovers
+18. Modal
+19. Footer
+
+*/
+
+@import "base.less";
+@import "mixins.less";
+
+/* ---- 1. General ---- */
+*{
+	.roundedCorners(0, 0, 0, 0);
+}
+html,
+body,
+input,
+select,
+textarea,
+label{
+	color: @baseTextColor;
+	font-family: @baseFontFamily;
+}
+body{
+	background: @textColorThick url("../images/required/site-bg@2x.png");
+	font-size: @baseFontSize;
+	line-height: @goldenRatio;
+}
+.col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, .col-xs-3, .col-sm-3, .col-md-3, .col-lg-3, .col-xs-4, .col-sm-4, .col-md-4, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, .col-sm-6, .col-md-6, .col-lg-6, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, .col-md-8, .col-lg-8, .col-xs-9, .col-sm-9, .col-md-9, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, .col-sm-12, .col-md-12, .col-lg-12{
+	/*padding-right: 12px;
+	padding-left: 12px;*/
+}
+
+/* ---- 2. Typography ---- */
+h1,
+.h1{
+	float: left;
+	color: @headerTextColor;
+	font-size: 33px;
+	font-weight: @fontWeightHeader;
+	line-height: @goldenRatio;
+	letter-spacing: -0.02em;
+	margin: 10px 0;
+}
+.block h1,
+.block .h1{
+	float: none;
+}
+h1 .icon,
+.h1 .icon{
+	float: left;
+	margin: 0 5px 0 0;
+	width: 32px;
+	line-height: @goldenRatio + 0.182;
+	color: @circloidActiveSecondaryColor;
+}
+h1 .main-text,
+.h1 .main-text{
+	float: left;
+}
+h1 .main-text + small,
+.h1 .main-text + small{
+	margin-left: 10px;
+}
+h1 .main-text .badge,
+.h1 .main-text .badge{
+	margin-top: 8px;
+	letter-spacing: normal;
+}
+h2,
+.h2{
+	color: @headerTextColor;
+	font-size: 24px;
+	font-weight: @fontWeightHeader;
+	line-height: @goldenRatio;
+	margin: 0;
+}
+h3,
+.h3{
+	color: @headerTextColor;
+	font-size: 18px;
+	font-weight: @fontWeightHeader;
+	line-height: @goldenRatio;
+	margin: 0 0 2px 0;
+}
+h4,
+.h4{
+	color: @headerTextColor;
+	font-size: 16px;
+	font-weight: @fontWeightHeader;
+	margin: 0;
+}
+h5,
+.h5{
+	color: @headerTextColor;
+}
+h6,
+.h6{
+	color: @headerTextColor;
+}
+h1 small,
+h2 small,
+h3 small,
+h4 small,
+h5 small,
+h6 small,
+.h1 small,
+.h2 small,
+.h3 small,
+.h4 small,
+.h5 small,
+.h6 small,
+h1 .small,
+h2 .small,
+h3 .small,
+h4 .small,
+h5 .small,
+h6 .small,
+.h1 .small,
+.h2 .small,
+.h3 .small,
+.h4 .small,
+.h5 .small,
+.h6 .small{
+	font-weight: @fontWeightHeader;
+}
+.text-muted {
+	color: @textColorMuted;
+}
+.text-primary {
+	color: @baseColorBlue;
+}
+.text-success {
+	color: @baseColorGreen;
+}
+.text-warning {
+	color: @baseColorOrange;
+}
+.text-danger{
+	color: @baseColorRed;
+}
+.text-justify{
+	text-align: justify;
+}
+p{
+	text-align: justify;
+}
+p.dropcap,
+.dropcap p{
+	font-family: "Georgia", serif;
+}
+.dropcap-item{
+	float: left;
+	font-size: 59px;
+	font-weight: bold;
+	line-height: 0.6;
+	margin: 5px 5px 5px 0;
+}
+a,
+a:visited{
+	color: darken(@circloidActiveSecondaryColor, 10%);
+	cursor: pointer;
+	text-decoration: none;
+}
+a:hover,
+a:focus{
+	color: darken(saturate(@circloidActiveColor, 100%), 30.5%);
+	text-decoration: none;
+}
+a.btn-primary,
+a.btn-success,
+a.btn-info,
+a.btn-warning,
+a.btn-danger{
+	color: @colorWhite;
+}
+a.btn-default{
+	color: #333333;
+}
+a.btn-link{
+	color: darken(@circloidActiveSecondaryColor, 10%);
+}
+a.btn-link:hover,
+a.btn-link:focus{
+	color: darken(saturate(@circloidActiveColor, 100%), 30.5%);
+}
+b, strong {
+	font-weight: 700;
+	letter-spacing: 0.02em;
+}
+.strike-out{
+	color: #999999;
+	text-decoration: line-through;
+}
+.strike-out .badge,
+.strike-out .label{
+	opacity: 0.5;
+}
+.container-fluid{
+	padding: 0;
+}
+.img-responsive, .thumbnail > img,
+.thumbnail a > img,
+.carousel-inner > .item > img,
+.carousel-inner > .item > a > img{
+	margin: 0 auto;
+}
+.glyphicon{
+	/*top: 3px;*/
+}
+
+/*
+Mobile Menu (within Right Column)
+Used to control any menu content of your choosing
+*/
+.within-content-navbar-toggle{
+	background-image: none;
+	margin:0;
+	padding: 9px 10px;
+	position: relative;
+	display: none;
+}
+.within-content-navbar-toggle:hover,
+.within-content-navbar-toggle:focus{
+	background-color: #e6e6e6;
+	border-color: #adadad;
+}
+.within-content-navbar-toggle .icon-bar{
+	display: block;
+	height: 2px;
+	width: 22px;
+	background-color: #333333;
+}
+.within-content-navbar-toggle .icon-bar + .icon-bar{
+	margin-top: 4px;
+}
+
+/* ---- 3. Forms ---- */
+.required-item{
+	color: @baseColorRed;
+}
+label{
+	color: @textColorThick;
+	font-weight: normal;
+	cursor: pointer;
+}
+.form-horizontal .control-label{
+	text-align: left;
+}
+.form-inline .form-group{
+	margin-right: 15px;
+}
+.form-inline label{
+	margin-right: 7px;
+}
+.form-control{
+	.boxShadow;
+}
+.form-control.rounded{
+	.roundedCorners;
+}
+.form-control.rounded .input-group-addon{
+	.roundedCorners;
+}
+.form-group{
+
+}
+.input-group{
+	margin-bottom: 10px;
+}
+.input-group.rounded{
+	.roundedCorners;
+}
+.input-group.rounded .form-control:first-child,
+.input-group.rounded .input-group-addon:first-child,
+.input-group.rounded .input-group-btn:first-child > .btn,
+.input-group.rounded .input-group-btn:first-child > .btn-group > .btn,
+.input-group.rounded .input-group-btn:first-child > .dropdown-toggle,
+.input-group.rounded .input-group-btn:last-child > .btn:not(:last-child):not(.dropdown-toggle),
+.input-group.rounded .input-group-btn:last-child > .btn-group:not(:last-child) > .btn{
+	.roundedCorners(40px, 0, 0, 40px);
+}
+.input-group.rounded .form-control:last-child,
+.input-group.rounded .input-group-addon:last-child,
+.input-group.rounded .input-group-btn:last-child > .btn,
+.input-group.rounded .input-group-btn:last-child > .btn-group > .btn,
+.input-group.rounded .input-group-btn:last-child > .dropdown-toggle,
+.input-group.rounded .input-group-btn:first-child > .btn:not(:first-child),
+.input-group.rounded .input-group.-btn:first-child > .btn-group:not(:first-child) > .btn{
+	.roundedCorners(0, 40px, 40px, 0);
+}
+.input-group-btn:last-child > .btn,
+.input-group-btn:last-child > .btn-group{
+
+}
+.input-group-addon{
+}
+.input-group-lg > .form-control,
+.input-group-lg > .input-group-addon,
+.input-group-lg > .input-group-btn > .btn{
+}
+.input-group-sm > .form-control,
+.input-group-sm > .input-group-addon,
+.input-group-sm > .input-group-btn > .btn{
+}
+.form-control.input-group-icon,
+.input-group-addon.input-group-icon,
+.input-group-btn > .btn.input-group-icon{
+	padding: 2px 10px 0;
+}
+.form-control.input-group-icon .icon,
+.input-group-addon.input-group-icon .icon,
+.input-group-btn > .btn.input-group-icon .icon{
+	font-size: 21px !important;
+	width: 21px;
+	display: inline-block;
+}
+.input-group-lg > .form-control.input-group-icon,
+.input-group-lg > .input-group-addon.input-group-icon,
+.input-group-lg > .input-group-btn > .btn.input-group-icon{
+	padding: 6px 10px 0;
+}
+.input-group-lg > .form-control.input-group-icon .icon,
+.input-group-lg > .input-group-addon.input-group-icon .icon,
+.input-group-lg > .input-group-btn > .btn.input-group-icon .icon{
+	font-size: 24px !important;
+	width: 24px;
+	display: inline-block;
+}
+.input-group-sm > .form-control.input-group-icon,
+.input-group-sm > .input-group-addon.input-group-icon,
+.input-group-sm > .input-group-btn > .btn.input-group-icon{
+	padding: 5px 5px 0;
+}
+.input-group-sm > .form-control.input-group-icon .icon,
+.input-group-sm > .input-group-addon.input-group-icon .icon,
+.input-group-sm > .input-group-btn > .btn.input-group-icon .icon{
+	font-size: 15px !important;
+	width: 15px;
+	display: inline-block;
+}
+.input-group .form-control:first-child,
+.input-group-addon:first-child,
+.input-group-btn:first-child > .btn,
+.input-group-btn:first-child > .btn-group > .btn,
+.input-group-btn:first-child > .dropdown-toggle,
+.input-group-btn:last-child > .btn:not(:last-child):not(.dropdown-toggle),
+.input-group-btn:last-child > .btn-group:not(:last-child) > .btn {
+	.roundedCorners(0, 0, 0, 0);
+}
+.help-block{
+	margin-bottom: 0;
+	margin-top: 2px;
+}
+.has-success .help-block,
+.has-success .control-label,
+.has-success .radio,
+.has-success .checkbox,
+.has-success .radio-inline,
+.has-success .checkbox-inline{
+	color: #00A600;
+}
+.has-warning .help-block,
+.has-warning .control-label,
+.has-warning .radio,
+.has-warning .checkbox,
+.has-warning .radio-inline,
+.has-warning .checkbox-inline{
+	color: @baseColorOrange;
+}
+.has-error .help-block,
+.has-error .control-label,
+.has-error .radio,
+.has-error .checkbox,
+.has-error .radio-inline,
+.has-error .checkbox-inline{
+	color: #D90F0F;
+}
+.has-success .form-control{
+	border-color: #00A600;
+}
+.has-success .form-control-feedback{
+	color: #00A600;
+}
+.has-warning .form-control{
+	border-color: @baseColorOrange;
+}
+.has-warning .form-control-feedback{
+	color: @baseColorOrange;
+}
+.has-error .form-control{
+	border-color: #D90F0F;
+}
+.has-error .form-control-feedback{
+	color: #D90F0F;
+}
+.form-control-feedback{
+	font-size: 21px;
+	line-height: @goldenRatio;
+}
+.input-sm + .form-control-feedback{
+	font-size: 15px;
+	line-height: @goldenRatio;
+}
+.input-lg + .form-control-feedback{
+	font-size: 28px;
+	line-height: @goldenRatio;
+}
+.bv-form.validation-outside .icon{
+	right: -35px;
+}
+
+/* iCheck */
+.icheck-square label,
+.icheck-flat label,
+.icheck-minimal label,
+.icheck-polaris label,
+.icheck-futurico label{
+	padding-left: 0;
+}
+.icheck-square label > div,
+.icheck-flat label > div,
+.icheck-minimal label > div,
+.icheck-polaris label > div,
+.icheck-futurico label > div{
+	margin-right: 5px;
+}
+
+/* Switchery */
+.switchery{
+	.roundedCorners(20px, 20px, 20px, 20px);
+}
+.switchery > small{
+	.roundedCorners(100%, 100%, 100%, 100%);
+}
+.switchery-group label{
+	padding-left: 0;
+}
+.js-switch-small + .switchery{
+	width: 30px;
+	height: 20px;
+	margin-right: 3px;
+}
+.js-switch-small + .switchery > small{
+	width: 20px;
+	height: 20px;
+}
+.js-switch-medium + .switchery{
+	width: 40px;
+	height: 25px;
+	margin-right: 3px;
+}
+.js-switch-medium + .switchery > small{
+	width: 25px;
+	height: 25px;
+}
+
+/* Powerange Slider */
+.powerange-horizontal,
+.powerange-vertical{
+	display: none;
+}
+.powerange-vertical-wrapper{
+	height: 200px;
+}
+.range-bar{
+	margin: 14px 25px 30px;
+	width: auto;
+}
+.range-bar.vertical{
+	width: 4px;
+	float: left;
+	margin: 30px 14px 30px;
+}
+.range-handle{
+	height: 25px;
+	width: 25px;
+	.roundedCorners(100%, 100%, 100%, 100%);
+}
+.vertical .range-handle{
+	left: -10px;
+}
+.bg-color-green + .range-bar .range-quantity{
+	background-color: @baseColorGreen;
+}
+.bg-color-orange + .range-bar .range-quantity{
+	background-color: @baseColorOrange;
+}
+.bg-color-yellow + .range-bar .range-quantity{
+	background-color: @baseColorYellow;
+}
+.bg-color-blue + .range-bar .range-quantity{
+	background-color: @baseColorBlue;
+}
+.bg-color-red + .range-bar .range-quantity{
+	background-color: @baseColorRed;
+}
+.bg-color-lime + .range-bar .range-quantity{
+	background-color: @baseColorLime;
+}
+.bg-color-purple + .range-bar .range-quantity{
+	background-color: @baseColorPurple;
+}
+
+/* TouchSpin */
+.bootstrap-touchspin .input-group-btn-vertical > .btn{
+	padding: 8px 23px 8px 5px;
+}
+.bootstrap-touchspin .input-group-btn-vertical .bootstrap-touchspin-up{
+}
+.bootstrap-touchspin .input-group-btn-vertical .bootstrap-touchspin-down{
+}
+
+/* CKEditor */
+.cke_chrome{
+	border: 0 !important;
+	.boxShadow;
+}
+.cke_top,
+.cke_bottom{
+	background: none repeat scroll 0 0 transparent !important;
+}
+.cke_top{
+	border-bottom: 0 !important;
+	padding-left: 0 !important;
+	padding-right: 0 !important;
+}
+.cke_top + .cke_contents{
+	border: 1px solid @colorGrey3 !important;
+}
+.cke_combo_button,
+.cke_toolgroup{
+	background: none repeat scroll 0 0 transparent !important;
+	border: 1px solid @colorGrey3 !important;
+}
+.cke_toolgroup:hover,
+.cke_combo_button:hover{
+	border-color: #adadad !important;
+}
+.cke_combo_text{
+	color: @textColorThick !important;
+}
+.cke_bottom{
+	.boxShadow;
+	border-top: 0 !important;
+	border-left: 1px solid @colorGrey3 !important;
+	border-right: 1px solid @colorGrey3 !important;
+	border-bottom: 1px solid @colorGrey3 !important;
+}
+.cke_button_icon{
+	opacity: 0.9;
+}
+a.cke_button{
+	padding: 5px 10px;
+}
+a.cke_button_off:hover,
+a.cke_button_off:focus,
+a.cke_button_off:active,
+a.cke_button_disabled:hover,
+a.cke_button_disabled:focus,
+a.cke_button_disabled:active{
+	background: none repeat scroll 0 0 #e6e6e6 !important;
+}
+.cke_source{
+	padding: 10px !important;
+}
+.cke_button_on,
+.cke_combo_off a.cke_combo_button:active,
+.cke_combo_on a.cke_combo_button{
+	background: #e6e6e6 !important;
+	border-color: #adadad !important;
+	color: #333333 !important;
+	-webkit-box-shadow: 0 3px 5px rgba(0, 0, 0, 0.125) inset !important;
+	-moz-box-shadow: 0 3px 5px rgba(0, 0, 0, 0.125) inset !important;
+	box-shadow: 0 3px 5px rgba(0, 0, 0, 0.125) inset !important;
+}
+.cke_panel_grouptitle{
+	background: none repeat scroll 0 0 @colorGrey3 !important;
+}
+
+/* Input Tags */
+.bootstrap-tagsinput{
+	display: block;
+}
+.input-lg + .bootstrap-tagsinput{
+	font-size: 18px;
+	height: 46px;
+	line-height: @goldenRatio;
+	padding: 10px 16px;
+}
+.input-sm + .bootstrap-tagsinput{
+	font-size: 12px;
+	height: 30px;
+	line-height: @goldenRatio;
+	padding: 5px 10px;
+}
+.tt-dropdown-menu{
+	background-clip: padding-box;
+	background-color: @colorWhite;
+	border: 1px solid rgba(0, 0, 0, 0.15);
+	.boxShadow(1px, 4px, 4px, fadeout(@colorBlack, 80%));
+	display: none;
+	float: left;
+	font-size: 14px;
+	left: 0;
+	list-style: none outside none;
+	margin: 2px 0 0;
+	min-width: 160px;
+	padding: 5px 0;
+	position: absolute;
+	top: 100%;
+	z-index: 1000;
+	cursor: pointer;
+}
+.tt-suggestion > p{
+	clear: both;
+	color: #333333;
+	display: block;
+	font-weight: normal;
+	line-height: 1.42857;
+	padding: 3px 20px;
+	white-space: nowrap;
+}
+.tt-suggestion > p:hover,
+.tt-suggestion > p:focus,
+.tt-suggestion.tt-cursor p{
+	background-color: #428bca;
+	color: @colorWhite;
+	outline: 0 none;
+	text-decoration: none;
+}
+
+/* Date/Time Picker */
+.bootstrap-datetimepicker-widget td, .bootstrap-datetimepicker-widget th{
+}
+.bootstrap-datetimepicker-widget td.old,
+.bootstrap-datetimepicker-widget td.new{
+	color: @textColorMuted;
+}
+.bootstrap-datetimepicker-widget td.disabled, .bootstrap-datetimepicker-widget td.disabled:hover{
+	text-decoration: line-through;
+	background: none repeat scroll 0 0 @colorGrey1;
+}
+.bootstrap-datetimepicker-widget td.active,
+.bootstrap-datetimepicker-widget td.active:hover{
+	background-color: saturate(@circloidActiveSecondaryColor, 100%);
+}
+.bootstrap-datetimepicker-widget td.today::before{
+	border-bottom-color: saturate(@circloidActiveSecondaryColor, 100%);
+}
+
+/* Multi-Select */
+.input-group.multiselect{
+	width: 100%;
+}
+.multiselect-container > li > a > label{
+	padding: 3px 20px;
+}
+
+/* Form Wizard */
+.wizard-container .nav{
+	display: table;
+	width: 100%;
+}
+.wizard-container .nav > li{
+	display: table-cell;
+	float: none;
+	vertical-align: top;
+}
+.wizard-container .nav > li > a{
+	padding: 10px 4px;
+}
+.wizard-container .nav-pills > li > a{
+}
+.wizard-container .nav-pills > li > a,
+.wizard-container .nav-pills > li > a:hover,
+.wizard-container .nav-pills > li > a:focus,
+.wizard-container .nav-pills > li.active > a,
+.wizard-container .nav-pills > li.active > a:hover,
+.wizard-container .nav-pills > li.active > a:focus{
+	background: none transparent;
+}
+.wizard-container .nav > li > a > span.icon,
+.wizard-container .nav > li > a > span.wi,
+.wizard-container .nav > li > a > span.glyphicon{
+	float: left;
+	color: @colorGrey3;
+	margin-top: 5px;
+}
+.wizard-container .nav > li.active > a > span.icon,
+.wizard-container .nav > li.active > a > span.wi,
+.wizard-container .nav > li.active > a > span.glyphicon{
+	color: @baseTextColor;
+}
+.wizard-container .nav > li > a > span.main-text{
+	display: block;
+	margin-left: 42px;
+}
+.wizard-container .nav > li > a > span.main-text > .h2{
+	display: block;
+	color: @colorGrey3;
+}
+.wizard-container .nav > li.active > a > span.main-text > .h2{
+	display: block;
+	color: @baseTextColor;
+}
+.wizard-container .nav > li > a > span.main-text > small{
+	color: @colorGrey3;
+}
+.wizard-container .nav > li.active > a > span.main-text > small{
+	color: @baseTextColor;
+}
+.wizard-container .pager li > a,
+.wizard-container .pager li > span{
+}
+
+/* ---- 4. Buttons ---- */
+
+.btn{
+}
+a.btn.rounded,
+button.rounded{
+	.roundedCorners;
+}
+.btn-group.rounded button:first-child{
+	.roundedCorners(40px, 0, 0, 40px);
+}
+.btn-group.rounded button:last-child{
+	.roundedCorners(0, 40px, 40px, 0);
+}
+
+.btn-group-vertical > .btn:first-child:not(:last-child){
+}
+.btn > .glyphicon{
+	margin-left: 5px;
+	margin-right: 5px;
+}
+.btn-group > .btn:first-child:not(:last-child):not(.dropdown-toggle),
+.btn-group > .btn:last-child:not(:first-child),
+.btn-group > .dropdown-toggle:not(:first-child){
+}
+.dropdown-menu{
+	.boxShadow(1px, 4px, 4px, fadeout(@colorBlack, 80%));
+}
+.dropdown-menu > li > a{
+	font-size: 13px;
+	padding: 4px 20px;
+}
+
+/* Misc - Loading, Icons, "Special Items", Wells, Pre, Images */
+.label{
+	font-size: 81%;
+	font-weight: 400;
+}
+.label-default{
+	
+}
+.label-primary{ 
+}
+.label-success{
+	
+}
+.label-info{
+}
+.label-warning{
+	
+}
+.label-danger{
+	
+}
+.loading{
+	width: 24px;
+	height: 24px;
+	background: url("../images/required/loading.gif") no-repeat top center;
+	float: right;
+	display: block;
+}
+.icon-success{
+	color: @baseColorGreen;
+}
+.icon-error{
+	color: @baseColorRed;
+}
+.icon-size-small{
+	font-size: 13px !important;
+}
+.icon-size-medium{
+	font-size: 24px !important;
+}
+.icon-size-normal{
+	font-size: 32px !important;
+}
+.icon-size-large{
+	font-size: 64px !important;
+}
+.show-item{
+	display: block !important;
+}
+.fade-in-item{
+	opacity: 1 !important;
+}
+.hide-item{
+	display: none !important;
+}
+.fade-out-item{
+	opacity: 0 !important;
+}
+a span.icon{
+}
+.well{
+}
+pre{
+}
+img.pull-left{
+	margin: 0 15px 15px 0;
+}
+img.pull-right{
+	margin: 0 0 15px 15px;
+}
+
+/* Highlight Colors - Bottom Border */
+.highlight-color-green{
+	border-bottom: @highlightBorderThinkness solid @baseColorGreen;
+}
+.highlight-color-orange{
+	border-bottom: @highlightBorderThinkness solid @baseColorOrange;
+}
+.highlight-color-yellow{
+	border-bottom: @highlightBorderThinkness solid @baseColorYellow;
+}
+.highlight-color-blue{
+	border-bottom: @highlightBorderThinkness solid @baseColorBlue;
+}
+.highlight-color-red{
+	border-bottom: @highlightBorderThinkness solid @baseColorRed;
+}
+.highlight-color-lime{
+	border-bottom: @highlightBorderThinkness solid @baseColorLime;
+}
+.highlight-color-purple{
+	border-bottom: @highlightBorderThinkness solid @baseColorPurple;
+}
+
+/* Highlight Colors - Text - Default State */
+.highlight-color-green-text{
+	color: @baseColorGreen !important;
+}
+.highlight-color-orange-text{
+	color: @baseColorOrange !important;
+}
+.highlight-color-yellow-text{
+	color: @baseColorYellow !important;
+}
+.highlight-color-blue-text{
+	color: @baseColorBlue !important;
+}
+.highlight-color-red-text{
+	color: @baseColorRed !important;
+}
+.highlight-color-lime-text{
+	color: @baseColorLime !important;
+}
+.highlight-color-purple-text{
+	color: @baseColorPurple !important;
+}
+
+/* Highlight Colors - Link - Default State/Hover Classes */
+.highlight-color-green-link a,
+a.highlight-color-green-link,
+.highlight-color-green-link-hover a:hover,
+.highlight-color-green-link-hover a:focus,
+a.highlight-color-green-link-hover:hover,
+a.highlight-color-green-link-hover:focus{
+	color: @baseColorGreen !important;
+}
+.highlight-color-orange-link a,
+a.highlight-color-orange-link,
+.highlight-color-orange-link-hover a:hover,
+.highlight-color-orange-link-hover a:focus,
+a.highlight-color-orange-link-hover:hover,
+a.highlight-color-orange-link-hover:focus{
+	color: @baseColorOrange !important;
+}
+.highlight-color-yellow-link a,
+a.highlight-color-yellow-link,
+.highlight-color-yellow-link-hover a:hover,
+.highlight-color-yellow-link-hover a:focus,
+a.highlight-color-yellow-link-hover:hover,
+a.highlight-color-yellow-link-hover:focus{
+	color: @baseColorYellow !important;
+}
+.highlight-color-blue-link a,
+a.highlight-color-blue-link,
+.highlight-color-blue-link-hover a:hover,
+.highlight-color-blue-link-hover a:focus,
+a.highlight-color-blue-link-hover:hover,
+a.highlight-color-blue-link-hover:focus{
+	color: @baseColorBlue !important;
+}
+.highlight-color-red-link a,
+a.highlight-color-red-link,
+.highlight-color-red-link-hover a:hover,
+.highlight-color-red-link-hover a:focus,
+a.highlight-color-red-link-hover:hover,
+a.highlight-color-red-link-hover:focus{
+	color: @baseColorRed !important;
+}
+.highlight-color-lime-link a,
+a.highlight-color-lime-link,
+.highlight-color-lime-link-hover a:hover,
+.highlight-color-lime-link-hover a:focus,
+a.highlight-color-lime-link-hover:hover,
+a.highlight-color-lime-link-hover:focus{
+	color: @baseColorLime !important;
+}
+.highlight-color-purple-link a,
+a.highlight-color-purple-link,
+.highlight-color-purple-link-hover a:hover,
+.highlight-color-purple-link-hover a:focus,
+a.highlight-color-purple-link-hover:hover,
+a.highlight-color-purple-link-hover:focus{
+	color: @baseColorPurple !important;
+}
+
+/* Highlight Colors - Icons - Default State*/
+.highlight-color-green-icon .icon,
+.highlight-color-green-icon a .icon,
+.highlight-color-green-icon .wi,
+.highlight-color-green-icon a .wi,
+.highlight-color-green-icon .glyphicon,
+.highlight-color-green-icon a .glyphicon{
+	color: @baseColorGreen !important;
+}
+.highlight-color-orange-icon .icon,
+.highlight-color-orange-icon a .icon,
+.highlight-color-orange-icon .wi,
+.highlight-color-orange-icon a .wi,
+.highlight-color-orange-icon .glyphicon,
+.highlight-color-orange-icon a .glyphicon{
+	color: @baseColorOrange !important;
+}
+.highlight-color-yellow-icon .icon,
+.highlight-color-yellow-icon a .icon,
+.highlight-color-yellow-icon .wi,
+.highlight-color-yellow-icon a .wi,
+.highlight-color-yellow-icon .glyphicon,
+.highlight-color-yellow-icon a .glyphicon{
+	color: @baseColorYellow !important;
+}
+.highlight-color-blue-icon .icon,
+.highlight-color-blue-icon a .icon,
+.highlight-color-blue-icon .wi,
+.highlight-color-blue-icon a .wi,
+.highlight-color-blue-icon .glyphicon,
+.highlight-color-blue-icon a .glyphicon{
+	color: @baseColorBlue !important;
+}
+.highlight-color-red-icon .icon,
+.highlight-color-red-icon a .icon,
+.highlight-color-red-icon .wi,
+.highlight-color-red-icon a .wi,
+.highlight-color-red-icon .glyphicon,
+.highlight-color-red-icon a .glyphicon{
+	color: @baseColorRed !important;
+}
+.highlight-color-lime-icon .icon,
+.highlight-color-lime-icon a .icon,
+.highlight-color-lime-icon .wi,
+.highlight-color-lime-icon a .wi,
+.highlight-color-lime-icon .glyphicon,
+.highlight-color-lime-icon a .glyphicon{
+	color: @baseColorLime !important;
+}
+.highlight-color-purple-icon .icon,
+.highlight-color-purple-icon a .icon,
+.highlight-color-purple-icon .wi,
+.highlight-color-purple-icon a .wi,
+.highlight-color-purple-icon .glyphicon,
+.highlight-color-purple-icon a .glyphicon{
+	color: @baseColorPurple !important;
+}
+.highlight-color-grey-icon .icon,
+.highlight-color-grey-icon a .icon,
+.highlight-color-grey-icon .wi,
+.highlight-color-grey-icon a .wi,
+.highlight-color-grey-icon .glyphicon,
+.highlight-color-grey-icon a .glyphicon{
+	color: @baseTextColor !important;
+}
+
+/* Highlight Colors - Icons - Hover State */
+.highlight-color-green-icon-hover:hover .icon,
+.highlight-color-green-icon-hover:focus .icon,
+.highlight-color-green-icon-hover:hover .wi,
+.highlight-color-green-icon-hover:focus .wi,
+.highlight-color-green-icon-hover:hover .glyphicon,
+.highlight-color-green-icon-hover:focus .glyphicon{
+	color: @baseColorGreen !important;
+}
+.highlight-color-orange-icon-hover:hover .icon,
+.highlight-color-orange-icon-hover:focus .icon,
+.highlight-color-orange-icon-hover:hover .wi,
+.highlight-color-orange-icon-hover:focus .wi,
+.highlight-color-orange-icon-hover:hover .glyphicon,
+.highlight-color-orange-icon-hover:focus .glyphicon{
+	color: @baseColorOrange !important;
+}
+.highlight-color-yellow-icon-hover:hover .icon,
+.highlight-color-yellow-icon-hover:focus .icon,
+.highlight-color-yellow-icon-hover:hover .wi,
+.highlight-color-yellow-icon-hover:focus .wi,
+.highlight-color-yellow-icon-hover:hover .glyphicon,
+.highlight-color-yellow-icon-hover:focus .glyphicon{
+	color: @baseColorYellow !important;
+}
+.highlight-color-blue-icon-hover:hover .icon,
+.highlight-color-blue-icon-hover:focus .icon,
+.highlight-color-blue-icon-hover:hover .wi,
+.highlight-color-blue-icon-hover:focus .wi,
+.highlight-color-blue-icon-hover:hover .glyphicon,
+.highlight-color-blue-icon-hover:focus .glyphicon{
+	color: @baseColorBlue !important;
+}
+.highlight-color-red-icon-hover:hover .icon,
+.highlight-color-red-icon-hover:focus .icon,
+.highlight-color-red-icon-hover:hover .wi,
+.highlight-color-red-icon-hover:focus .wi,
+.highlight-color-red-icon-hover:hover .glyphicon,
+.highlight-color-red-icon-hover:focus .glyphicon{
+	color: @baseColorRed !important;
+}
+.highlight-color-lime-icon-hover:hover .icon,
+.highlight-color-lime-icon-hover:focus .icon,
+.highlight-color-lime-icon-hover:hover .wi,
+.highlight-color-lime-icon-hover:focus .wi,
+.highlight-color-lime-icon-hover:hover .glyphicon,
+.highlight-color-lime-icon-hover:focus .glyphicon{
+	color: @baseColorLime !important;
+}
+.highlight-color-purple-icon-hover:hover .icon,
+.highlight-color-purple-icon-hover:focus .icon,
+.highlight-color-purple-icon-hover:hover .wi,
+.highlight-color-purple-icon-hover:focus .wi,
+.highlight-color-purple-icon-hover:hover .glyphicon,
+.highlight-color-purple-icon-hover:focus .glyphicon{
+	color: @baseColorPurple !important;
+}
+.highlight-color-white-icon-hover:hover .icon,
+.highlight-color-white-icon-hover:focus .icon,
+.highlight-color-white-icon-hover:hover .wi,
+.highlight-color-white-icon-hover:focus .wi,
+.highlight-color-white-icon-hover:hover .glyphicon,
+.highlight-color-white-icon-hover:focus .glyphicon{
+	color: @colorWhite !important;
+}
+.highlight-color-grey-icon-hover:hover .icon,
+.highlight-color-grey-icon-hover:focus .icon,
+.highlight-color-grey-icon-hover:hover .wi,
+.highlight-color-grey-icon-hover:focus .wi,
+.highlight-color-grey-icon-hover:hover .glyphicon,
+.highlight-color-grey-icon-hover:focus .glyphicon{
+	color: @textColorThick !important;
+}
+
+/* Highlight Colors - Background Color */
+.bg-color-green{
+	background-color: @baseColorGreen !important;
+}
+.bg-color-orange{
+	background-color: @baseColorOrange !important;
+}
+.bg-color-yellow{
+	background-color: @baseColorYellow !important;
+}
+.bg-color-blue{
+	background-color: @baseColorBlue !important;
+}
+.bg-color-red{
+	background-color: @baseColorRed !important;
+}
+.bg-color-lime{
+	background-color: @baseColorLime !important;
+}
+.bg-color-purple{
+	background-color: @baseColorPurple !important;
+}
+
+/* Badges */
+.badge{
+	background: none repeat scroll 0 0 @baseColorRed;
+	padding: 4px 6px;
+	text-align: center;
+	z-index: 10;
+	min-width: 22px;
+	font-weight: normal;
+	font-size: 11px;
+	right: 0;
+	top: -1px;
+	bottom: auto;
+}
+.badge.highlight-color-green{
+	background: none repeat scroll 0 0 @baseColorGreen;
+	border-bottom: 0;
+}
+.badge.highlight-color-orange{
+	background: none repeat scroll 0 0 @baseColorOrange;
+	border-bottom: 0;
+}
+.badge.highlight-color-yellow{
+	background: none repeat scroll 0 0 @baseColorYellow;
+	border-bottom: 0;
+	color: lighten(@colorBlack, 13.5%);
+}
+.badge.highlight-color-blue{
+	background: none repeat scroll 0 0 @baseColorBlue;
+	border-bottom: 0;
+}
+.badge.highlight-color-red{
+	background: none repeat scroll 0 0 @baseColorRed;
+	border-bottom: 0;
+}
+.badge.highlight-color-lime{
+	background: none repeat scroll 0 0 @baseColorLime;
+	border-bottom: 0;
+}
+.badge.highlight-color-purple{
+	background: none repeat scroll 0 0 @baseColorPurple;
+	border-bottom: 0;
+}
+.badge.pull-left{
+	margin-right: 3px;
+	margin-top: 2px;
+}
+.badge.pull-right{
+	margin-left: 3px;
+	margin-top: 1px;
+}
+.badge.pull-left-corner{
+	position: absolute;
+	right: auto;
+	left: -1px;
+	top: -1px;
+}
+.badge.pull-right-corner{
+	position: absolute;
+	right: 0;
+	top: 0;
+}
+.badge.pull-bottom-right{
+	float: none !important;
+	top: auto;
+	right: -9px;
+	bottom: -8px;
+	cursor: pointer;
+}
+.badge.pull-top-right{
+	float: none !important;
+	top: auto;
+	right: -9px;
+	bottom: 27px;
+	cursor: pointer;
+}
+.badge.pull-bottom-left{
+	float: none !important;
+	top: auto;
+	left: -7px;
+	right: auto;
+	bottom: -8px;
+	cursor: pointer;
+}
+.badge.pull-top-left{
+	float: none !important;
+	top: auto;
+	left: -7px;
+	right: auto;
+	bottom: -8px;
+	cursor: pointer;
+}
+.badge.badge-bordered{
+	padding: 1px 2px 2px;
+	border: 1px solid @colorWhite;
+	.boxShadowNotification(0, 0, 0, 2px, @baseColorRed);
+	margin-top: 2px;
+	min-width: 16px;
+}
+.badge.badge-bordered.highlight-color-green{
+	.boxShadowNotification(0, 0, 0, 2px, @baseColorGreen);
+}
+.badge.badge-bordered.highlight-color-orange{
+	.boxShadowNotification(0, 0, 0, 2px, @baseColorOrange);
+}
+.badge.badge-bordered.highlight-color-yellow{
+	.boxShadowNotification(0, 0, 0, 2px, @baseColorYellow);
+	color: lighten(@colorBlack, 13.5%);
+	border: 1px solid #5b5b5b;
+}
+.badge.badge-bordered.highlight-color-blue{
+	.boxShadowNotification(0, 0, 0, 2px, @baseColorBlue);
+}
+.badge.badge-bordered.highlight-color-lime{
+	.boxShadowNotification(0, 0, 0, 2px, @baseColorLime);
+}
+.badge.badge-bordered.highlight-color-purple{
+	.boxShadowNotification(0, 0, 0, 2px, @baseColorPurple);
+}
+.badge.badge-bordered.pull-right-corner{
+	position: absolute;
+	right: 1px;
+	top: -1px;
+}
+.badge.badge-bordered.pull-left-corner{
+	position: absolute;
+	right: auto;
+	left: 1px;
+	top: -1px;
+}
+
+/* Progress Bars */
+.progress{
+	display: block;
+	height: 3px;
+	margin-bottom: 5px;
+	margin-top: 8px;
+	background-color: @colorGrey2;
+	.boxShadow;
+}
+.progress.progress-jumbo{
+	height: 9px;
+}
+.progress.progress-xl{
+	height: 7px;
+}
+.progress.progress-lg{
+	height: 5px;
+}
+.progress span{
+	display: block;
+}
+.progress-bar{
+	.boxShadow;
+	-webkit-transition: all 0.5s;
+	-moz-transition: all 0.5s;
+	-o-transition: all 0.5s;
+	transition: all 0.5s;
+}
+.progress-striped .progress-bar,
+.progress-bar-striped{
+	background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.5) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.5) 50%, rgba(255, 255, 255, 0.5) 75%, transparent 75%, transparent);
+}
+
+/* Custom Scrollbar */
+.mCSB_container{
+	margin-right: 0;
+}
+.mCSB_scrollTools .mCSB_draggerContainer{
+	z-index: 999;
+}
+.mCSB_outside + .mCSB_scrollTools{
+	right: -6px;
+}
+.mCS-dark.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar{
+	background: rgba(0,0,0,0.4);
+}
+.mCS-dark.mCSB_scrollTools .mCSB_dragger:hover .mCSB_dragger_bar{
+	background: rgba(0,0,0,1);
+}
+
+/* ---- 5. Header ---- */
+
+/* Header Resets */
+.navbar-toggle{
+	float: left;
+	margin-bottom: 0;
+	display: none;
+	background-color: @colorBlack;
+}
+.navbar{
+	margin-bottom: 0;
+}
+.navbar-header,
+.navbar-collapse{
+	margin-left: 0;
+	margin-right: 0;
+}
+#header-container ol,
+#header-container ul{
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+#header-container .header-bar{
+	background-color: @textColorThick !important;
+	background-image: url("../images/required/site-bg@2x.png") !important;
+	min-height: 46px;
+	border: 0;
+	z-index: 9999;
+}
+#header-container .header-bar .container{
+	width: auto;
+	padding: 0;
+}
+#header-container .header-bar .navbar-header{
+	width: 100%;
+}
+#header-container .header-bar .logo{
+	margin: 2px 15px 0 2px;
+	float: left;
+}
+.small-logo{
+	display: none;
+}
+
+/* Header Search */
+.header-search{
+	color: @baseTextColor;
+	float: left;
+	height: 38px;
+	margin: 8px 20px 0 0;
+}
+.header-search.animate{
+	overflow: hidden;
+}
+.header-search > form > ul > li{
+	position: relative;
+}
+.header-search.animate > form > ul > li{
+	bottom: -50px;
+	opacity: 0;
+}
+.header-search > form > ul > li > a,
+.header-search > form > ul > li > a:visited{
+	color: @colorWhite;
+	-webkit-transition: color 0.2s;
+	-moz-transition: color 0.2s;
+	-o-transition: color 0.2s;
+	transition: color 0.2s;
+}
+.header-search > form > ul > li > a:hover,
+.header-search > form > ul > li > a:focus{
+	opacity: 0.7;
+}
+.header-search > form > ul > li > a.search-closed{
+	position: relative;
+	display: block;
+}
+.header-search > form > ul > li > a.search-opened{
+	position: relative;
+	display: none;
+}
+.header-search > form > ul > li > a.search-closed > span.icon,
+.header-search > form > ul > li > a.search-opened > span.icon{
+	float: left;
+	width: 32px;
+}
+.header-search > form > ul > li > a.search-closed > span.main-text,
+.header-search > form > ul > li > a.search-opened > span.main-text{
+	float: left;
+	padding: 7px;
+}
+.header-search.animate > form > ul > li > a.search-closed > span.main-text{
+	position: relative;
+	opacity: 0;
+	left: -20px;
+}
+.header-search > form > ul > li > ul{
+	display: none;
+	left: -15px;
+	position: absolute;
+	top: 16px;
+	background: none repeat scroll 0 0 @colorWhite;
+	border-left: @borderStandard;
+	border-right: @borderStandard;
+	list-style: none outside none;
+	margin: 0;
+	text-align: left;
+	width: 350px;
+	z-index: 999;
+	border-bottom: @highlightBorderThinkness solid @circloidActiveColor;
+	.boxShadow(1px, 4px, 4px, fadeout(@colorBlack, 80%));
+}
+.header-search > form > ul > li > ul > li.simple-search{
+}
+.header-search > form > ul > li > ul > li.simple-search .simple-search-inner{
+}
+.header-search > form > ul > li > ul > li.simple-search .simple-search-inner .simple-search-block{
+	padding: 10px 15px 7px 15px;
+}
+.header-search > form > ul > li > ul > li.simple-search .simple-search-inner .simple-search-block .checkbox{
+	margin-top: 7px;
+	margin-bottom: 0;
+}
+.header-search > form > ul > li > ul > li.advanced-search{
+	padding: 10px 15px;
+	display: none;
+	border-top: @borderStandard;
+}
+.header-search > form > ul > li > ul > li.advanced-search .advanced-search-block{
+}
+
+/* Header Language */
+.header-language{
+	color: @textColorThick;
+	float: left;
+	height: 38px;
+	margin: 8px 20px 0 0;
+}
+.header-language.animate{
+	overflow: hidden;
+}
+.header-language > ul > li{
+	position: relative;
+}
+.header-language.animate > ul > li{
+	bottom: -50px;
+	opacity: 0;
+}
+.header-language > ul > li > a,
+.header-language > ul > li > a:visited{
+	color: @colorWhite;
+	-webkit-transition: color 0.2s;
+	-moz-transition: color 0.2s;
+	-o-transition: color 0.2s;
+	transition: color 0.2s;
+}
+.header-language > ul > li > a:hover,
+.header-language > ul > li > a:focus{
+	opacity: 0.7;
+}
+.header-language > ul > li > a.language-closed{
+	position: relative;
+	display: block;
+}
+.header-language > ul > li > a.language-opened{
+	position: relative;
+	display: none;
+}
+.header-language > ul > li > a.language-closed > span.icon,
+.header-language > ul > li > a.language-opened > span.icon{
+	float: left;
+	width: 32px;
+}
+.header-language > ul > li > a.language-closed > span.main-text,
+.header-language > ul > li > a.language-opened > span.main-text{
+	float: left;
+	padding: 7px;
+}
+.header-language.animate > ul > li > a.language-closed > span.main-text{
+	position: relative;
+	opacity: 0;
+	left: -20px;
+}
+.header-language > ul > li > ul{
+	display: none;
+	left: -15px;
+	position: absolute;
+	top: 16px;
+	background: none repeat scroll 0 0 @colorWhite;
+	border-left: @borderStandard;
+	border-right: @borderStandard;
+	.boxShadow(1px, 4px, 4px, fadeout(@colorBlack, 80%));
+	list-style: none outside none;
+	margin: 0;
+	text-align: left;
+	min-width: 140px;
+	z-index: 999;
+	border-bottom: @highlightBorderThinkness solid @circloidActiveColor;
+}
+.header-language > ul > li > ul > li.language-list-item{
+	border-bottom: @borderStandard;
+}
+.header-language > ul > li > ul > li.language-list-item:last-child{
+	border-bottom: 0;
+}
+.header-language > ul > li > ul > li.language-list-item .language-block{
+}
+.header-language > ul > li > ul > li.language-list-item .language-block > a,
+.header-language > ul > li > ul > li.language-list-item .language-block > a:visited{
+	display: table;
+	padding: 5px 15px;
+	color: @textColorThick;
+	width: 100%;
+	-webkit-transition: color 0.2s;
+	-moz-transition: color 0.2s;
+	-o-transition: color 0.2s;
+	transition: color 0.2s;
+}
+.header-language > ul > li > ul > li.language-list-item .language-block > a:hover,
+.header-language > ul > li > ul > li.language-list-item .language-block > a:focus{
+	color: @circloidActiveColor;
+	background: @colorOffWhite;
+}
+.header-language > ul > li > ul > li.language-list-item .language-block .language-flag{
+	float: left;
+}
+.header-language > ul > li > ul > li.language-list-item .language-block > a .language-flag img{
+	-webkit-transition: opacity 0.2s;
+	-moz-transition: opacity 0.2s;
+	-o-transition: opacity 0.2s;
+	transition: opacity 0.2s;
+}
+.header-language > ul > li > ul > li.language-list-item .language-block > a:hover .language-flag img,
+.header-language > ul > li > ul > li.language-list-item .language-block > a:focus .language-flag img{
+	opacity: 0.7;
+}
+.header-language > ul > li > ul > li.language-list-item .language-block .language-name{
+	float: left;
+	line-height: 30px;
+	padding: 0 0 0 7px;
+}
+
+/* Header Info - Profile */
+.header-info{
+	float: right;
+	padding: 5px 20px 0 0;
+}
+.header-profile{
+	float: right;
+}
+.header-profile.animate{
+	overflow: hidden;
+}
+.header-profile a{
+	line-height: 35px;
+	color: @colorWhite;
+	-webkit-transition: background-color 0.3s ease 0s, color 0.3s ease 0s, border-radius 0.3s ease 0s;
+	-moz-transition: background-color 0.3s ease 0s, color 0.3s ease 0s, border-radius 0.3s ease 0s;
+	-o-transition: background-color 0.3s ease 0s, color 0.3s ease 0s, border-radius 0.3s ease 0s;
+	transition: background-color 0.3s ease 0s, color 0.3s ease 0s, border-radius 0.3s ease 0s;
+}
+.header-profile a:hover,
+.header-profile a:focus{
+	text-decoration: none;
+}
+.header-profile a:hover .main-menu-text,
+.header-profile a:focus .main-menu-text{
+	text-decoration: none;
+}
+.header-profile a span{
+}
+.header-profile a span.icon{
+	color: @circloidActiveSecondaryColor;
+	float: left;
+}
+.header-profile a span.header-profile-menu-icon{
+
+}
+.header-profile a span.header-profile-menu-icon img{
+	background-color: transparent;
+	.roundedCorners(50%, 50%, 50%, 50%);
+}
+.header-profile a span.main-text{
+	display: block;
+	line-height: 23px;
+	margin: 0 0 0 33px;
+	padding: 3px 0 0 8px;
+}
+.header-profile a span.main-text .badge{
+}
+.header-profile a.top i.icon{
+	line-height: 36px;
+}
+.header-profile a span.main-menu-text{
+	padding: 0 0 0 8px;
+}
+.header-profile.animate a span.main-menu-text{
+	left: -20px;
+	opacity: 0;
+	position: relative;
+}
+.header-profile a span.main-menu-text .icon{
+	margin: 0 0 0 4px;
+}
+.header-profile > ul.header-profile-menu{
+}
+.header-profile > ul.header-profile-menu > li{
+	position: relative;
+}
+.header-profile.animate > ul.header-profile-menu > li{
+	bottom: -50px;
+	opacity: 0;
+}
+.header-profile > ul.header-profile-menu > li > a{
+	display: block;
+}
+.header-profile > ul.header-profile-menu > li > a:hover,
+.header-profile > ul.header-profile-menu > li > a:focus{
+	opacity: 0.7;
+}
+.header-profile > ul.header-profile-menu > li > ul{
+	display: none;
+	position: absolute;
+	right: 0;
+	top: 19px;
+	background: none repeat scroll 0 0 @colorWhite;
+	border-left: @borderStandard;
+	border-right: @borderStandard;
+	.boxShadow(1px, 4px, 4px, fadeout(@colorBlack, 80%));
+	list-style: none outside none;
+	margin: 0;
+	text-align: left;
+	min-width: 165px;
+	z-index: 999;
+	border-bottom: @highlightBorderThinkness solid @circloidActiveColor;
+}
+.header-profile > ul.header-profile-menu > li > ul > li{
+	border-bottom: @borderStandard;
+	position: relative;
+}
+.header-profile > ul.header-profile-menu > li > ul > li > a,
+.header-profile > ul.header-profile-menu > li > ul > li > a:visited{
+	display: table;
+	padding: 8px 15px;
+	color: @textColorThick;
+	width: 100%;
+}
+.header-profile > ul.header-profile-menu > li > ul > li > a:focus,
+.header-profile > ul.header-profile-menu > li > ul > li > a:hover{
+	color: @circloidActiveColor;
+	background: @colorOffWhite;
+}
+.header-profile > ul.header-profile-menu > li > ul > li > a:focus .icon,
+.header-profile > ul.header-profile-menu > li > ul > li > a:hover .icon{
+}
+
+/* Header Info - Notification Alerts */
+.header-notifications{
+	float: right;
+	margin-right: 30px;
+	height: 41px;
+}
+.header-notifications.animate{
+	overflow: hidden;
+}
+.header-notifications .notifications-alert{
+	background: none repeat scroll 0 0 @circloidActiveColor;
+	position: relative;
+	-webkit-transition: background-color 0.2s;
+	-moz-transition: background-color 0.2s;
+	-o-transition: background-color 0.2s;
+	transition: background-color 0.2s;
+	float: left;
+	height: 41px;
+	margin: 0 15px 0 0;
+	text-align: center;
+	width: 43px;
+	padding-top: 5px;
+	position: relative;
+	border-bottom: 0 !important;
+}
+.header-notifications .notifications-alert.highlight-color-green{
+	background-color:  @baseColorGreen;
+}
+.header-notifications .notifications-alert.highlight-color-orange{
+	background-color:  @baseColorOrange;
+}
+.header-notifications .notifications-alert.highlight-color-yellow{
+	background-color:  @baseColorYellow;
+}
+.header-notifications .notifications-alert.highlight-color-blue{
+	background-color:  @baseColorBlue;
+}
+.header-notifications .notifications-alert.highlight-color-red{
+	background-color:  @baseColorRed;
+}
+.header-notifications .notifications-alert.highlight-color-lime{
+	background-color:  @baseColorLime;
+}
+.header-notifications .notifications-alert.highlight-color-purple{
+	background-color:  @baseColorPurple;
+}
+.header-notifications .notifications-alert:hover,
+.header-notifications .notifications-alert:focus,
+.header-notifications .notifications-alert.menu-open{
+	background: none repeat scroll 0 0 @colorWhite;
+}
+.header-notifications.animate .notifications-alert{
+	bottom: -41px;
+	opacity: 0;
+}
+.header-notifications .notifications-alert.notifications-alert-mobile{
+	display: none;
+}
+.header-notifications .notifications-alert > a,
+.header-notifications .notifications-alert > a:visited{
+	color: @textColorThick;
+	font-weight: normal;
+	position: relative;
+	text-decoration: none;
+	padding: 5px;
+}
+.header-notifications .notifications-alert > a:hover,
+.header-notifications .notifications-alert > a:focus{
+	color: @textColorThick;
+	text-decoration: none;
+}
+.header-notifications .notifications-alert > a > span.icon{
+	color: @colorWhite;
+}
+.header-notifications .notifications-alert:hover > a > span.icon,
+.header-notifications .notifications-alert:focus > a > span.icon,
+.header-notifications .notifications-alert.menu-open > a > span.icon{
+	color: @circloidActiveColor;
+}
+.header-notifications .notifications-alert.highlight-color-green:hover > a > span.icon,
+.header-notifications .notifications-alert.highlight-color-green:focus > a > span.icon,
+.header-notifications .notifications-alert.highlight-color-green.menu-open > a > span.icon{
+	color: @baseColorGreen;
+}
+.header-notifications .notifications-alert.highlight-color-orange:hover > a > span.icon,
+.header-notifications .notifications-alert.highlight-color-orange:focus > a > span.icon,
+.header-notifications .notifications-alert.highlight-color-orange.menu-open > a > span.icon{
+	color: @baseColorOrange;
+}
+.header-notifications .notifications-alert.highlight-color-yellow:hover > a > span.icon,
+.header-notifications .notifications-alert.highlight-color-yellow:focus > a > span.icon,
+.header-notifications .notifications-alert.highlight-color-yellow.menu-open > a > span.icon{
+	color: @baseColorYellow;
+}
+.header-notifications .notifications-alert.highlight-color-blue:hover > a > span.icon,
+.header-notifications .notifications-alert.highlight-color-blue:focus > a > span.icon,
+.header-notifications .notifications-alert.highlight-color-blue.menu-open > a > span.icon{
+	color: @baseColorBlue;
+}
+.header-notifications .notifications-alert.highlight-color-red:hover > a > span.icon,
+.header-notifications .notifications-alert.highlight-color-red:focus > a > span.icon,
+.header-notifications .notifications-alert.highlight-color-red.menu-open > a > span.icon{
+	color: @baseColorRed;
+}
+.header-notifications .notifications-alert.highlight-color-lime:hover > a > span.icon,
+.header-notifications .notifications-alert.highlight-color-lime:focus > a > span.icon,
+.header-notifications .notifications-alert.highlight-color-lime.menu-open > a > span.icon{
+	color: @baseColorLime;
+}
+.header-notifications .notifications-alert.highlight-color-purple:hover > a > span.icon,
+.header-notifications .notifications-alert.highlight-color-purple:focus > a > span.icon,
+.header-notifications .notifications-alert.highlight-color-purple.menu-open > a > span.icon{
+	color: @baseColorPurple;
+}
+.header-notifications .notifications-alert .badge,
+.header-notifications .notifications-alert .badge.pull-right,
+.header-notifications .notifications-alert .badge.pull-bottom-right{
+	position: absolute;
+	float: none !important;
+	top: auto;
+	right: -9px;
+	bottom: -8px;
+	cursor: pointer;
+}
+.header-notifications .notifications-alert .badge.pull-top-right{
+	position: absolute;
+	float: none !important;
+	top: auto;
+	right: -9px;
+	bottom: 27px;
+	cursor: pointer;
+}
+.header-notifications .notifications-alert .badge.pull-left,
+.header-notifications .notifications-alert .badge.pull-bottom-left{
+	position: absolute;
+	float: none !important;
+	top: auto;
+	left: -7px;
+	right: auto;
+	bottom: -8px;
+	cursor: pointer;
+}
+.header-notifications .notifications-alert .badge.pull-top-left{
+	position: absolute;
+	float: none !important;
+	top: auto;
+	left: -7px;
+	right: auto;
+	bottom: -8px;
+	cursor: pointer;
+}
+.header-notifications.animate .notifications-alert .badge{
+	display: none;
+}
+.header-notifications .notifications-alert.menu-open .badge{
+	visibility: hidden;
+}
+.header-notifications .notifications-alert > ul{
+	background: none repeat scroll 0 0 @colorWhite;
+	border-left: @borderStandard;
+	border-right: @borderStandard;
+	border-bottom: @highlightBorderThinkness solid @circloidActiveColor;
+	.boxShadow(1px, 4px, 4px, fadeout(@colorBlack, 80%));
+	list-style: none outside none;
+	margin: 0;
+	padding: 0;
+	position: absolute;
+	text-align: left;
+	width: 222px;
+	z-index: 999;
+	right: 0;
+	top: 6px;
+	display: none;
+}
+.header-notifications .notifications-alert.highlight-color-green > ul{
+	border-bottom-color:  @baseColorGreen;
+}
+.header-notifications .notifications-alert.highlight-color-orange > ul{
+	border-bottom-color:  @baseColorOrange;
+}
+.header-notifications .notifications-alert.highlight-color-yellow > ul{
+	border-bottom-color:  @baseColorYellow;
+}
+.header-notifications .notifications-alert.highlight-color-blue > ul{
+	border-bottom-color:  @baseColorBlue;
+}
+.header-notifications .notifications-alert.highlight-color-red > ul{
+	border-bottom-color:  @baseColorRed;
+}
+.header-notifications .notifications-alert.highlight-color-lime > ul{
+	border-bottom-color:  @baseColorLime;
+}
+.header-notifications .notifications-alert.highlight-color-purple > ul{
+	border-bottom-color:  @baseColorPurple;
+}
+.header-notifications .notifications-alert.menu-open > ul{
+	display: block;
+	top: 39px;
+}
+.header-notifications .notifications-alert .notifications-alert-block{
+	height: 191px;
+	overflow: hidden;
+}
+.header-notifications .notifications-alert .notifications-alert-block .notifications-alert-list{
+}
+.header-notifications .notifications-alert .notifications-alert-block .notifications-alert-list-item{
+	border-bottom: @borderStandard;
+}
+.header-notifications .notifications-alert .notifications-alert-block .notifications-alert-list-item a,
+.header-notifications .notifications-alert .notifications-alert-block .notifications-alert-list-item a:visited{
+	color: @baseTextColor;
+	display: table;
+	font-size: 12px;
+	padding: 10px 15px;
+	width: 100%;
+}
+.header-notifications .notifications-alert .notifications-alert-block .notifications-alert-list-item a:hover,
+.header-notifications .notifications-alert .notifications-alert-block .notifications-alert-list-item a:focus{
+	text-decoration: none;
+	color: @colorBlack;
+	background: @colorOffWhite;
+}
+.header-notifications .notifications-alert .notifications-alert-block .notifications-alert-list-item a .icon,
+.header-notifications .notifications-alert .notifications-alert-block .notifications-alert-list-item a .icon{
+	-webkit-transition: opacity 0.2s;
+	-moz-transition: opacity 0.2s;
+	-o-transition: opacity 0.2s;
+	transition: opacity 0.2s;
+}
+.header-notifications .notifications-alert .notifications-alert-block .notifications-alert-list-item a:hover .icon,
+.header-notifications .notifications-alert .notifications-alert-block .notifications-alert-list-item a:focus .icon{
+	opacity: 0.7;
+}
+.header-notifications .notifications-alert .notifications-alert-block .notifications-alert-list-item a:hover .timestamp,
+.header-notifications .notifications-alert .notifications-alert-block .notifications-alert-list-item a:focus .timestamp{
+	color: @baseTextColor;
+}
+.header-notifications .notifications-alert .notifications-alert-block .notifications-alert-list-item a span.icon{
+	font-size: 12px !important;
+}
+.header-notifications .notifications-alert .notifications-alert-block .notifications-alert-list-item .notifications-alert-list-text{
+}
+.header-notifications .notifications-alert .notifications-alert-block .notifications-alert-list-item .notifications-alert-list-image{
+	float: left;
+	margin-right: 10px;
+	width: 40px;
+	overflow: hidden;
+}
+.header-notifications .notifications-alert .notifications-alert-block .notifications-alert-list-item .notifications-alert-list-image img{
+}
+.header-notifications .notifications-alert .notifications-alert-block .notifications-alert-list-item .notifications-alert-list-icon{
+	float: left;
+	margin-right: 10px;
+}
+.header-notifications .notifications-alert .notifications-alert-block .notifications-alert-list-item .notifications-alert-list-icon span.icon{
+	font-size: 32px !important;
+	color: @circloidActiveSecondaryColor;
+}
+.header-notifications .notifications-alert.highlight-color-green .notifications-alert-block .notifications-alert-list-item .notifications-alert-list-icon span.icon{
+	color:  @baseColorGreen;
+}
+.header-notifications .notifications-alert.highlight-color-orange .notifications-alert-block .notifications-alert-list-item .notifications-alert-list-icon span.icon{
+	color:  @baseColorOrange;
+}
+.header-notifications .notifications-alert.highlight-color-yellow .notifications-alert-block .notifications-alert-list-item .notifications-alert-list-icon span.icon{
+	color:  @baseColorYellow;
+}
+.header-notifications .notifications-alert.highlight-color-blue .notifications-alert-block .notifications-alert-list-item .notifications-alert-list-icon span.icon{
+	color:  @baseColorBlue;
+}
+.header-notifications .notifications-alert.highlight-color-red .notifications-alert-block .notifications-alert-list-item .notifications-alert-list-icon span.icon{
+	color:  @baseColorRed;
+}
+.header-notifications .notifications-alert.highlight-color-lime .notifications-alert-block .notifications-alert-list-item .notifications-alert-list-icon span.icon{
+	color:  @baseColorLime;
+}
+.header-notifications .notifications-alert.highlight-color-purple .notifications-alert-block .notifications-alert-list-item .notifications-alert-list-icon span.icon{
+	color:  @baseColorPurple;
+}
+.header-notifications .notifications-alert .notifications-alert-block .notifications-alert-list-item .notifications-alert-list-header{
+	color: @colorBlack;
+	display: block;
+	font-size: 15px;
+	line-height: 15px;
+	margin-bottom: 3px;
+}
+.header-notifications .notifications-alert .notifications-alert-block .notifications-alert-list-item .main-text{
+	display: block;
+	margin-left: 42px;
+}
+.header-notifications .notifications-alert .notifications-alert-block .notifications-alert-list-item .timestamp{
+	float: right;
+	color: @circloidActiveColor;
+}
+.header-notifications .notifications-alert.highlight-color-green .notifications-alert-block .notifications-alert-list-item .timestamp{
+	color:  @baseColorGreen;
+}
+.header-notifications .notifications-alert.highlight-color-orange .notifications-alert-block .notifications-alert-list-item .timestamp{
+	color:  @baseColorOrange;
+}
+.header-notifications .notifications-alert.highlight-color-yellow .notifications-alert-block .notifications-alert-list-item .timestamp{
+	color:  @baseColorYellow;
+}
+.header-notifications .notifications-alert.highlight-color-blue .notifications-alert-block .notifications-alert-list-item .timestamp{
+	color:  @baseColorBlue;
+}
+.header-notifications .notifications-alert.highlight-color-red .notifications-alert-block .notifications-alert-list-item .timestamp{
+	color:  @baseColorRed;
+}
+.header-notifications .notifications-alert.highlight-color-lime .notifications-alert-block .notifications-alert-list-item .timestamp{
+	color:  @baseColorLime;
+}
+.header-notifications .notifications-alert.highlight-color-purple .notifications-alert-block .notifications-alert-list-item .timestamp{
+	color:  @baseColorPurple;
+}
+.header-notifications .notifications-alert .notifications-alert-desc{
+}
+.header-notifications .notifications-alert .notifications-alert-desc p{
+	margin: 0;
+	padding: 10px 15px;
+	background-color: fadeout(@circloidActiveColor, 82%);
+	color: @textColorThick;
+	text-align: center;
+}
+.header-notifications .notifications-alert.highlight-color-green .notifications-alert-desc p{
+	background-color:  fadeout(@baseColorGreen, 82%);
+}
+.header-notifications .notifications-alert.highlight-color-orange .notifications-alert-desc p{
+	background-color:  fadeout(@baseColorOrange, 82%);
+}
+.header-notifications .notifications-alert.highlight-color-yellow .notifications-alert-desc p{
+	background-color:  fadeout(@baseColorYellow, 82%);
+}
+.header-notifications .notifications-alert.highlight-color-blue .notifications-alert-desc p{
+	background-color:  fadeout(@baseColorBlue, 82%);
+}
+.header-notifications .notifications-alert.highlight-color-red .notifications-alert-desc p{
+	background-color:  fadeout(@baseColorRed, 82%);
+}
+.header-notifications .notifications-alert.highlight-color-lime .notifications-alert-desc p{
+	background-color:  fadeout(@baseColorLime, 82%);
+}
+.header-notifications .notifications-alert.highlight-color-purple .notifications-alert-desc p{
+	background-color:  fadeout(@baseColorPurple, 82%);
+}
+.header-notifications .notifications-alert .notifications-alert-more{
+	
+}
+.header-notifications .notifications-alert .notifications-alert-more p{
+	margin: 0;
+}
+.header-notifications .notifications-alert .notifications-alert-more p a,
+.header-notifications .notifications-alert .notifications-alert-more p a:visited{
+	border-top: 1px solid @colorGrey1;
+	display: block;
+	padding: 10px 15px;
+	color: @colorBlack;
+}
+.header-notifications .notifications-alert .notifications-alert-more p a:focus,
+.header-notifications .notifications-alert .notifications-alert-more p a:hover{
+	text-decoration: none;
+	color: @baseTextColor;
+}
+.header-notifications .notifications-alert .notifications-alert-more p a .icon{
+	float: right;
+	line-height: 20px;
+}
+
+/* ---- Body ---- */
+#body-container{
+}
+
+/* ---- 6. Left Column ---- */
+#left-column{
+	background-color: @textColorThick !important;
+	background-image: url("../images/required/site-bg@2x.png") !important;
+	float: left;
+	position: absolute;
+	width: 95px;
+	z-index: 999;
+}
+#left-column.menu-icon-only{
+	width: 52px;
+}
+#left-column.menu-icon-only .hidden-collapsed{
+	display: none;
+}
+#left-column.menu-icon-only ul.mainnav > li > a{
+	padding: 4px 0;
+}
+#left-column.menu-icon-only ul.mainnav > li > a > span.main-menu-text{
+	display: none;
+}
+#left-column + #right-column{
+	margin: 0 0 0 95px;
+}
+
+/* Left Menu, Header Menu */
+#left-column.fixed{
+	position: fixed;
+	z-index: 1;
+}
+#left-column.fixed #mainnav{
+}
+#left-column ul,
+#left-column ol{
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+.mainnav-horizontal-outer{
+	position: relative;
+	z-index: 1;
+}
+.mainnav-horizontal-outer ul,
+.mainnav-horizontal-outer ol{
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+#mainnav-horizontal-inner{
+	min-height: 43px;
+}
+#mainnav-horizontal-inner.fixed{
+	position: fixed;
+	width: 100%;
+	border-top: @highlightBorderThinknessRightColumn solid @circloidActiveColor;
+	margin-top: -5px;
+}
+#mainnav{
+}
+#mainnav-horizontal-inner.menu-text-only .main-menu-icon{
+	display: none !important;
+}
+#mainnav-horizontal{
+	background: url("../images/required/site-bg@2x.png") @headerTextColor;
+	display: table;
+	width: 100%;
+}
+#mainnav a span.icon,
+#mainnav-horizontal a span.icon{
+	line-height: 39px;
+	display: block;
+}
+#mainnav a:hover span.icon,
+#mainnav-horizontal a:hover span.icon{
+	color: @headerTextColor;
+}
+
+/* ---- 6.1 First Level Menu Styles ---- */
+
+/* Menu Item - Default State */
+ul.mainnav,
+ul.mainnav-horizontal{
+	list-style: none outside none;
+	margin: 0;
+	padding: 0;
+}
+ul.mainnav a,
+ul.mainnav a:visited,
+ul.mainnav-horizontal a,
+ul.mainnav-horizontal a:visited{
+	font-size: 12px;
+	font-weight: normal;
+	text-decoration: none;
+	outline:none;
+}
+ul.mainnav-horizontal a,
+ul.mainnav-horizontal a:visited{
+}
+ul.mainnav > li{
+	position: relative;
+	text-align: center;
+	border-bottom: 0;
+	padding-bottom: 3px;
+}
+ul.mainnav-horizontal > li{
+	position: relative;
+	text-align: center;
+	border-bottom: 0;
+	padding-bottom: 3px;
+	display: inline-block;
+	float: left;
+}
+ul.mainnav a.parent{
+}
+ul.mainnav-horizontal a.parent{
+}
+ul.mainnav a.parent:hover .icon{
+}
+ul.mainnav-horizontal a.parent:hover .icon{
+}
+ul.mainnav > li > a > span.main-menu-icon{
+	display: block;
+	text-align: center;
+	height: 39px;
+}
+ul.mainnav-horizontal > li > a > span.main-menu-icon{
+	display: block;
+	text-align: center;
+	height: 39px;
+	width: 32px;
+	float: left;
+}
+ul.mainnav.animate > li > a > span.main-menu-icon,
+ul.mainnav-horizontal.animate > li > a > span.main-menu-icon{
+	overflow: hidden;
+}
+ul.mainnav.animate > li > a > span.main-menu-icon .icon,
+ul.mainnav-horizontal.animate > li > a > span.main-menu-icon .icon{
+	position: relative;
+	bottom: -50px;
+}
+ul.mainnav > li > a > i.icon,
+ul.mainnav-horizontal > li > a > i.icon{
+	float: right;
+	margin-left: 4px;
+	margin-top: 13px;
+}
+ul.mainnav > li > a > span.main-menu-text{
+	display: block;
+	text-align: center;
+}
+ul.mainnav-horizontal > li > a > span.main-menu-text{
+	display: block;
+	float: left;
+	line-height: 40px;
+	text-align: center;
+}
+ul.mainnav.animate > li > a > span.main-menu-text,
+ul.mainnav-horizontal.animate > li > a > span.main-menu-text{
+	opacity: 0;
+	left: -20px;
+	position: relative;
+}
+ul.mainnav.animate > li > a > .badge,
+ul.mainnav-horizontal.animate > li > a > .badge{
+	opacity: 0;
+}
+ul.mainnav > li > a > .badge.pull-right{
+	position: absolute;
+	float: none !important;
+	right: 23px;
+	top: 8px;
+}
+ul.mainnav-horizontal > li > a > .badge.pull-right{
+	margin-left: 7px;
+	margin-top: 10px;
+}
+ul.mainnav > li > a > .badge.pull-left{
+	position: absolute;
+	float: none !important;
+	right: auto;
+	top: 8px;
+	left: 23px;
+}
+ul.mainnav-horizontal > li > a > .badge.pull-left{
+	margin-right: 7px;
+	margin-top: 10px;
+}
+#left-column.menu-icon-only ul.mainnav > li > a > .badge.pull-right{
+	top: -1px;
+	right: 0;
+}
+#left-column.menu-icon-only ul.mainnav > li > a > .badge.pull-left{
+	top: -2px;
+	left: 0;
+}
+#left-column.menu-icon-only ul.mainnav > li > a > .badge.badge-bordered.pull-right{
+	top: 0;
+	right: 2px;
+}
+#left-column.menu-icon-only ul.mainnav > li > a > .badge.badge-bordered.pull-left{
+	top: 0;
+	left: 2px;
+}
+ul.mainnav > li > a > .badge.badge-bordered.pull-right-corner{
+	right: 2px;
+	top: 0;
+}
+ul.mainnav > li > a > .badge.badge-bordered.pull-left-corner{
+	left: 2px;
+	top: 0;
+}
+ul.mainnav > li > a,
+ul.mainnav > li > a:visited,
+ul.mainnav-horizontal > li > a,
+ul.mainnav-horizontal > li > a:visited{
+	color: @colorGrey3;
+	display: block;
+	padding: 13px 0;
+	-webkit-transition: color 0.3s ease 0s, background-color 0.3s ease 0s, border 0.3s;
+	-moz-transition: color 0.3s ease 0s, background-color 0.3s ease 0s, border 0.3s;
+	-o-transition: color 0.3s ease 0s, background-color 0.3s ease 0s, border 0.3s;
+	transition: color 0.3s ease 0s, background-color 0.3s ease 0s, border 0.3s;
+}
+ul.mainnav-horizontal > li > a,
+ul.mainnav-horizontal > li > a:visited{
+	padding: 0 10px;
+	display: table;
+	width: 100%;
+}
+ul.mainnav > li.highlight-color-green,
+ul.mainnav-horizontal > li.highlight-color-green{
+	border-bottom: 0;
+	padding-bottom: 3px;
+}
+ul.mainnav > li.highlight-color-orange,
+ul.mainnav-horizontal > li.highlight-color-orange{
+	border-bottom: 0;
+	padding-bottom: 3px;
+}
+ul.mainnav > li.highlight-color-yellow,
+ul.mainnav-horizontal > li.highlight-color-yellow{
+	border-bottom: 0;
+	padding-bottom: 3px;
+}
+ul.mainnav > li.highlight-color-blue,
+ul.mainnav-horizontal > li.highlight-color-blue{
+	border-bottom: 0;
+	padding-bottom: 3px;
+}
+ul.mainnav > li.highlight-color-red,
+ul.mainnav-horizontal > li.highlight-color-red{
+	border-bottom: 0;
+	padding-bottom: 3px;
+}
+ul.mainnav > li.highlight-color-lime,
+ul.mainnav-horizontal > li.highlight-color-lime{
+	border-bottom: 0;
+	padding-bottom: 3px;
+}
+ul.mainnav > li.highlight-color-purple,
+ul.mainnav-horizontal > li.highlight-color-purple{
+	border-bottom: 0;
+	padding-bottom: 3px;
+}
+ul.mainnav > li.selected > a,
+ul.mainnav > li.selected > a:visited,
+ul.mainnav-horizontal > li.selected > a,
+ul.mainnav-horizontal > li.selected > a:visited{
+	background-color: @colorOffWhite;
+	color: @colorBlack;
+}
+ul.mainnav-horizontal > li.selected > a,
+ul.mainnav-horizontal > li.selected > a:visited{
+	display: table;
+	width: 100%;
+}
+
+/* Menu Item - Hover State */
+ul.mainnav > li.menu-open > a,
+ul.mainnav > li > a:hover,
+ul.mainnav > li > a:focus,
+ul.mainnav > li:hover > a,
+ul.mainnav > li:focus > a,
+ul.mainnav-horizontal > li.menu-open > a,
+ul.mainnav-horizontal > li > a:hover,
+ul.mainnav-horizontal > li > a:focus,
+ul.mainnav-horizontal > li:hover > a,
+ul.mainnav-horizontal > li:focus > a{
+	background-color: @colorOffWhite;
+	color: @textColorThick;
+}
+ul.mainnav > li.menu-open > a > span.main-menu-icon,
+ul.mainnav > li > a:hover > span.main-menu-icon,
+ul.mainnav > li > a:focus > span.main-menu-icon,
+ul.mainnav > li:hover > a > span.main-menu-icon,
+ul.mainnav > li:focus > a > span.main-menu-icon,
+ul.mainnav-horizontal > li.menu-open > a > span.main-menu-icon,
+ul.mainnav-horizontal > li > a:hover > span.main-menu-icon,
+ul.mainnav-horizontal > li > a:focus > span.main-menu-icon,
+ul.mainnav-horizontal > li:hover > a > span.main-menu-icon,
+ul.mainnav-horizontal > li:focus > a > span.main-menu-icon{
+	color: @headerTextColor;
+}
+
+/* Menu Item Highlight Colors - Borders - Hover/Selected State */
+ul.mainnav > li:hover,
+ul.mainnav > li.menu-open,
+ul.mainnav-horizontal > li:hover,
+ul.mainnav-horizontal > li.menu-open{
+	border-bottom: @highlightBorderThinkness solid @circloidActiveColor;
+	padding-bottom: 0;
+}
+ul.mainnav > li.highlight-color-green:hover,
+ul.mainnav > li.highlight-color-green.menu-open,
+ul.mainnav-horizontal > li.highlight-color-green:hover,
+ul.mainnav-horizontal > li.highlight-color-green.menu-open{
+	border-bottom: @highlightBorderThinkness solid @baseColorGreen;
+	padding-bottom: 0;
+}
+ul.mainnav > li.highlight-color-orange:hover,
+ul.mainnav > li.highlight-color-orange.menu-open,
+ul.mainnav-horizontal > li.highlight-color-orange:hover,
+ul.mainnav-horizontal > li.highlight-color-orange.menu-open{
+	border-bottom: @highlightBorderThinkness solid @baseColorOrange;
+	padding-bottom: 0;
+}
+ul.mainnav > li.highlight-color-yellow:hover,
+ul.mainnav > li.highlight-color-yellow.menu-open,
+ul.mainnav-horizontal > li.highlight-color-yellow:hover,
+ul.mainnav-horizontal > li.highlight-color-yellow.menu-open{
+	border-bottom: @highlightBorderThinkness solid @baseColorYellow;
+	padding-bottom: 0;
+}
+ul.mainnav > li.highlight-color-blue:hover,
+ul.mainnav > li.highlight-color-blue.menu-open,
+ul.mainnav-horizontal > li.highlight-color-blue:hover,
+ul.mainnav-horizontal > li.highlight-color-blue.menu-open{
+	border-bottom: @highlightBorderThinkness solid @baseColorBlue;
+	padding-bottom: 0;
+}
+ul.mainnav > li.highlight-color-red:hover,
+ul.mainnav > li.highlight-color-red.menu-open,
+ul.mainnav-horizontal > li.highlight-color-red:hover,
+ul.mainnav-horizontal > li.highlight-color-red.menu-open{
+	border-bottom: @highlightBorderThinkness solid @baseColorRed;
+	padding-bottom: 0;
+}
+ul.mainnav > li.highlight-color-lime:hover,
+ul.mainnav > li.highlight-color-lime.menu-open,
+ul.mainnav-horizontal > li.highlight-color-lime:hover,
+ul.mainnav-horizontal > li.highlight-color-lime.menu-open{
+	border-bottom: @highlightBorderThinkness solid @baseColorLime;
+	padding-bottom: 0;
+}
+ul.mainnav > li.highlight-color-purple:hover,
+ul.mainnav > li.highlight-color-purple.menu-open,
+ul.mainnav-horizontal > li.highlight-color-purple:hover,
+ul.mainnav-horizontal > li.highlight-color-purple.menu-open{
+	border-bottom: @highlightBorderThinkness solid @baseColorPurple;
+	padding-bottom: 0;
+}
+ul.mainnav > li.selected,
+ul.mainnav-horizontal > li.selected{
+	border-bottom: @highlightBorderThinkness solid @circloidActiveColor;
+	padding-bottom: 0;
+	color: @circloidActiveColor;
+}
+ul.mainnav > li.selected > a .icon,
+ul.mainnav-horizontal > li.selected > a .icon{
+	color: @circloidActiveSecondaryColor;
+}
+ul.mainnav > li.highlight-color-green.selected,
+ul.mainnav-horizontal > li.highlight-color-green.selected{
+	border-bottom: @highlightBorderThinkness solid @baseColorGreen;
+	padding-bottom: 0;
+}
+ul.mainnav > li.highlight-color-green.selected > a .icon,
+ul.mainnav-horizontal > li.highlight-color-green.selected > a .icon{
+	color: @baseColorGreen;
+}
+ul.mainnav > li.highlight-color-orange.selected,
+ul.mainnav-horizontal > li.highlight-color-orange.selected{
+	padding-bottom: 0;
+}
+ul.mainnav > li.highlight-color-orange.selected > a .icon,
+ul.mainnav-horizontal > li.highlight-color-orange.selected > a .icon{
+	color: @baseColorOrange;
+}
+ul.mainnav > li.highlight-color-yellow.selected,
+ul.mainnav-horizontal > li.highlight-color-yellow.selected{
+	border-bottom: @highlightBorderThinkness solid @baseColorYellow;
+	padding-bottom: 0;
+}
+ul.mainnav > li.highlight-color-yellow.selected > a .icon,
+ul.mainnav-horizontal > li.highlight-color-yellow.selected > a .icon{
+	color: @baseColorYellow;
+}
+ul.mainnav > li.highlight-color-blue.selected,
+ul.mainnav-horizontal > li.highlight-color-blue.selected{
+	border-bottom: @highlightBorderThinkness solid @baseColorBlue;
+	padding-bottom: 0;
+}
+ul.mainnav > li.highlight-color-blue.selected > a .icon,
+ul.mainnav-horizontal > li.highlight-color-blue.selected > a .icon{
+	color: @baseColorBlue;
+}
+ul.mainnav > li.highlight-color-red.selected,
+ul.mainnav-horizontal > li.highlight-color-red.selected{
+	border-bottom: @highlightBorderThinkness solid @baseColorRed;
+	padding-bottom: 0;
+}
+ul.mainnav > li.highlight-color-red.selected > a .icon,
+ul.mainnav-horizontal > li.highlight-color-red.selected > a .icon{
+	color: @baseColorRed;
+}
+ul.mainnav > li.highlight-color-lime.selected,
+ul.mainnav-horizontal > li.highlight-color-lime.selected{
+	border-bottom: @highlightBorderThinkness solid @baseColorLime;
+	padding-bottom: 0;
+}
+ul.mainnav > li.highlight-color-lime.selected > a .icon,
+ul.mainnav-horizontal > li.highlight-color-lime.selected > a .icon{
+	color: @baseColorLime;
+}
+ul.mainnav > li.highlight-color-purple.selected,
+ul.mainnav-horizontal > li.highlight-color-purple.selected{
+	border-bottom: @highlightBorderThinkness solid @baseColorPurple;
+	padding-bottom: 0;
+}
+ul.mainnav > li.highlight-color-purple.selected > a .icon,
+ul.mainnav-horizontal > li.highlight-color-purple.selected > a .icon{
+	color: @baseColorPurple;
+}
+
+/* ---- 6.2 Second Level Menu Styles ---- */
+
+/* Menu Item - Default State */
+ul.mainnav > li ul,
+ul.mainnav-horizontal > li ul{
+	display: none;
+}
+ul.mainnav > li > ul,
+ul.mainnav-horizontal > li > ul{
+	background: none repeat scroll 0 0 @colorWhite;
+	border-top: @borderStandard;
+	border-left: @borderStandard;
+	border-right: @borderStandard;
+	border-bottom: @highlightBorderThinkness solid @circloidActiveColor;
+	.boxShadow(1px, 4px, 4px, fadeout(@colorBlack, 80%));
+	list-style: none outside none;
+	margin: 0;
+	padding: 0;
+	position: absolute;
+	right: -206px;
+	text-align: left;
+	top: -30px;
+	width: 222px;
+	z-index: 1000;
+}
+#left-column.fixed ul.mainnav > li > ul,
+#mainnav-horizontal-inner.fixed ul.mainnav-horizontal > li > ul{
+}
+ul.mainnav-horizontal > li > ul{
+	right: auto;
+	left: 0;
+	z-index: 999;
+	top: 12px;
+	width: 190px;
+}
+ul.mainnav > li > ul li,
+ul.mainnav-horizontal > li > ul li{
+	position: relative;
+}
+ul.mainnav > li ul i.icon,
+ul.mainnav-horizontal > li ul i.icon{
+	float: right;
+	line-height: 25px;
+	color: @baseTextColor;
+}
+ul.mainnav > li > ul > li a,
+ul.mainnav-horizontal > li > ul > li a{
+	border-bottom: @borderStandard;
+	color: @textColorThick;
+	display: block;
+	line-height: 24px;
+	padding-bottom: 10px !important;
+	padding-top: 10px !important;
+	-webkit-transition: color 0.2s, background-color 0.2s;
+	-moz-transition: color 0.2s, background-color 0.2s;
+	-o-transition: color 0.2s, background-color 0.2s;
+	transition: color 0.2s, background-color 0.2s;
+}
+
+ul.mainnav > li > ul > li a .badge,
+ul.mainnav-horizontal > li > ul > li a .badge{
+	margin-top: 3px;
+}
+
+ul.mainnav-horizontal > li > ul > li a{
+	padding-bottom: 6px !important;
+	padding-top: 6px !important;
+}
+ul.mainnav > li > ul > li:last-child a{
+	border-bottom: 0;
+}
+ul.mainnav > li > ul > li > a{
+	padding: 0 12px 0 22px;
+}
+ul.mainnav-horizontal > li > ul > li > a{
+	padding: 0 12px 0 15px;
+}
+ul.mainnav > li > ul > li ul{
+	padding: 0;
+	list-style: none;
+}
+ul.mainnav-horizontal > li > ul > li ul{
+	background: @colorWhite;
+	border: @borderStandard;
+	.boxShadow(1px, 4px, 4px, fadeout(@colorBlack, 80%));
+	left: 158px;
+	list-style: none outside none;
+	padding: 0;
+	position: absolute;
+	top: 9px;
+	width: 190px;
+	z-index: 10;
+}
+ul.mainnav > li > ul > li > ul
+ul.mainnav-horizontal > li > ul > li > ul{
+}
+ul.mainnav > li > ul > li > ul > li,
+ul.mainnav-horizontal > li > ul > li > ul > li{
+}
+ul.mainnav > li > ul > li > ul > li > a{
+	padding: 0 12px 0 37px;
+}
+ul.mainnav-horizontal > li > ul > li > ul > li > a{
+	padding: 0 12px 0 15px;
+}
+ul.mainnav > li > ul > li > ul > li > a.parent,
+ul.mainnav-horizontal > li > ul > li > ul > li > a.parent{
+}
+
+/* Menu Item - Hover State */
+ul.mainnav > li > ul > li a:hover,
+ul.mainnav > li > ul > li a:focus,
+ul.mainnav-horizontal > li > ul > li a:hover,
+ul.mainnav-horizontal > li > ul > li a:focus{
+	background: @colorOffWhite;
+	color: @circloidActiveColor;
+}
+ul.mainnav > li ul a:hover i.icon,
+ul.mainnav-horizontal > li ul a:focus i.icon{
+	color: @circloidActiveColor;
+}
+
+
+/* ---- 6.3 Third Level Menu Styles ---- */
+
+/* Menu Item - Default State */
+ul.mainnav > li > ul > li > ul > li > ul,
+ul.mainnav-horizontal > li > ul > li > ul > li > ul{
+}
+ul.mainnav > li > ul > li > ul > li > ul > li,
+ul.mainnav-horizontal > li > ul > li > ul > li > ul > li{
+}
+ul.mainnav > li > ul > li > ul > li > ul > li > a{
+	padding: 0 12px 0 37px;
+	background: @colorGrey1;
+}
+ul.mainnav-horizontal > li > ul > li > ul > li > ul > li > a{
+	padding: 0 12px 0 15px;
+	background: @colorGrey1;
+}
+ul.mainnav > li > ul > li > ul > li > ul > li:last-child > a,
+ul.mainnav-horizontal > li > ul > li > ul > li > ul > li:last-child > a{
+}
+
+
+/* ---- 6.4 Forth Level Menu Styles ---- */
+
+/* Menu Item - Default State */
+ul.mainnav > li > ul > li > ul > li > ul > li > ul,
+ul.mainnav-horizontal > li > ul > li > ul > li > ul > li > ul{
+}
+ul.mainnav > li > ul > li > ul > li > ul > li > ul > li,
+ul.mainnav-horizontal > li > ul > li > ul > li > ul > li > ul > li{
+}
+ul.mainnav > li > ul > li > ul > li > ul > li > ul > li > a{
+	padding: 0 12px 0 37px;
+	background: @colorGrey2;
+}
+ul.mainnav-horizontal > li > ul > li > ul > li > ul > li > ul > li > a{
+	padding: 0 12px 0 15px;
+	background: @colorGrey2;
+}
+ul.mainnav > li > ul > li > ul > li > ul > li > ul > li:last-child > a,
+ul.mainnav-horizontal > li > ul > li > ul > li > ul > li > ul > li:last-child > a{
+}
+
+
+/* ---- 6.5 Fifth Level Menu Styles ---- */
+
+/* Menu Item - Default State */
+ul.mainnav > li > ul > li > ul > li > ul > li > ul > li > ul,
+ul.mainnav-horizontal > li > ul > li > ul > li > ul > li > ul > li > ul{
+}
+ul.mainnav > li > ul > li > ul > li > ul > li > ul > li > ul > li,
+ul.mainnav-horizontal > li > ul > li > ul > li > ul > li > ul > li > ul > li{
+}
+ul.mainnav > li > ul > li > ul > li > ul > li > ul > li > ul > li > a{
+	padding: 0 12px 0 37px;
+	background: @colorGrey3;
+}
+ul.mainnav-horizontal > li > ul > li > ul > li > ul > li > ul > li > ul > li > a{
+	padding: 0 12px 0 15px;
+	background: @colorGrey3;
+}
+ul.mainnav > li > ul > li > ul > li > ul > li > ul > li > ul > li:last-child > a,
+ul.mainnav-horizontal > li > ul > li > ul > li > ul > li > ul > li > ul > li:last-child > a{
+}
+
+/* ---- 7. Right Column ---- */
+#right-column {
+	background: none repeat scroll 0 0 @colorOffWhite;
+	margin: 0;
+	border-top: @highlightBorderThinknessRightColumn solid @circloidActiveColor;
+}
+#right-column .breadcrumb{
+	background-color: @colorGrey2;
+	margin: 0;
+	padding: 5px 10px;
+	font-size: 11px;
+}
+#right-column .breadcrumb > li + li:before{
+	content: "::";
+	color: @baseTextColor;
+}
+#right-column .right-column-content{
+	padding: 15px 25px 20px;
+	min-height: 744px;
+	position: relative;
+	z-index: 0;
+}
+#right-column.highlight-color-green{
+	border-top: @highlightBorderThinknessRightColumn solid @baseColorGreen;
+	border-bottom: 0 !important;
+}
+#right-column.highlight-color-orange{
+	border-top: @highlightBorderThinknessRightColumn solid @baseColorOrange;
+	border-bottom: 0 !important;
+}
+#right-column.highlight-color-yellow{
+	border-top: @highlightBorderThinknessRightColumn solid @baseColorYellow;
+	border-bottom: 0 !important;
+}
+#right-column.highlight-color-blue{
+	border-top: @highlightBorderThinknessRightColumn solid @baseColorBlue;
+	border-bottom: 0 !important;
+}
+#right-column.highlight-color-red{
+	border-top: @highlightBorderThinknessRightColumn solid @baseColorRed;
+	border-bottom: 0 !important;
+}
+#right-column.highlight-color-lime{
+	border-top: @highlightBorderThinknessRightColumn solid @baseColorLime;
+	border-bottom: 0 !important;
+}
+#right-column.highlight-color-purple{
+	border-top: @highlightBorderThinknessRightColumn solid @baseColorPurple;
+	border-bottom: 0 !important;
+}
+#right-column.highlight-color-green #mainnav-horizontal-inner.fixed,
+#right-column.highlight-color-green#mainnav-horizontal-inner.fixed{
+	border-top: @highlightBorderThinknessRightColumn solid @baseColorGreen !important;
+	margin-top: -5px;
+	border-bottom: 0 !important;
+}
+#right-column.highlight-color-orange #mainnav-horizontal-inner.fixed,
+#right-column.highlight-color-orange#mainnav-horizontal-inner.fixed{
+	border-top: @highlightBorderThinknessRightColumn solid @baseColorOrange !important;
+	margin-top: -5px;
+	border-bottom: 0 !important;
+}
+#right-column.highlight-color-yellow #mainnav-horizontal-inner.fixed,
+#right-column.highlight-color-yellow#mainnav-horizontal-inner.fixed{
+	border-top: @highlightBorderThinknessRightColumn solid @baseColorYellow !important;
+	margin-top: -5px;
+	border-bottom: 0 !important;
+}
+#right-column.highlight-color-blue #mainnav-horizontal-inner.fixed,
+#right-column.highlight-color-blue#mainnav-horizontal-inner.fixed{
+	border-top: @highlightBorderThinknessRightColumn solid @baseColorBlue !important;
+	margin-top: -5px;
+	border-bottom: 0 !important;
+}
+#right-column.highlight-color-red #mainnav-horizontal-inner.fixed,
+#right-column.highlight-color-red#mainnav-horizontal-inner.fixed{
+	border-top: @highlightBorderThinknessRightColumn solid @baseColorRed !important;
+	margin-top: -5px;
+	border-bottom: 0 !important;
+}
+#right-column.highlight-color-lime #mainnav-horizontal-inner.fixed,
+#right-column.highlight-color-lime#mainnav-horizontal-inner.fixed{
+	border-top: @highlightBorderThinknessRightColumn solid @baseColorLime !important;
+	margin-top: -5px;
+	border-bottom: 0 !important;
+}
+#right-column.highlight-color-purple #mainnav-horizontal-inner.fixed,
+#right-column.highlight-color-purple#mainnav-horizontal-inner.fixed{
+	border-top: @highlightBorderThinknessRightColumn solid @baseColorPurple !important;
+	margin-top: -5px;
+	border-bottom: 0 !important;
+}
+
+/* Page Heading Controls */
+.page-heading-controls{
+	text-align: right;
+	margin: 23px 0 10px;
+}
+
+/* ---- 8. Blocks ---- */
+.block{
+	margin-bottom: 20px;
+	clear: both;
+	display: block;
+	width: 100%;
+}
+.block.collapsed{
+	overflow: hidden;
+}
+.c-wdiget ol,
+.c-wdiget ul,
+.block ol,
+.block ul{
+}
+.block .block-heading{
+	background: none repeat scroll 0 0 @colorWhite;
+	border-left: @borderStandard;
+	border-right: @borderStandard;
+	border-top: 1px solid lighten(@borderStandardColor, 3%);
+	.boxShadow(1px, 4px, 4px, fadeout(@colorBlack, 80%));
+	padding: 15px;
+	margin: 0 !important;
+}
+.block .block-heading + .block-content-outer{
+	border-top: 0 !important;
+}
+.c-widget .c-widget-heading,
+.block .block-heading{
+	float: left;
+	font-family: @baseFontFamily;
+	font-size: 16px;
+	width: 100%;
+}
+.c-widget .c-widget-heading .h2,
+.c-widget .c-widget-heading .main-text,
+.block .block-heading .h2,
+.block .block-heading .main-text{
+	float: left;
+}
+.block .block-heading .main-text .badge{
+	margin-top: 6px;
+}
+.block .block-heading .block-controls{
+	float: right;
+	margin: 7px 0 0;
+}
+.block .block-heading .block-controls > a,
+.block .block-heading .block-controls > button,
+.block .block-heading .block-controls > div.btn-group{
+	float: right;
+	margin: 0 0 4px 4px;
+}
+.block .block-heading .block-controls > .icon{
+	float: right;
+	opacity: 0.5;
+	margin: 0 0 0 4px;
+	cursor: pointer;
+	-webkit-transition: all 0.5s;
+	-moz-transition: all 0.5s;
+	-o-transition: all 0.5s;
+	transition: all 0.5s;
+}
+.block .block-heading .block-controls .icon:hover{
+	opacity: 1;
+}
+.block .block-content-outer{
+	background: none repeat scroll 0 0 @colorWhite;
+	border-left: @borderStandard;
+	border-right: @borderStandard;
+	border-top: 1px solid lighten(@borderStandardColor, 3%);
+	border-bottom: @highlightBorderThinkness solid @circloidActiveColor;
+	padding: 15px;
+	clear: both;
+	position: relative;
+	.roundedCorners(0, 0, 5px, 5px);
+	.boxShadow(1px, 4px, 4px, fadeout(@colorBlack, 80%));
+}
+.block.collapsed .block-heading{
+	.roundedCorners(0, 0, 5px, 5px);
+}
+.block.collapsed .block-content-outer{
+	display: none;
+}
+
+.block.collapsed .block-heading .block-controls .icon.block-control-collapse{
+	color: #FF0000;
+	-webkit-transform: rotate(90deg);
+	-moz-transform: rotate(90deg);
+	-o-transform: rotate(90deg);
+	-ms-transform: rotate(90deg);
+	transform: rotate(90deg);
+}
+
+/* Block Colors */
+.block.highlight-color-green,
+.block.highlight-color-orange,
+.block.highlight-color-yellow,
+.block.highlight-color-blue,
+.block.highlight-color-red,
+.block.highlight-color-lime,
+.block.highlight-color-purple{
+	border-bottom: 0 !important;
+}
+.block.highlight-color-green .block-content-outer{
+	border-bottom: @highlightBorderThinkness solid @baseColorGreen;
+}
+.block.highlight-color-orange .block-content-outer{
+	border-bottom: @highlightBorderThinkness solid @baseColorOrange;
+}
+.block.highlight-color-yellow .block-content-outer{
+	border-bottom: @highlightBorderThinkness solid @baseColorYellow;
+}
+.block.highlight-color-blue .block-content-outer{
+	border-bottom: @highlightBorderThinkness solid @baseColorBlue;
+}
+.block.highlight-color-red .block-content-outer{
+	border-bottom: @highlightBorderThinkness solid @baseColorRed;
+}
+.block.highlight-color-lime .block-content-outer{
+	border-bottom: @highlightBorderThinkness solid @baseColorLime;
+}
+.block.highlight-color-purple .block-content-outer{
+	border-bottom: @highlightBorderThinkness solid @baseColorPurple;
+}
+
+/* Block Sizes */
+.block .block-content-outer .block-content-inner{
+	height: auto;
+}
+.block.block-size-medium .block-content-outer .block-content-inner{
+	height: 133px;
+	overflow: hidden;
+}
+.block.block-size-normal .block-content-outer .block-content-inner{
+	height: 310px;
+	overflow: hidden;
+}
+.block.block-size-large .block-content-outer .block-content-inner{
+	height: 620px;
+	overflow: hidden;
+}
+.top-border + .top-border{
+	display: none;
+}
+
+/* ---- 9. Special Blocks (Like Those On Dashboard, Profile, Widgets, Hybrid-Widgets, etc) ---- */
+
+/* Graphs - Flot */
+.graph{
+	height: 100%;
+	width: 100%;
+	margin-bottom: 10px;
+	clear: both;
+}
+.graph.graph-size-micro{
+	height: 32px;
+}
+.graph.graph-size-small{
+	height: 90px;
+}
+.graph.graph-size-medium{
+	height: 130px;
+}
+.graph.graph-size-normal{
+	height: 230px;
+}
+.graph.graph-size-large{
+	height: 450px;
+}
+.graph.graph-size-auto{
+	// min-height: 450px;
+}
+.graph .legendColorBox,
+.graph .legendLabel{
+	vertical-align: top;
+}
+.graph .legendColorBox > div{
+	background: none repeat scroll 0 0 @colorWhite !important;
+	border: @borderStandard !important;
+	height: 16px !important;
+	margin: 0 5px 3px 0 !important;
+	padding: 0 !important;
+	width: 16px !important;
+}
+.graph .legendColorBox > div > div{
+	border-width: 5px !important;
+	margin: 2px !important;
+}
+.graph .legendLabel{
+	font-size: 12px;
+}
+.jqvmap-label,
+#flotTip {
+	background: none repeat scroll 0 0 @colorWhite;
+	border-bottom: @borderStandard;
+	border-right: @borderStandard;
+	border-left: @borderStandard;
+	border-top: @highlightBorderThinkness solid @circloidActiveColor;
+	color: @textColorThick;
+	font-size: 0.9em;
+	padding: 5px 10px;
+	.boxShadow(1px, 4px, 4px, fadeout(@colorBlack, 80%));
+}
+
+/* Graphs - Easy Pie Chart */
+.graph-epc{
+	position: relative;
+	text-align: center;
+}
+.graph-epc canvas{
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+.graph-epc .percent{
+	display: inline-block;
+	font-size: 20px;
+	font-weight: @fontWeightHeader;
+	margin-left: 6px;
+	z-index: 2;
+}
+.graph-epc .percent:after{
+	content: '%';
+	font-size: 0.6em;
+}
+
+/* Widgets */
+.c-widget{
+	background-color: @colorWhite;
+	overflow: hidden;
+	position: relative;
+	margin-bottom: 20px;
+	border-left: @borderStandard;
+	border-right: @borderStandard;
+	border-top: 1px solid lighten(@borderStandardColor, 3%);
+	.roundedCorners(0, 0, 5px, 5px);
+	.boxShadow(1px, 4px, 4px, fadeout(@colorBlack, 80%));
+}
+.c-widget:hover,
+.c-widget:focus{
+	border-left: 1px solid @colorGrey4;
+	border-right: 1px solid @colorGrey4;
+	border-top: 1px solid @colorGrey4;
+	border-bottom: 3px solid @circloidActiveColor;
+}
+.c-widget.highlight-color-blue,
+.c-widget.highlight-color-green,
+.c-widget.highlight-color-orange,
+.c-widget.highlight-color-yellow,
+.c-widget.highlight-color-blue,
+.c-widget.highlight-color-red,
+.c-widget.highlight-color-lime,
+.c-widget.highlight-color-purple{
+	border-bottom: @borderStandard;
+}
+.c-widget.highlight-color-blue:hover,
+.c-widget.highlight-color-blue:focus{
+	border-bottom: @highlightBorderThinkness solid @baseColorBlue;
+}
+.c-widget.highlight-color-green:hover,
+.c-widget.highlight-color-green:focus{
+	border-bottom: @highlightBorderThinkness solid @baseColorGreen;
+}
+.c-widget.highlight-color-orange:hover,
+.c-widget.highlight-color-orange:focus{
+	border-bottom: @highlightBorderThinkness solid @baseColorOrange;
+}
+.c-widget.highlight-color-yellow:hover,
+.c-widget.highlight-color-yellow:focus{
+	border-bottom: @highlightBorderThinkness solid @baseColorYellow;
+}
+.c-widget.highlight-color-red:hover,
+.c-widget.highlight-color-red:focus{
+	border-bottom: @highlightBorderThinkness solid @baseColorRed;
+}
+.c-widget.highlight-color-lime:hover,
+.c-widget.highlight-color-lime:focus{
+	border-bottom: @highlightBorderThinkness solid @baseColorLime;
+}
+.c-widget.highlight-color-purple:hover,
+.c-widget.highlight-color-purple:focus{
+	border-bottom: @highlightBorderThinkness solid @baseColorPurple;
+}
+.c-widget-size-small{
+	height: 78px;
+	padding: 8px 0 8px 15px;
+	-webkit-transition: opacity 0.5s ease 0s;
+	-moz-transition: opacity 0.5s ease 0s;
+	transition: opacity 0.5s ease 0s;
+}
+.c-widget.c-widget-size-small:hover .c-widget-icon,
+.c-widget.c-widget-size-small:focus .c-widget-icon{
+	bottom: -48px;
+}
+.c-widget-size-medium{
+	height: 113px;
+	-webkit-transition: opacity 0.5s ease 0s;
+	-moz-transition: opacity 0.5s ease 0s;
+	transition: opacity 0.5s ease 0s;
+}
+.c-widget.c-widget-size-medium:hover .c-widget-icon,
+.c-widget.c-widget-size-medium:focus .c-widget-icon{
+	bottom: -35px;
+}
+.c-widget-size-normal{
+	height: 245px;
+	-webkit-transition: opacity 0.5s ease 0s;
+	-moz-transition: opacity 0.5s ease 0s;
+	transition: opacity 0.5s ease 0s;
+}
+.c-widget.highlight-color-green .c-widget-icon .icon,
+.c-widget.highlight-color-green .c-widget-icon .wi,
+.c-widget.highlight-color-green .c-widget-icon .glyphicon{
+	background: @baseColorGreen;
+}
+.c-widget.highlight-color-orange .c-widget-icon .icon,
+.c-widget.highlight-color-orange .c-widget-icon .wi,
+.c-widget.highlight-color-orange .c-widget-icon .glyphicon{
+	background: @baseColorOrange;
+}
+.c-widget.highlight-color-yellow .c-widget-icon .icon,
+.c-widget.highlight-color-yellow .c-widget-icon .wi,
+.c-widget.highlight-color-yellow .c-widget-icon .glyphicon{
+	background: @baseColorYellow;
+}
+.c-widget.highlight-color-blue .c-widget-icon .icon,
+.c-widget.highlight-color-blue .c-widget-icon .wi,
+.c-widget.highlight-color-blue .c-widget-icon .glyphicon{
+	background: @baseColorBlue;
+}
+.c-widget.highlight-color-red .c-widget-icon .icon,
+.c-widget.highlight-color-red .c-widget-icon .wi,
+.c-widget.highlight-color-red .c-widget-icon .glyphicon{
+	background: @baseColorRed;
+}
+.c-widget.highlight-color-lime .c-widget-icon .icon,
+.c-widget.highlight-color-lime .c-widget-icon .wi,
+.c-widget.highlight-color-lime .c-widget-icon .glyphicon{
+	background: @baseColorLime;
+}
+.c-widget.highlight-color-purple .c-widget-icon .icon,
+.c-widget.highlight-color-purple .c-widget-icon .wi,
+.c-widget.highlight-color-purple .c-widget-icon .glyphicon{
+	background: @baseColorPurple;
+}
+.c-widget .c-widget-icon{
+	color: @colorWhite;
+	opacity: 0.70;
+	padding: 10px;
+	position: absolute;
+	-webkit-transition: opacity 0.5s;
+	-moz-transition: opacity 0.5s;
+	-o-transition: opacity 0.5s;
+	transition: opacity 0.5s;
+}
+.c-widget:hover .c-widget-icon{
+	opacity: 1;
+}
+.c-widget .c-widget-icon .icon{
+	.roundedCorners(50%, 50%, 50%, 50%);
+	font-size: 150px !important;
+	padding: 10px;
+}
+.c-widget .c-widget-icon .wi,
+.c-widget .c-widget-icon .glyphicon{
+	.roundedCorners(150px, 150px, 150px, 150px);
+	font-size: 72px !important;
+	margin-bottom: 13px;
+	padding: 24px;
+}
+.c-widget .c-wdiget-content-block .c-widget-content-heading{
+	font-size: 24px;
+	font-weight: @fontWeightHeader;
+	line-height: @goldenRatio;
+	color: lighten(@headerTextColor, 10%);
+}
+.c-widget .c-wdiget-content-block .c-widget-content-body{
+	text-align: justify;
+	margin-bottom: 10px;
+	color: lighten(@baseTextColor, 15%);
+}
+.c-widget.c-widget-quick-info{
+}
+.c-widget.c-widget-quick-info:hover{
+}
+.c-widget.c-widget-quick-info .c-widget-icon{
+	bottom: -46px;
+	left: 0;
+}
+.c-widget.c-widget-quick-info .c-wdiget-content-block{
+	background-color: fadeout(@colorWhite, 20%);
+	color: @baseTextColor;
+	float: right;
+	padding: 0 15px 0 10px;
+	position: relative;
+}
+.c-widget.c-widget-quick-info .c-wdiget-content-block .c-widget-content-heading{
+	text-align: right;
+}
+.c-widget.c-widget-quick-info .c-wdiget-content-block .c-widget-content-sub{
+	text-align: right;
+	color: lighten(@baseTextColor, 25%);
+}
+.c-widget.c-widget-graph{
+	padding: 10px 10px 1px 10px;
+}
+
+.c-widget.c-widget-graph .c-wdiget-graph-actual{
+	float: left;
+	width: 90px;
+	position: relative;
+	z-index: 1;
+}
+.c-widget.c-widget-graph .c-wdiget-graph-actual .graph{
+	background-color: fadeout(@colorWhite, 20%);
+}
+.c-widget.c-widget-graph .c-wdiget-content-block{
+	background-color: fadeout(@colorWhite, 30%);
+	margin-left: 90px;
+	padding: 10px;
+	position: relative;
+	z-index: 0;
+}
+.c-widget.c-widget-graph .c-wdiget-content-block .c-widget-content-heading{
+}
+.c-widget.c-widget-graph .c-wdiget-content-block .c-widget-content-sub{
+	color: lighten(@baseTextColor, 19%);
+}
+.c-widget.c-widget-graph .c-widget-icon{
+	bottom: -33px;
+	right: 0;
+	opacity: 0.30;
+}
+.c-widget.c-widget-custom{
+	padding: 10px;
+	-webkit-transition: opacity 0.5s ease 0s;
+	-moz-transition: opacity 0.5s ease 0s;
+	transition: opacity 0.5s ease 0s;
+}
+.c-widget.c-widget-custom .c-widget-icon{
+	bottom: -33px;
+	right: 0;
+	opacity: 0.30;
+	-webkit-transition: opacity 0.5s;
+	-moz-transition: opacity 0.5s;
+	-o-transition: opacity 0.5s;
+	transition: opacity 0.5s;
+}
+.c-widget.c-widget-custom:hover .c-widget-icon,
+.c-widget.c-widget-custom:focus .c-widget-icon{
+	bottom: -35px !important;
+}
+.c-widget.c-widget-custom .c-widget-icon .icon{
+}
+.c-widget.c-widget-custom .c-widget-icon .wi,
+.c-widget.c-widget-custom .c-widget-icon .glyphicon{
+}
+.c-widget.c-widget-custom .c-wdiget-content-block{
+	background-color: fadeout(@colorWhite, 20%);
+	position: relative;
+	padding: 10px;
+	min-height: 145px;
+	max-height: 170px;
+	overflow: hidden;
+}
+.c-widget.c-widget-custom .c-wdiget-content-block .c-widget-content-heading{
+	margin-bottom: 5px;
+}
+.c-widget.c-widget-custom .c-wdiget-content-block .c-widget-content-heading small{
+	float: right;
+}
+.c-widget.c-widget-custom .c-wdiget-content-block .c-widget-content-sub{
+	margin-bottom: 10px;
+}
+.c-widget.c-widget-custom .c-wdiget-content-block .c-widget-content-sub a{
+	margin-right: 10px;
+}
+.c-widget.c-widget-blank{
+	min-height:10px;
+	padding: 10px;
+}
+.c-widget.c-widget-blank:hover,
+.c-widget.c-widget-blank:focus{
+	margin-bottom: 17px;
+}
+.c-widget.c-widget-gallery{
+	height: 243px;
+	overflow: hidden;
+	position: relative;
+	border-bottom: 5px solid @circloidActiveColor;
+}
+.c-widget.c-widget-gallery.highlight-color-blue{
+	border-bottom: @highlightBorderThinkness solid @baseColorBlue;
+}
+.c-widget.c-widget-gallery.highlight-color-green{
+	border-bottom: @highlightBorderThinkness solid @baseColorGreen;
+}
+.c-widget.c-widget-gallery.highlight-color-orange{
+	border-bottom: @highlightBorderThinkness solid @baseColorOrange;
+}
+.c-widget.c-widget-gallery.highlight-color-yellow{
+	border-bottom: @highlightBorderThinkness solid @baseColorYellow;
+}
+.c-widget.c-widget-gallery.highlight-color-red{
+	border-bottom: @highlightBorderThinkness solid @baseColorRed;
+}
+.c-widget.c-widget-gallery.highlight-color-lime{
+	border-bottom: @highlightBorderThinkness solid @baseColorLime;
+}
+.c-widget.c-widget-gallery.highlight-color-purple{
+	border-bottom: @highlightBorderThinkness solid @baseColorPurple;
+}
+.c-widget.c-widget-gallery .c-widget-gallery-desc{
+	background: none repeat scroll 0 0 rgba(0, 0, 0, 0.6);
+	height: 100%;
+	position: absolute;
+	width: 295px;
+	color: @colorWhite;
+}
+.c-widget.c-widget-gallery .c-widget-gallery-desc blockquote{
+	bottom: 0;
+    left: 15px;
+    position: absolute;
+    margin-right: 15px;
+}
+.c-widget.c-widget-gallery .c-widget-gallery-desc blockquote small{
+	color: @circloidActiveColor;
+}
+.c-widget.c-widget-gallery .c-widget-gallery-thumbnail{
+	text-align: center;
+}
+.c-widget.c-widget-gallery .c-widget-gallery-thumbnail img{
+	height: 243px;
+	max-width: 100%;
+	display: block;
+	height: auto;
+}
+.c-widget.c-widget-facebook{
+	border-bottom: @borderStandard;
+}
+.c-widget.c-widget-facebook:hover,
+.c-widget.c-widget-facebook:focus{
+	border-bottom: @highlightBorderThinkness solid @colorFacebook;
+}
+.c-widget.c-widget-facebook .c-widget-icon .icon{
+	background: @colorFacebook;
+}
+.c-widget.c-widget-facebook .c-widget-icon .wi,
+.c-widget.c-widget-facebook .c-widget-icon .glyphicon{
+	background: @colorFacebook;
+}
+.c-widget.c-widget-twitter{
+	border-bottom: @borderStandard;
+}
+.c-widget.c-widget-twitter:hover,
+.c-widget.c-widget-twitter:focus{
+	border-bottom: @highlightBorderThinkness solid @colorTwitter;
+}
+.c-widget.c-widget-twitter .c-widget-icon .icon{
+	background: @colorTwitter;
+}
+.c-widget.c-widget-twitter .c-widget-icon .wi,
+.c-widget.c-widget-twitter .c-widget-icon .glyphicon{
+	background: @colorTwitter;
+}
+.c-widget.c-widget-gplus{
+	border-bottom: @borderStandard;
+}
+.c-widget.c-widget-gplus:hover,
+.c-widget.c-widget-gplus:focus{
+	border-bottom: @highlightBorderThinkness solid @colorGPlus;
+}
+.c-widget.c-widget-gplus .c-widget-icon .icon{
+	background: @colorGPlus;
+}
+.c-widget.c-widget-gplus .c-widget-icon .wi,
+.c-widget.c-widget-gplus .c-widget-icon .glyphicon{
+	background: @colorGPlus;
+}
+.c-widget .flot-text{
+	display: none;
+}
+
+/* Bootstrap Carousel */
+.carousel-control{
+	background-image: none !important;
+	background-color: @circloidActiveColor;
+	bottom: auto;
+	top: auto;
+	width: 40px;
+	height: 40px;
+	opacity: 0.6;
+	text-shadow: none;
+}
+.carousel-control .glyphicon-chevron-left,
+.carousel-control .glyphicon-chevron-right,
+.carousel-control .icon-prev,
+.carousel-control .icon-next{
+	font-size: 20px;
+	margin-top: -10px;
+}
+.c-widget .carousel-control{
+	margin-top: 10px;
+}
+.c-widget .carousel-control.right{
+	left: 50px;
+}
+
+/* ---- 10. eCommerce ---- */
+.graph-range{
+	clear: both;
+}
+.graph-range .form-horizontal .control-label{
+	text-align: right;
+}
+.graph-range .graph-controls{
+	float: right;
+	margin-bottom: 10px;
+	border-right: 1px solid @colorGrey3;
+	padding-right: 15px;
+}
+.graph-range .graph-controls:first-child{
+	border-right: 0;
+	padding-right: 0;
+}
+.graph-range .graph-controls:empty{
+	display: none;
+}
+.graph-range .graph-controls .date-picker-connected{
+	display: none;
+	text-align: right;
+}
+.graph-range .graph-controls .input-group{
+	margin-bottom: 0;
+}
+.graph-range.top-ranking-items-date-range .graph-controls{
+	float: none;
+	margin-bottom: 0;
+}
+.graph-range.top-ranking-items-date-range .graph-controls select{
+}
+.sales-value-graph-container{
+	float: left;
+	margin: 0 0 10px 4%;
+	text-align: center;
+	width: 46%;
+}
+.sales-value-graph-container .graph{
+}
+.sales-value-legend{
+	float: left;
+	padding: 10px 0 0 3%;
+	width: 44%;
+}
+.sales-value-legend .sales-value-legend-item{
+	margin: 0 0 6px;
+}
+.sales-value-legend .sales-value-legend-item .sales-value-legend-color{
+	border: 1px solid @colorGrey3;
+	float: left;
+	margin-top: 3px;
+	padding: 2px;
+	top: 2px;
+}
+.sales-value-legend .sales-value-legend-item .sales-value-legend-color .sales-value-legend-color-box{
+	background-color: @colorWhite;
+	height: 10px;
+	width: 10px;
+}
+.sales-value-legend .sales-value-legend-item .sales-value-legend-number{
+	color: @textColorThick;
+	font-size: 15px;
+	margin: 0 0 0 20px;
+}
+.sales-value-legend .sales-value-legend-item .sales-value-legend-text{
+	color: lighten(@baseTextColor, 10%);
+	font-size: 12px;
+	line-height: normal;
+	margin: 0 0 0 20px;
+}
+.sales-value-misc{
+	border-top: @borderStandard;
+	clear: both;
+}
+.sales-value-misc .sales-value-misc-intro{
+	margin: 10px 0;
+	padding: 0 5px;
+}
+.sales-value-misc .sales-value-misc-figures{
+}
+.sales-value-misc .sales-value-misc-figures table{
+	margin-bottom: 0;
+}
+.sales-value-misc .sales-value-misc-figures .sales-value-misc-figures-item{
+}
+.sales-value-misc .sales-value-misc-figures .sales-value-misc-figures-item .sales-value-misc-figures-item-text{
+}
+.sales-value-misc .sales-value-misc-figures .sales-value-misc-figures-item .sales-value-misc-figures-item-value{
+	color: @textColorThick;
+	font-size: 15px;
+	text-align: right;
+}
+.top-ranking-items{
+
+}
+.top-ranking-items .top-ranking-items-intro{
+	margin-bottom: 10px;
+}
+.top-ranking-items .top-ranking-items-date-range{
+
+}
+.top-ranking-items .top-ranking-items-content{
+
+}
+.top-ranking-items .top-ranking-items-content .top-ranking-items-graph{
+	float: left;
+	margin: 0 2% 0 0;
+	width: 49%;
+}
+.top-ranking-items .top-ranking-items-content .top-ranking-items-legend{
+	float: left;
+	padding-left: 10px;
+	padding-top: 0;
+	width: 49%;
+}
+.top-ranking-items .top-ranking-items-content .top-ranking-items-legend > ul{
+	padding: 0;
+}
+.top-ranking-items .top-ranking-items-content .top-ranking-items-legend > ul > li.top-ranking-item{
+	border-bottom: @borderStandard;
+	clear: both;
+	list-style: outside none none;
+	margin: 0;
+	padding: 7px 0;
+}
+.top-ranking-items .top-ranking-items-content .top-ranking-items-legend > ul > li.top-ranking-item > .top-ranking-item-legend-color{
+	background: none repeat scroll 0 0 @colorWhite;
+	border: @borderStandard;
+	float: left;
+	height: 16px;
+	margin: 2px 0 0;
+	width: 16px;
+}
+.top-ranking-items .top-ranking-items-content .top-ranking-items-legend > ul > li.top-ranking-item > .top-ranking-item-legend-color .top-ranking-item-legend-color-box{
+	height: 10px;
+	margin: 2px;
+	width: 10px;
+}
+.top-ranking-items .top-ranking-items-content .top-ranking-items-legend > ul > li.top-ranking-item > .top-ranking-item-legend-text{
+	margin: 0 0 0 22px;
+}
+
+/* Task List */
+.task-list-stats{
+	margin: 0;
+	padding-bottom: 10px;
+}
+.task-list{
+	overflow: hidden;
+	max-height: 470px;
+	padding: 0;
+}
+.task-manager .task-list{
+	height: 470px;
+}
+.task-list .task-list-item{
+	background-color: @colorWhite;
+	border-bottom: @borderStandard;
+	padding: 0;
+	position: relative;
+}
+.task-list .task-list-item .checkbox{
+	margin: 0;
+}
+.task-list .task-list-item .checkbox label{
+	display: block;
+	padding: 10px;
+}
+.task-list .task-list-item .checkbox label:after{
+	content: "\a0";
+}
+.task-list .task-list-item .checkbox label.strike-out{
+	background-color: @colorOffWhite;
+}
+.task-list .task-list-item .checkbox label .checkbox-actual{
+	margin-right: 10px;
+}
+.task-list .task-list-item .task-item-details{
+	margin-left: 45px;
+	padding: 15px 10px 15px 0;
+	display: none;
+}
+.task-list .task-list-item .task-item-details:empty{
+	display: none;
+}
+.task-list .task-list-item .task-item-details:empty + .task-item-controls .show-task{
+	display: none !important;
+}
+.task-list .task-list-item .task-item-controls{
+	position: absolute;
+	right: 9px;
+	top: 6px;
+	opacity: 0;
+	-webkit-transition: opacity 0.3s;
+	-moz-transition: opacity 0.3s;
+	-o-transition: opacity 0.3s;
+	transition: opacity 0.3s;
+}
+.task-list .task-list-item:hover .task-item-controls{
+	opacity: 1;
+}
+.task-list .task-list-item .task-item-users{
+	position: absolute;
+	right: 70px;
+	top: 9px;
+	-webkit-transition: opacity 0.3s;
+	-moz-transition: opacity 0.3s;
+	-o-transition: opacity 0.3s;
+	transition: opacity 0.3s;
+}
+.task-list .task-list-item:hover .task-item-users{
+}
+.task-list .task-list-item .task-item-users:empty{
+	display: none;
+}
+.create-task-block{
+}
+.task-manager-list-container{
+	border-left: @borderStandard;
+	border-right: @borderStandard;
+	border-bottom: @borderStandard;
+	padding: 20px 15px;
+	border-top: @highlightBorderThinkness solid @circloidActiveColor;
+}
+
+.task-manager-list-container.highlight-color-green,
+.task-manager-list-container.highlight-color-orange,
+.task-manager-list-container.highlight-color-yellow,
+.task-manager-list-container.highlight-color-blue,
+.task-manager-list-container.highlight-color-red,
+.task-manager-list-container.highlight-color-lime,
+.task-manager-list-container.highlight-color-purple{
+	border-bottom: @borderStandard !important;
+}
+
+.task-manager-list-container.highlight-color-green{
+	border-top: @highlightBorderThinkness solid @baseColorGreen;
+}
+.task-manager-list-container.highlight-color-orange{
+	border-top: @highlightBorderThinkness solid @baseColorOrange;
+}
+.task-manager-list-container.highlight-color-yellow{
+	border-top: @highlightBorderThinkness solid @baseColorYellow;
+}
+.task-manager-list-container.highlight-color-blue{
+	border-top: @highlightBorderThinkness solid @baseColorBlue;
+}
+.task-manager-list-container.highlight-color-red{
+	border-top: @highlightBorderThinkness solid @baseColorRed;
+}
+.task-manager-list-container.highlight-color-lime{
+	border-top: @highlightBorderThinkness solid @baseColorLime;
+}
+.task-manager-list-container.highlight-color-purple{
+	border-top: @highlightBorderThinkness solid @baseColorPurple;
+}
+
+
+
+/* Other Stats */
+.other-stats{
+	overflow: hidden;
+}
+.other-stats .other-stats-icon{
+	color: @colorGrey3;
+	text-align: center;
+}
+.other-stats .other-stats-number{
+	font-size: 22px;
+	font-weight: @fontWeightHeader;
+	text-align: center;
+	color: @headerTextColor;
+}
+.other-stats .other-stats-text{
+
+}
+
+/* ---- 11. Tables ---- */
+.table.highlight-color-green,
+.table.highlight-color-orange,
+.table.highlight-color-yellow,
+.table.highlight-color-blue,
+.table.highlight-color-red,
+.table.highlight-color-lime,
+.table.highlight-color-purple{
+	border-bottom: inherit;
+}
+.table{
+}
+.table thead{
+	color: @colorWhite !important;
+	background-color: @circloidActiveColor;
+}
+.table.highlight-color-green thead{
+	color: @colorWhite !important;
+	background-color: @baseColorGreen;
+}
+.table.highlight-color-orange thead{
+	color: @colorWhite !important;
+	background-color:  @baseColorOrange;
+}
+.table.highlight-color-yellow thead{
+	color: lighten(@colorBlack, 13.5%) !important;
+	background-color: @baseColorYellow;
+}
+.table.highlight-color-blue thead{
+	color: @colorWhite !important;
+	background-color: @baseColorBlue;
+}
+.table.highlight-color-red thead{
+	color: @colorWhite !important;
+	background-color: @baseColorRed;
+}
+.table.highlight-color-lime thead{
+	color: @colorWhite !important;
+	background-color: @baseColorLime;
+}
+.table.highlight-color-purple thead{
+	color: @colorWhite !important;
+	background-color: @baseColorPurple;
+}
+.table thead a{
+	color: @colorWhite !important;
+}
+.table thead th{
+	font-weight: normal;
+}
+.table > thead > tr > th,
+.table > tbody > tr > th,
+.table > tfoot > tr > th,
+.table > thead > tr > td,
+.table > tbody > tr > td,
+.table > tfoot > tr > td{
+	vertical-align: middle;
+}
+
+.list-thumbnail{
+	border: 1px solid @colorGrey2;
+	background-color: @colorWhite;
+	padding: 1px;
+	.roundedCorners(50%, 50%, 50%, 50%);
+}
+.list-thumbnail-normal{
+	border: 1px solid @colorGrey2;
+	padding: 5px;
+	.roundedCorners(50%, 50%, 50%, 50%);
+}
+
+/* ---- Pagination ---- */
+.pagination > .active > a,
+.pagination > .active > span,
+.pagination > .active > a:hover,
+.pagination > .active > span:hover,
+.pagination > .active > a:focus,
+.pagination > .active > span:focus{
+	background-color: @circloidActiveColor;
+	border-color: @circloidActiveColor;
+}
+.pagination > li > a,
+.pagination > li > span{
+	color: @circloidActiveColor;
+}
+.pagination > li > a:hover,
+.pagination > li > span:hover,
+.pagination > li > a:focus,
+.pagination > li > span:focus{
+	color: darken(saturate(@circloidActiveSecondaryColor, 100%), 20.5%);;
+}
+
+
+.pagination > li:first-child > a,
+.pagination > li:first-child > span{
+}
+.pagination > li:last-child > a,
+.pagination > li:last-child > span{
+}
+.pager li > a,
+.pager li > span{
+}
+
+/* ---- 12. Tabs ---- */
+.nav-tabs{
+	margin-bottom: 15px;
+	border-bottom: 1px solid @colorGrey2;
+}
+.nav-tabs > li > a{
+	color: @colorBlack;
+}
+.nav.nav-pills{
+	margin-bottom: 10px;
+}
+.nav-tabs.nav-justified.tabs-alt-1{
+	border-bottom: 1px solid @colorGrey2;
+}
+.nav-pills > li > a{
+}
+.nav-tabs > li.active > a,
+.nav-tabs > li.active > a:hover,
+.nav-tabs > li.active > a:focus,
+.nav-tabs.nav-justified > .active > a,
+.nav-tabs.nav-justified > .active > a:hover,
+.nav-tabs.nav-justified > .active > a:focus{
+	border-top: @highlightBorderThinkness solid @circloidActiveColor;
+	color: @colorBlack;
+}
+.nav-tabs.tabs-alt-1 > li > a{
+	background: @colorOffWhite;
+	color: @colorBlack;
+	border: 1px solid @colorGrey2;
+	margin-bottom: 15px;
+	padding: 12px;
+}
+.nav-tabs.tabs-alt-1 > li > a:hover,
+.nav-tabs.tabs-alt-1 > li > a:focus{
+	background: @colorWhite;
+}
+.nav-tabs.tabs-alt-1 > li.active > a,
+.nav-tabs.tabs-alt-1 > li.active > a:hover,
+.nav-tabs.tabs-alt-1 > li.active > a:focus{
+	background: @colorWhite;
+	color: @colorBlack;
+	padding: 10px 12px 12px;
+	border-top: @highlightBorderThinkness solid @circloidActiveColor;
+	border-bottom: 1px solid @colorGrey2;
+}
+.nav-tabs.tabs-below.tabs-alt-1 > li.active > a,
+.nav-tabs.tabs-below.tabs-alt-1 > li.active > a:hover,
+.nav-tabs.tabs-below.tabs-alt-1 > li.active > a:focus{
+	border-top: 1px solid @colorGrey2;
+	border-bottom-width: 3px;
+}
+.nav-tabs.tabs-below,
+.nav-tabs.tabs-right,
+.nav-tabs.tabs-left{
+	border-bottom: 0;
+}
+
+.tab-content > .tab-pane,
+.pill-content > .pill-pane{
+	display: none;
+}
+.tab-content > .active,
+.pill-content > .active{
+	display: block;
+}
+.nav-tabs.tabs-below{
+	border-top: 1px solid @colorGrey2;
+}
+.nav-tabs.tabs-below > li{
+	margin-top: -1px;
+	margin-bottom: 0;
+}
+.nav-tabs.tabs-below > li > a{
+	margin-bottom: 15px;
+}
+.nav-tabs.tabs-below.nav-justified > li > a{
+	border-bottom: 0;
+}
+.nav-tabs.tabs-below.tabs-alt-1 > li > a{
+	margin-top: 15px;
+}
+.nav-tabs.tabs-below > li > a:hover,
+.nav-tabs.tabs-below > li > a:focus{
+	border-top-color: @colorGrey2;
+	border-bottom-color: transparent;
+}
+.nav-tabs.tabs-below.tabs-alt-1 > li > a:hover,
+.nav-tabs.tabs-below.tabs-alt-1 > li > a:focus{
+	border-bottom:  1px solid @colorGrey2;
+}
+.nav-tabs.tabs-below .active > a,
+.nav-tabs.tabs-below .active > a:hover,
+.nav-tabs.tabs-below .active > a:focus,
+.nav-tabs.tabs-below.nav-justified .active > a,
+.nav-tabs.tabs-below.nav-justified .active > a:hover,
+.nav-tabs.tabs-below.nav-justified .active > a:focus{
+	border-color: transparent @colorGrey2 @circloidActiveColor @colorGrey2;
+	border-bottom:  3px solid @circloidActiveColor;
+}
+.nav-tabs.tabs-below.nav-justified .active > a,
+.nav-tabs.tabs-below.nav-justified .active > a:hover,
+.nav-tabs.tabs-below.nav-justified .active > a:focus{
+	margin-top: -2px;
+}
+.nav-tabs.tabs-below.tabs-alt-1 .active > a,
+.nav-tabs.tabs-below.tabs-alt-1 .active > a:hover,
+.nav-tabs.tabs-below.tabs-alt-1 .active > a:focus{
+	border-bottom:  1px solid @colorGrey2;
+}
+.nav-tabs.tabs-left > li,
+.nav-tabs.tabs-right > li{
+	float: none;
+}
+.nav-tabs.tabs-left > li > a,
+.nav-tabs.tabs-right > li > a{
+	min-width: 74px;
+	margin-right: 0;
+	margin-bottom: 3px;
+}
+.nav-tabs.tabs-left{
+	float: left;
+	margin-right: 14px;
+	border-right: 1px solid @colorGrey2;
+	width: 200px;
+	padding-bottom: 20px;
+	padding-top: 20px;
+}
+.nav-tabs.tabs-left.tabs-alt-1{
+	width: 220px;
+	padding-right: 20px;
+}
+.nav-tabs.tabs-left > li > a{
+	margin-right: -1px;
+}
+.nav-tabs.tabs-left > li > a:hover,
+.nav-tabs.tabs-left > li > a:focus{
+	border-color: @colorGrey1 @colorGrey2 @colorGrey1 @colorGrey1;
+}
+.nav-tabs.tabs-left .active > a,
+.nav-tabs.tabs-left .active > a:hover,
+.nav-tabs.tabs-left .active > a:focus{
+	border-color: @circloidActiveColor transparent @colorGrey2 @colorGrey2;
+	*border-right-color: @colorWhite;
+}
+.nav-tabs.tabs-left.tabs-alt-1 .active > a,
+.nav-tabs.tabs-left.tabs-alt-1 .active > a:hover,
+.nav-tabs.tabs-left.tabs-alt-1 .active > a:focus{
+	border-color: @circloidActiveColor @colorGrey2 @colorGrey2 @colorGrey2;
+}
+.nav-tabs.tabs-right{
+	float: right;
+	margin-left: 14px;
+	border-left: 1px solid @colorGrey2;
+	width: 200px;
+	padding-bottom: 20px;
+	padding-top: 20px;
+}
+.nav-tabs.tabs-right.tabs-alt-1{
+	width: 220px;
+	padding-left: 20px;
+}
+.nav-tabs.tabs-right > li > a{
+	margin-left: -1px;
+}
+.nav-tabs.tabs-right > li > a:hover,
+.nav-tabs.tabs-right > li > a:focus{
+	border-color: @colorGrey1 @colorGrey1 @colorGrey1 @colorGrey2;
+}
+.nav-tabs.tabs-right .active > a,
+.nav-tabs.tabs-right .active > a:hover,
+.nav-tabs.tabs-right .active > a:focus{
+	border-color: @circloidActiveColor @colorGrey2 @colorGrey2 transparent;
+	*border-left-color: @colorWhite;
+}
+.nav-tabs.tabs-right.tabs-alt-1 .active > a,
+.nav-tabs.tabs-right.tabs-alt-1 .active > a:hover,
+.nav-tabs.tabs-right.tabs-alt-1 .active > a:focus{
+	border-color: @circloidActiveColor @colorGrey2 @colorGrey2 @colorGrey2;
+}
+.nav-tabs.tabs-left + .tab-content{
+	margin-left: 234px;
+	min-height: 180px;
+}
+.nav-tabs.tabs-right + .tab-content{
+	margin-right: 234px;
+	min-height: 180px;
+}
+.nav-tabs.tabs-alt-1 .dropdown-menu{
+	margin-top: -17px;
+}
+.nav-tabs.highlight-color-green > li > a,
+.nav-tabs.highlight-color-green > li > a:hover,
+.nav-tabs.highlight-color-green > li > a:focus{
+	color: @colorBlack;
+}
+.nav-tabs.highlight-color-orange > li > a,
+.nav-tabs.highlight-color-orange > li > a:hover,
+.nav-tabs.highlight-color-orange > li > a:focus{
+	color: @colorBlack;
+}
+.nav-tabs.highlight-color-yellow > li > a,
+.nav-tabs.highlight-color-yellow > li > a:hover,
+.nav-tabs.highlight-color-yellow > li > a:focus{
+	color: @colorBlack;
+}
+.nav-tabs.highlight-color-blue > li > a,
+.nav-tabs.highlight-color-blue > li > a:hover,
+.nav-tabs.highlight-color-blue > li > a:focus{
+	color: @colorBlack;
+}
+.nav-tabs.highlight-color-red > li > a,
+.nav-tabs.highlight-color-red > li > a:hover,
+.nav-tabs.highlight-color-red > li > a:focus{
+	color: @colorBlack;
+}
+.nav-tabs.highlight-color-lime > li > a,
+.nav-tabs.highlight-color-lime > li > a:hover,
+.nav-tabs.highlight-color-lime > li > a:focus{
+	color: @colorBlack;
+}
+.nav-tabs.highlight-color-purple > li > a,
+.nav-tabs.highlight-color-purple > li > a:hover,
+.nav-tabs.highlight-color-purple > li > a:focus{
+	color: @colorBlack;
+}
+.nav-tabs.highlight-color-green .active > a,
+.nav-tabs.highlight-color-green .active > a:hover,
+.nav-tabs.highlight-color-green .active > a:focus,
+.nav-tabs.highlight-color-green.tabs-alt-1 .active > a,
+.nav-tabs.highlight-color-green.tabs-alt-1 .active > a:hover,
+.nav-tabs.highlight-color-green.tabs-alt-1 .active > a:focus{
+	border-top-color: @baseColorGreen;
+	color: @colorBlack;
+}
+.nav-tabs.highlight-color-orange .active > a,
+.nav-tabs.highlight-color-orange .active > a:hover,
+.nav-tabs.highlight-color-orange .active > a:focus,
+.nav-tabs.highlight-color-orange.tabs-alt-1 .active > a,
+.nav-tabs.highlight-color-orange.tabs-alt-1 .active > a:hover,
+.nav-tabs.highlight-color-orange.tabs-alt-1 .active > a:focus{
+	border-top-color: @baseColorOrange;
+	color: @colorBlack;
+}
+.nav-tabs.highlight-color-yellow .active > a,
+.nav-tabs.highlight-color-yellow .active > a:hover,
+.nav-tabs.highlight-color-yellow .active > a:focus,
+.nav-tabs.highlight-color-yellow.tabs-alt-1 .active > a,
+.nav-tabs.highlight-color-yellow.tabs-alt-1 .active > a:hover,
+.nav-tabs.highlight-color-yellow.tabs-alt-1 .active > a:focus{
+	border-top-color: @baseColorYellow;
+	color: @colorBlack;
+}
+.nav-tabs.highlight-color-blue .active > a,
+.nav-tabs.highlight-color-blue .active > a:hover,
+.nav-tabs.highlight-color-blue .active > a:focus,
+.nav-tabs.highlight-color-blue.tabs-alt-1 .active > a,
+.nav-tabs.highlight-color-blue.tabs-alt-1 .active > a:hover,
+.nav-tabs.highlight-color-blue.tabs-alt-1 .active > a:focus{
+	border-top-color: @baseColorBlue;
+	color: @colorBlack;
+}
+.nav-tabs.highlight-color-red .active > a,
+.nav-tabs.highlight-color-red .active > a:hover,
+.nav-tabs.highlight-color-red .active > a:focus,
+.nav-tabs.highlight-color-red.tabs-alt-1 .active > a,
+.nav-tabs.highlight-color-red.tabs-alt-1 .active > a:hover,
+.nav-tabs.highlight-color-red.tabs-alt-1 .active > a:focus{
+	border-top-color: @baseColorRed;
+	color: @colorBlack;
+}
+.nav-tabs.highlight-color-lime .active > a,
+.nav-tabs.highlight-color-lime .active > a:hover,
+.nav-tabs.highlight-color-lime .active > a:focus,
+.nav-tabs.highlight-color-lime.tabs-alt-1 .active > a,
+.nav-tabs.highlight-color-lime.tabs-alt-1 .active > a:hover,
+.nav-tabs.highlight-color-lime.tabs-alt-1 .active > a:focus{
+	border-top-color: @baseColorLime;
+	color: @colorBlack;
+}
+.nav-tabs.highlight-color-purple .active > a,
+.nav-tabs.highlight-color-purple .active > a:hover,
+.nav-tabs.highlight-color-purple .active > a:focus,
+.nav-tabs.highlight-color-purple.tabs-alt-1 .active > a,
+.nav-tabs.highlight-color-purple.tabs-alt-1 .active > a:hover,
+.nav-tabs.highlight-color-purple.tabs-alt-1 .active > a:focus{
+	border-top-color: @baseColorPurple;
+	color: @colorBlack;
+}
+.nav-tabs.tabs-below.highlight-color-green .active > a,
+.nav-tabs.tabs-below.highlight-color-green .active > a:hover,
+.nav-tabs.tabs-below.highlight-color-green .active > a:focus{
+	border-top-color: transparent;
+	border-bottom-color: @baseColorGreen;
+}
+.nav-tabs.tabs-below.highlight-color-orange .active > a,
+.nav-tabs.tabs-below.highlight-color-orange .active > a:hover,
+.nav-tabs.tabs-below.highlight-color-orange .active > a:focus{
+	border-top-color: transparent;
+	border-bottom-color: @baseColorOrange;
+}
+.nav-tabs.tabs-below.highlight-color-yellow .active > a,
+.nav-tabs.tabs-below.highlight-color-yellow .active > a:hover,
+.nav-tabs.tabs-below.highlight-color-yellow .active > a:focus{
+	border-top-color: transparent;
+	border-bottom-color: @baseColorYellow;
+	color: lighten(@colorBlack, 13.5%);
+}
+.nav-tabs.tabs-below.highlight-color-blue .active > a,
+.nav-tabs.tabs-below.highlight-color-blue .active > a:hover,
+.nav-tabs.tabs-below.highlight-color-blue .active > a:focus{
+	border-top-color: transparent;
+	border-bottom-color: @baseColorBlue;
+}
+.nav-tabs.tabs-below.highlight-color-red .active > a,
+.nav-tabs.tabs-below.highlight-color-red .active > a:hover,
+.nav-tabs.tabs-below.highlight-color-red .active > a:focus{
+	border-top-color: transparent;
+	border-bottom-color: @baseColorRed;
+}
+.nav-tabs.tabs-below.highlight-color-lime .active > a,
+.nav-tabs.tabs-below.highlight-color-lime .active > a:hover,
+.nav-tabs.tabs-below.highlight-color-lime .active > a:focus{
+	border-top-color: transparent;
+	border-bottom-color: @baseColorLime;
+}
+.nav-tabs.tabs-below.highlight-color-purple .active > a,
+.nav-tabs.tabs-below.highlight-color-purple .active > a:hover,
+.nav-tabs.tabs-below.highlight-color-purple .active > a:focus{
+	border-top-color: transparent;
+	border-bottom-color: @baseColorPurple;
+}
+
+/* ---- 13. Pills ---- */
+.nav-pills{
+	border-bottom: 0;
+}
+.nav-pills > li > a{
+	color: @colorBlack;
+	-webkit-transition: background-color 0.2s;
+	-moz-transition: background-color 0.2s;
+	-o-transition: background-color 0.2s;
+	transition: background-color 0.2s;
+}
+.nav-pills .highlight-color-green-link a,
+.nav-pills a.highlight-color-green-link,
+.nav-pills .highlight-color-green-link-hover a:hover,
+.nav-pills .highlight-color-green-link-hover a:focus,
+.nav-pills a.highlight-color-green-link-hover:hover,
+.nav-pills a.highlight-color-green-link-hover:focus{
+	background-color: @baseColorGreen !important;
+	color: @colorWhite !important;
+}
+.nav-pills .highlight-color-orange-link a,
+.nav-pills a.highlight-color-orange-link,
+.nav-pills .highlight-color-orange-link-hover a:hover,
+.nav-pills .highlight-color-orange-link-hover a:focus,
+.nav-pills a.highlight-color-orange-link-hover:hover,
+.nav-pills a.highlight-color-orange-link-hover:focus{
+	background-color: @baseColorOrange !important;
+	color: @colorWhite !important;
+}
+.nav-pills .highlight-color-yellow-link a,
+.nav-pills a.highlight-color-yellow-link,
+.nav-pills .highlight-color-yellow-link-hover a:hover,
+.nav-pills .highlight-color-yellow-link-hover a:focus,
+.nav-pills a.highlight-color-yellow-link-hover:hover,
+.nav-pills a.highlight-color-yellow-link-hover:focus{
+	background-color: @baseColorYellow !important;
+	color: lighten(@colorBlack, 13.5%) !important;
+}
+.nav-pills .highlight-color-blue-link a,
+.nav-pills a.highlight-color-blue-link,
+.nav-pills .highlight-color-blue-link-hover a:hover,
+.nav-pills .highlight-color-blue-link-hover a:focus
+.nav-pills a.highlight-color-blue-link-hover:hover,
+.nav-pills a.highlight-color-blue-link-hover:focus{
+	background-color: @baseColorBlue !important;
+	color: @colorWhite !important;
+}
+.nav-pills .highlight-color-red-link a,
+.nav-pills a.highlight-color-red-link,
+.nav-pills .highlight-color-red-link-hover a:hover,
+.nav-pills .highlight-color-red-link-hover a:focus,
+.nav-pills a.highlight-color-red-link-hover:hover,
+.nav-pills a.highlight-color-red-link-hover:focus{
+	background-color: @baseColorRed !important;
+	color: @colorWhite !important;
+}
+.nav-pills .highlight-color-lime-link a,
+.nav-pills a.highlight-color-lime-link
+.nav-pills .highlight-color-lime-link-hover a:hover,
+.nav-pills .highlight-color-lime-link-hover a:focus,
+.nav-pills a.highlight-color-lime-link-hover:hover,
+.nav-pills a.highlight-color-lime-link-hover:fpcus{
+	background-color: @baseColorLime !important;
+	color: @colorWhite !important;
+}
+.nav-pills .highlight-color-purple-link a,
+.nav-pills a.highlight-color-purple-link,
+.nav-pills .highlight-color-purple-link-hover a:hover,
+.nav-pills .highlight-color-purple-link-hover a:focus,
+.nav-pills a.highlight-color-purple-link-hover:hover,
+.nav-pills a.highlight-color-purple-link-hover:focus{
+	background-color: @baseColorPurple !important;
+	color: @colorWhite !important;
+}
+.nav-pills > li.active > a,
+.nav-pills > li.active > a:hover,
+.nav-pills > li.active > a:focus{
+	color: @colorWhite;
+	background-color: @circloidActiveColor;
+	border-bottom: 0;
+}
+.nav-pills .active.highlight-color-green > a,
+.nav-pills .active.highlight-color-green > a:hover,
+.nav-pills .active.highlight-color-green > a:focus,
+.nav-pills.highlight-color-green .active > a,
+.nav-pills.highlight-color-green .active > a:hover,
+.nav-pills.highlight-color-green .active > a:focus{
+	background-color: @baseColorGreen;
+	border-bottom: 0;
+}
+.nav-pills .active.highlight-color-orange > a,
+.nav-pills .active.highlight-color-orange > a:hover,
+.nav-pills .active.highlight-color-orange > a:focus,
+.nav-pills.highlight-color-orange .active > a,
+.nav-pills.highlight-color-orange .active > a:hover,
+.nav-pills.highlight-color-orange .active > a:focus{
+	background-color: @baseColorOrange;
+	border-bottom: 0;
+}
+.nav-pills .active.highlight-color-yellow > a,
+.nav-pills .active.highlight-color-yellow > a:hover,
+.nav-pills .active.highlight-color-yellow > a:focus,
+.nav-pills.highlight-color-yellow .active > a,
+.nav-pills.highlight-color-yellow .active > a:hover,
+.nav-pills.highlight-color-yellow .active > a:focus{
+	background-color: @baseColorYellow;
+	color: lighten(@colorBlack, 13.5%);
+	border-bottom: 0;
+}
+.nav-pills .active.highlight-color-blue > a,
+.nav-pills .active.highlight-color-blue > a:hover,
+.nav-pills .active.highlight-color-blue > a:focus,
+.nav-pills.highlight-color-blue .active > a,
+.nav-pills.highlight-color-blue .active > a:hover,
+.nav-pills.highlight-color-blue .active > a:focus{
+	background-color: @baseColorBlue;
+	border-bottom: 0;
+}
+.nav-pills .active.highlight-color-red > a,
+.nav-pills .active.highlight-color-red > a:hover,
+.nav-pills .active.highlight-color-red > a:focus,
+.nav-pills.highlight-color-red .active > a,
+.nav-pills.highlight-color-red .active > a:hover,
+.nav-pills.highlight-color-red .active > a:focus{
+	background-color: @baseColorRed;
+	border-bottom: 0;
+}
+.nav-pills .active.highlight-color-lime > a,
+.nav-pills .active.highlight-color-lime > a:hover,
+.nav-pills .active.highlight-color-lime > a:focus,
+.nav-pills.highlight-color-lime .active > a,
+.nav-pills.highlight-color-lime .active > a:hover,
+.nav-pills.highlight-color-lime .active > a:focus{
+	background-color: @baseColorLime;
+	border-bottom: 0;
+}
+.nav-pills .active.highlight-color-purple > a,
+.nav-pills .active.highlight-color-purple > a:hover,
+.nav-pills .active.highlight-color-purple > a:focus,
+.nav-pills.highlight-color-purple .active > a,
+.nav-pills.highlight-color-purple .active > a:hover,
+.nav-pills.highlight-color-purple .active > a:focus{
+	background-color: @baseColorPurple;
+	border-bottom: 0;
+}
+a.list-group-item.active > .badge.highlight-color-green,
+.nav-pills > .active > a > .badge.highlight-color-green{
+	color: @baseColorGreen;
+}
+a.list-group-item.active > .badge.highlight-color-orange,
+.nav-pills > .active > a > .badge.highlight-color-orange{
+	color: @baseColorOrange;
+}
+a.list-group-item.active > .badge.highlight-color-yellow,
+.nav-pills > .active > a > .badge.highlight-color-yellow{
+	color: lighten(@colorBlack, 13.5%);
+}
+a.list-group-item.active > .badge.highlight-color-blue,
+.nav-pills > .active > a > .badge.highlight-color-blue{
+	color: @baseColorBlue;
+}
+a.list-group-item.active > .badge.highlight-color-red,
+.nav-pills > .active > a > .badge.highlight-color-red{
+	color: @baseColorRed;
+}
+a.list-group-item.active > .badge.highlight-color-lime,
+.nav-pills > .active > a > .badge.highlight-color-lime{
+	color: @baseColorLime;
+}
+a.list-group-item.active > .badge.highlight-color-purple,
+.nav-pills > .active > a > .badge.highlight-color-purple{
+	color: @baseColorPurple;
+}
+
+/* ---- 14. Accordions/Panels ---- */
+.panel{
+}
+
+.panel-group .panel{
+}
+.panel-heading{
+	/*padding: 0;*/
+}
+.panel-title > a{
+	display: block;
+}
+.panel-title > a .icon{
+	font-size: 18px;
+	float: right;
+}
+.panel-title > a .wi,
+.panel-title > a .glyphicon{
+	font-size: 13px;
+	float: right;
+}
+.panel-title > a .icon,
+.panel-title > a .wi,
+.panel-title > a .glyphicon{
+	-webkit-transition: -webkit-transform 0.5s;
+	-moz-transition: -moz-transform 0.5s;
+	-o-transition: -o-transform 0.5s;
+	transition: transform 0.5s;
+}
+.panel-title > a.collapsed .icon,
+.panel-title > a.collapsed .wi,
+.panel-title > a.collapsed .glyphicon{
+	-webkit-transform: rotate(90deg);
+	-moz-transform: rotate(90deg);
+	-o-transform: rotate(90deg);
+	-ms-transform: rotate(90deg);
+	transform: rotate(90deg);
+}
+.panel-group.highlight-color-green,
+.panel-group.highlight-color-orange,
+.panel-group.highlight-color-yellow,
+.panel-group.highlight-color-blue,
+.panel-group.highlight-color-red,
+.panel-group.highlight-color-lime,
+.panel-group.highlight-color-purple{
+	border-bottom: 0;
+}
+.panel-group.highlight-color-green > .panel-default > .panel-heading{
+	background-color: @baseColorGreen;
+	color: @colorWhite;
+}
+.panel-group.highlight-color-orange > .panel-default > .panel-heading{
+	background-color: @baseColorOrange;
+	color: @colorWhite;
+}
+.panel-group.highlight-color-yellow > .panel-default > .panel-heading{
+	background-color: @baseColorYellow;
+	color: lighten(@colorBlack, 13.5%);
+}
+.panel-group.highlight-color-blue > .panel-default > .panel-heading{
+	background-color: @baseColorBlue;
+	color: @colorWhite;
+}
+.panel-group.highlight-color-red > .panel-default > .panel-heading{
+	background-color: @baseColorRed;
+	color: @colorWhite;
+}
+.panel-group.highlight-color-lime > .panel-default > .panel-heading{
+	background-color: @baseColorLime;
+	color: @colorWhite;
+}
+.panel-group.highlight-color-purple > .panel-default > .panel-heading{
+	background-color: @baseColorPurple;
+	color: @colorWhite;
+}
+.panel-group.highlight-color-green > .panel-default > .panel-heading a,
+.panel-group.highlight-color-green > .panel-default > .panel-heading a:hover,
+.panel-group.highlight-color-green > .panel-default > .panel-heading a:focus{
+	color: @colorWhite;
+}
+.panel-group.highlight-color-orange > .panel-default > .panel-heading a,
+.panel-group.highlight-color-orange > .panel-default > .panel-heading a:hover,
+.panel-group.highlight-color-orange > .panel-default > .panel-heading a:focus{
+	color: @colorWhite;
+}
+.panel-group.highlight-color-yellow > .panel-default > .panel-heading a,
+.panel-group.highlight-color-yellow > .panel-default > .panel-heading a:hover,
+.panel-group.highlight-color-yellow > .panel-default > .panel-heading a:focus{
+	color: lighten(@colorBlack, 13.5%);
+}
+.panel-group.highlight-color-blue > .panel-default > .panel-heading a,
+.panel-group.highlight-color-blue > .panel-default > .panel-heading a:hover,
+.panel-group.highlight-color-blue > .panel-default > .panel-heading a:focus{
+	color: @colorWhite;
+}
+.panel-group.highlight-color-red > .panel-default > .panel-heading a,
+.panel-group.highlight-color-red > .panel-default > .panel-heading a:hover,
+.panel-group.highlight-color-red > .panel-default > .panel-heading a:focus{
+	color: @colorWhite;
+}
+.panel-group.highlight-color-lime > .panel-default > .panel-heading a,
+.panel-group.highlight-color-lime > .panel-default > .panel-heading a:hover,
+.panel-group.highlight-color-lime > .panel-default > .panel-heading a:focus{
+	color: @colorWhite;
+}
+.panel-group.highlight-color-purple > .panel-default > .panel-heading a,
+.panel-group.highlight-color-purple > .panel-default > .panel-heading a:hover,
+.panel-group.highlight-color-purple > .panel-default > .panel-heading a:focus{
+	color: @colorWhite;
+}
+
+/* ---- 15. List Group ---- */
+.list-group-item:first-child,
+.list-group-item:last-child{
+}
+a.list-group-item {
+	color: #555;
+}
+.list-group{
+	border-bottom: 0;
+}
+.list-group .list-group-item.active,
+.list-group .list-group-item.active:hover,
+.list-group .list-group-item.active:focus{
+	background-color: @circloidActiveColor;
+	border-color: @circloidActiveColor;
+}
+.list-group.highlight-color-green .list-group-item.active,
+.list-group.highlight-color-green .list-group-item.active:hover,
+.list-group.highlight-color-green .list-group-item.active:focus{
+	background-color: @baseColorGreen;
+	border-color: @baseColorGreen;
+}
+.list-group.highlight-color-orange .list-group-item.active,
+.list-group.highlight-color-orange .list-group-item.active:hover,
+.list-group.highlight-color-orange .list-group-item.active:focus{
+	background-color: @baseColorOrange;
+	border-color: @baseColorOrange;
+}
+.list-group.highlight-color-yellow .list-group-item.active,
+.list-group.highlight-color-yellow .list-group-item.active:hover,
+.list-group.highlight-color-yellow .list-group-item.active:focus{
+	background-color: @baseColorYellow;
+	border-color: @baseColorYellow;
+}
+.list-group.highlight-color-blue .list-group-item.active,
+.list-group.highlight-color-blue .list-group-item.active:hover,
+.list-group.highlight-color-blue .list-group-item.active:focus{
+	background-color: @baseColorBlue;
+	border-color: @baseColorBlue;
+}
+.list-group.highlight-color-red .list-group-item.active,
+.list-group.highlight-color-red .list-group-item.active:hover,
+.list-group.highlight-color-red .list-group-item.active:focus{
+	background-color: @baseColorRed;
+	border-color: @baseColorRed;
+}
+.list-group.highlight-color-lime .list-group-item.active,
+.list-group.highlight-color-lime .list-group-item.active:hover,
+.list-group.highlight-color-lime .list-group-item.active:focus{
+	background-color: @baseColorLime;
+	border-color: @baseColorLime;
+}
+.list-group.highlight-color-purple .list-group-item.active,
+.list-group.highlight-color-purple .list-group-item.active:hover,
+.list-group.highlight-color-purple .list-group-item.active:focus{
+	background-color: @baseColorPurple;
+	border-color: @baseColorPurple;
+}
+
+/* ---- 16. Alert Messages ---- */
+.alert{
+	margin-bottom: 5px;
+	margin-top: 10px;
+	text-align: center;
+}
+.alert .alert-link {
+	font-weight: normal;
+	text-decoration: underline;
+}
+
+/* ---- 17. Tooltips/Popovers ---- */
+.tooltip-inner{
+	display: block !important;
+}
+.popover{
+	.boxShadow(1px, 4px, 4px, fadeout(@colorBlack, 80%));
+}
+
+/* ---- 18. Modal ---- */
+.modal{
+	z-index: 10000;
+}
+.modal.small-modal .modal-dialog{
+	width: 300px;
+}
+.modal.full-modal .modal-dialog{
+	width: 95%;
+}
+.modal-content{
+	.roundedCorners(0, 0, 5px, 5px);
+	.boxShadow(1px, 4px, 4px, fadeout(@colorBlack, 80%));
+}
+.modal-backdrop{
+	z-index: 9999;
+}
+.border-block{
+	width: 14.285714285714285714285714285714%;
+	height: 5px;
+	display: block;
+	float: left;
+}
+
+/* Toastr Notifications */
+#toast-container .toast .toast-message small{
+	color: @colorWhite;
+	font-size: 13px;
+}
+#toast-container > div{
+	.roundedCorners(0, 0, 5px, 5px);
+	.boxShadow(1px, 4px, 4px, fadeout(@colorBlack, 80%));
+	opacity: 1;
+}
+#toast-container > *:hover{
+	.boxShadow(1px, 4px, 4px, fadeout(@colorBlack, 80%));
+	opacity: 0.9;
+}
+.toast-top-full-width{
+	margin-top: 10px;
+}
+.toast-bottom-full-width{
+	margin-bottom: 10px;
+}
+.toast-success{
+	background-color: @baseColorGreen;
+}
+.toast-info{
+	background-color: @baseColorBlue;
+}
+.toast-warning{
+	background-color: @baseColorYellow;
+	color: lighten(@colorBlack, 13.5%) !important;
+}
+.toast-warning *{
+	color: lighten(@colorBlack, 13.5%) !important;
+}
+.toast-error{
+	background-color: @baseColorRed;
+}
+
+/* Gallery - TO BE UPDATED WITH FULL GALLERY */
+.gallery-preview{
+
+}
+.gallery-preview .gallery-item{
+	display: inline-block;
+	margin-bottom: 15px;
+	margin-right: 10px;
+	max-width: 300px;
+	min-width: 150px;
+	max-height: 175px;
+	width: 30%;
+}
+.gallery-preview .gallery-item .gallery-item-image{
+	border: @borderStandard;
+	margin-bottom: 5px;
+}
+.gallery-preview .gallery-item .gallery-item-image:hover{
+	border: 1px solid @colorGrey4;
+}
+.gallery-preview .gallery-item .gallery-item-image img{
+	padding: 7px;
+	width: 100%
+}
+.gallery-preview .gallery-item .gallery-item-controls{
+	
+}
+.gallery-preview .gallery-item .gallery-item-controls a{
+	padding: 5px 10px;
+}
+.gallery-preview .gallery-item .gallery-item-controls .main-text{
+	
+}
+
+/* ---- 19. Footer ---- */
+#footer-container{
+	padding: 10px 20px;
+	text-align: center;
+	color: @baseTextColor;
+	font-size: 11px;
+}

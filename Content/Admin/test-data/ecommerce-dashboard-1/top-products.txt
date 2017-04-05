@@ -1,0 +1,35 @@
+iPhone;300|
+iMac;255|
+iPod Touch;137|
+Macbook Air;130|
+iPod Classic;30
+||===============||
+iMac;455|
+Macbook Air;230|
+iPhone;200|
+iPod Touch;137|
+iPod Classic;99
+||===============||
+iPod Touch;10942|
+iPod Classic;9982|
+iMac;721|
+Macbook Air;700|
+iPhone;600
+||===============||
+iPod Touch;11942|
+iPod Classic;8982|
+iMac;621|
+Macbook Air;600|
+iPhone;600
+||===============||
+Macbook Air;45101|
+iPod Classic;39321|
+iPhone;35219|
+iMac;30320|
+iPod Touch;21002
+||===============||
+iPod Classic;100300|
+Macbook Air;99998|
+iPhone;87569|
+iPod Touch;86547|
+iMac;80699

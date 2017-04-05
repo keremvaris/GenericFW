@@ -1,0 +1,36 @@
+﻿@using GenericFW.Areas.Yonetim.GenericVM
+@using GenericFW.DataAccessLayer;
+@using System.Linq;
+@model TemplateItemModel
+@{
+    var col = Model.CurrentColumn;
+    var displayAttr = col.Display;
+    var prop = col.Property;
+    var modelData = Model.Model.Data[prop.Name];
+
+    var pkt = col.PrimaryTable;
+    var result = Tools.Select<ListItem>
+                                                                            (
+    $"select {pkt.DisplayColumn.DisplayColumn} [Text], {pkt.PrimaryColumn.Name} [Id] from {pkt.ActualTableName}"
+    );
+
+    var sval = Model.Model.Data[prop.Name];
+
+    var items = result.Select(k => new SelectListItem
+    {
+        Selected = k.Id.Equals(sval),
+        Text = k.Text,
+        Value = k.Id.ToString(),
+    });
+    ViewData.TemplateInfo.HtmlFieldPrefix = "";
+}
+
+@if (col.Required)
+{
+    @Html.DropDownList(prop.Name, items, "-Seçiniz-", new Dictionary<string, object> { { "class", "form-control" }, { "required", "required" }, { "data-val", "true" }, { "placeholder", @col.Display.Name }, { "data-val-required", @col.Display.Name + " Alanı Zorunlu!" } });
+    <span class="col-sm-3 control-label text-danger" data-valmsg-for="@prop.Name" data-valmsg-replace="true"></span>
+}
+else
+{
+    @Html.DropDownList(prop.Name, items, "", new { @class = "form-control" });
+}

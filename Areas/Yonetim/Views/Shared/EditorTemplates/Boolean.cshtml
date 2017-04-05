@@ -1,0 +1,18 @@
+﻿@using GenericFW.Areas.Yonetim.GenericVM
+@using GenericFW.Attr
+@model TemplateItemModel
+@{ 
+    var col = Model.CurrentColumn;
+    var prop = col.Property;
+    var modelData = Model.Model.Data[prop.Name];
+   ViewData.TemplateInfo.HtmlFieldPrefix = "";
+
+}
+ 
+    @Html.CheckBox(prop.Name, (bool)@modelData, new { @class = "checkbox" })
+
+
+    
+
+
+  

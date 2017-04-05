@@ -1,0 +1,66 @@
+﻿@using GenericFW.Areas.Yonetim.GenericVM
+@using System.ComponentModel.DataAnnotations
+@using GenericFW.Attr
+@model TemplateItemModel
+
+@{
+    var col = Model.CurrentColumn;
+    var prop = col.Property;
+    var modelData = Model.Mode == RenderMode.Create ? string.Empty : Model.Model.Data[prop.Name];
+}
+
+@if (col.DataType.DataType == DataType.Password)
+{
+    <input type="password" id="@prop.Name" placeholder="@col.Display.Name" class="form-control" name="@prop.Name" value="@modelData"
+           @Html.Raw(col.Required ? "data-rule-required='true' data-val='true' aria-required='true' data-val-required='" + @col.Display.Name + " Alanı Zorunlu!' " : "") />
+                <span class="col-sm-3 control-label text-danger" data-valmsg-for="@prop.Name" data-valmsg-replace="true"></span>
+}
+else if (col.DataType.DataType == DataType.MultilineText)
+{
+    <textarea class="form-control" rows="3" id="@prop.Name" placeholder="@col.Display.Name" name="@prop.Name" value="@modelData"
+              @Html.Raw(col.Required ? "data-rule-required='true' data-val='true' aria-required='true' data-val-required='" + @col.Display.Name + " Alanı Zorunlu!' " : "") type="text"></textarea>
+                        <span class="col-sm-3 control-label text-danger" data-valmsg-for="@prop.Name" data-valmsg-replace="true"></span>
+}
+else if (col.DataType.DataType == DataType.Html)
+{
+    <textarea class="form-control" rows="3" id="@prop.Name" name="@prop.Name" value="@modelData"
+              placeholder="col.Display.Name" @Html.Raw(col.Required ? " data-rule-required='true' data-val='true' aria-required='true' data-val-required='" + @col.Display.Name + " Alanı Zorunlu!' " : "") type="text">
+        @modelData
+        </textarea>
+}
+else if (col.DataType.DataType == DataType.Upload)
+{
+
+    <input type="file" class="form-control" name="@prop.Name" value="@modelData" id="@prop.Name">
+
+
+
+    <script>
+        window.onload = function () {
+            document.getElementById('file').onsubmit = function () {
+                var fileInput = document.getElementById('@prop.Name');
+                var xhr = new XMLHttpRequest();
+                xhr.open('POST', '/Upload');
+                xhr.setRequestHeader('Content-type', 'multipart/form-data');
+                //Appending file information in Http headers
+                xhr.setRequestHeader('X-File-Name', fileInput.files[0].name);
+                xhr.setRequestHeader('X-File-Type', fileInput.files[0].type);
+                xhr.setRequestHeader('X-File-Size', fileInput.files[0].size);
+                //Sending file in XMLHttpRequest
+                xhr.send(fileInput.files[0]);
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState == 4 && xhr.status == 200) {
+                        alert(xhr.responseText);
+                    }
+                }
+                return false;
+            }
+        }
+    </script>
+}
+else
+{
+    <input type="text" id="@prop.Name" name="@prop.Name" value="@modelData"
+           placeholder="@col.Display.Name" class="form-control" @Html.Raw(col.Required ? "class= 'form-control text-danger' data-rule-required='true' data-val='true' aria-required='true' data-val-required='" + @col.Display.Name + " Alanı Zorunlu!' " : "") />
+                <span class="col-sm-3 control-label text-danger" data-valmsg-for="@prop.Name" data-valmsg-replace="true"></span>
+}

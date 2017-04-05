@@ -1,0 +1,15 @@
+.roundedCorners(@radiusTL: 40px, @radiusTR: 40px, @radiusBR: 40px, @radiusBL: 40px){
+	-moz-border-radius: @radiusTL  @radiusTR @radiusBR @radiusBL !important;
+	-webkit-border-radius: @radiusTL  @radiusTR @radiusBR @radiusBL !important;
+	border-radius: @radiusTL  @radiusTR @radiusBR @radiusBL !important;
+}
+.boxShadow(@posLR: 0px, @posTD: 0px, @blur: 0px, @color: rgba(0, 0, 0, 0)){
+	-webkit-box-shadow: @posLR @posTD @blur @color !important;
+	-moz-box-shadow: @posLR @posTD @blur @color !important;
+	box-shadow: @posLR @posTD @blur @color !important;
+}
+.boxShadowNotification(@posLR: 0px, @posTD: 0px, @blur: 0px, @size: 2px, @color: rgba(0, 0, 0, 0)){
+	-webkit-box-shadow: @posLR @posTD @blur @size @color !important;
+	-moz-box-shadow: @posLR @posTD @blur @size @color !important;
+	box-shadow: @posLR @posTD @blur @size @color !important;
+}

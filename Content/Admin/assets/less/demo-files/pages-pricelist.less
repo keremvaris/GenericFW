@@ -1,0 +1,205 @@
+/**
+ * Price List - Type 1
+ */
+
+ @import "../base.less";
+ @import "../mixins.less";
+
+ .price-list{
+
+ }
+ .price-list .price-list-plan{
+ 	background: none repeat scroll 0 0 @colorWhite;
+ 	border-left: @borderStandard;
+ 	border-right: @borderStandard;
+ 	border-bottom: @borderStandard;
+ 	border-top: 1px solid lighten(@borderStandardColor, 3%);
+ 	padding: 15px 0 15px 0;
+ 	margin-bottom: 20px;
+ 	clear: both;
+ 	position: relative;
+	overflow: hidden;
+ 	.roundedCorners(0, 0, 5px, 5px);
+ 	.boxShadow(1px, 4px, 4px, fadeout(@colorBlack, 80%));
+ 	-webkit-transition: border-color 0.3s;
+ 	-moz-transition: border-color 0.3s;
+ 	-o-transition: border-color 0.3s;
+ 	transition: border-color 0.3s;
+ }
+ .price-list .price-list-plan:hover,
+ .price-list .price-list-plan:focus{
+ 	border-left: 1px solid @colorGrey5;
+ 	border-right: 1px solid @colorGrey5;
+ 	border-bottom: 1px solid @colorGrey5;
+ 	padding-top: 13px;
+ 	border-top: @highlightBorderThinkness solid @circloidActiveColor;
+	// .boxShadow(1px, 4px, 4px, fadeout(@colorBlack, 60%));
+}
+.price-list .price-list-plan.highlight-color-green,
+.price-list .price-list-plan.highlight-color-orange,
+.price-list .price-list-plan.highlight-color-yellow,
+.price-list .price-list-plan.highlight-color-blue,
+.price-list .price-list-plan.highlight-color-red,
+.price-list .price-list-plan.highlight-color-lime,
+.price-list .price-list-plan.highlight-color-purple{
+	border-bottom: @borderStandard;
+}
+.price-list .price-list-plan.highlight-color-green:hover,
+.price-list .price-list-plan.highlight-color-green:focus{
+	border-top: @highlightBorderThinkness solid @baseColorGreen;
+}
+.price-list .price-list-plan.highlight-color-orange:hover,
+.price-list .price-list-plan.highlight-color-orange:focus{
+	border-top: @highlightBorderThinkness solid @baseColorOrange;
+}
+.price-list .price-list-plan.highlight-color-yellow:hover,
+.price-list .price-list-plan.highlight-color-yellow:focus{
+	border-top: @highlightBorderThinkness solid @baseColorYellow;
+}
+.price-list .price-list-plan.highlight-color-blue:hover,
+.price-list .price-list-plan.highlight-color-blue:focus{
+	border-top: @highlightBorderThinkness solid @baseColorBlue;
+}
+.price-list .price-list-plan.highlight-color-red:hover,
+.price-list .price-list-plan.highlight-color-red:focus{
+	border-top: @highlightBorderThinkness solid @baseColorRed;
+}
+.price-list .price-list-plan.highlight-color-lime:hover,
+.price-list .price-list-plan.highlight-color-lime:focus{
+	border-top: @highlightBorderThinkness solid @baseColorLime;
+}
+.price-list .price-list-plan.highlight-color-purple:hover,
+.price-list .price-list-plan.highlight-color-purple:focus{
+	border-top: @highlightBorderThinkness solid @baseColorPurple;
+}
+
+.price-list .price-list-plan .price-list-plan-top{
+	margin-top: 35px;
+	padding: 0 15px;
+}
+.price-list .price-list-plan .price-list-plan-top .c-icon{
+	position: absolute;
+	color: @colorWhite;
+	padding: 10px;
+	left: -33px;
+	top: 0;
+	opacity: 0.30;
+	z-index: 1;
+	-webkit-transition: opacity 0.5s;
+	-moz-transition: opacity 0.5s;
+	-o-transition: opacity 0.5s;
+	transition: opacity 0.5s;
+}
+.price-list .price-list-plan:hover .price-list-plan-top .c-icon,
+.price-list .price-list-plan:focus .price-list-plan-top .c-icon{
+	top: -2px;
+}
+.price-list .price-list-plan .price-list-plan-top .c-icon .icon{
+	background-color: @circloidActiveColor;
+	.roundedCorners(50%, 50%, 50%, 50%);
+	font-size: 150px !important;
+	padding: 10px;
+}
+.price-list .price-list-plan.highlight-color-green .price-list-plan-top .c-icon .icon{
+	background-color: @baseColorGreen;
+}
+.price-list .price-list-plan.highlight-color-orange .price-list-plan-top .c-icon .icon{
+	background-color: @baseColorOrange;
+}
+.price-list .price-list-plan.highlight-color-yellow .price-list-plan-top .c-icon .icon{
+	background-color: @baseColorYellow;
+}
+.price-list .price-list-plan.highlight-color-blue .price-list-plan-top .c-icon .icon{
+	background-color: @baseColorBlue;
+}
+.price-list .price-list-plan.highlight-color-red .price-list-plan-top .c-icon .icon{
+	background-color: @baseColorRed;
+}
+.price-list .price-list-plan.highlight-color-lime .price-list-plan-top .c-icon .icon{
+	background-color: @baseColorLime;
+}
+.price-list .price-list-plan.highlight-color-purple .price-list-plan-top .c-icon .icon{
+	background-color: @baseColorPurple;
+}
+.price-list .price-list-plan .price-list-plan-top .price-list-plan-unique-tag{
+	background-color:  @circloidActiveColor;
+    color: @colorWhite;
+    font-size: 14px;
+    font-weight: 300;
+    padding: 5px 10px 5px 15px;
+    position: absolute;
+    right: 0;
+    text-align: center;
+    top: 0;
+}
+.price-list .price-list-plan:hover .price-list-plan-top .price-list-plan-unique-tag,
+.price-list .price-list-plan:focus .price-list-plan-top .price-list-plan-unique-tag{
+	top: -2px;
+}
+.price-list .price-list-plan.highlight-color-green .price-list-plan-top .price-list-plan-unique-tag{
+	background-color: @baseColorGreen;
+}
+.price-list .price-list-plan.highlight-color-orange .price-list-plan-top .price-list-plan-unique-tag{
+	background-color: @baseColorOrange;
+}
+.price-list .price-list-plan.highlight-color-yellow .price-list-plan-top .price-list-plan-unique-tag{
+	background-color: @baseColorYellow;
+	color: @colorBlack;
+}
+.price-list .price-list-plan.highlight-color-blue .price-list-plan-top .price-list-plan-unique-tag{
+	background-color: @baseColorBlue;
+}
+.price-list .price-list-plan.highlight-color-red .price-list-plan-top .price-list-plan-unique-tag{
+	background-color: @baseColorRed;
+}
+.price-list .price-list-plan.highlight-color-lime .price-list-plan-top .price-list-plan-unique-tag{
+	background-color: @baseColorLime;
+}
+.price-list .price-list-plan.highlight-color-purple .price-list-plan-top .price-list-plan-unique-tag{
+	background-color: @baseColorPurple;
+}
+.price-list .price-list-plan .price-list-plan-top .price-list-plan-name{
+	font-size: 25px;
+	text-align: right;
+	font-weight: 200;
+	line-height: 1;
+	position: relative;
+	z-index: 2;
+}
+.price-list .price-list-plan .price-list-plan-top .price-list-plan-price{
+	font-size: 60px;
+	text-align: right;
+	font-weight: 300;
+	position: relative;
+	z-index: 3;
+}
+.price-list .price-list-plan .price-list-plan-top .price-list-plan-price sup{
+	font-size: 57%;
+}
+.price-list .price-list-plan .price-list-plan-middle{
+	border-top: @borderStandard;
+	border-bottom: @borderStandard;
+	margin-bottom: 15px;
+}
+.price-list .price-list-plan .price-list-plan-middle ul.price-list-plan-details{
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+.price-list .price-list-plan .price-list-plan-middle ul.price-list-plan-details li{
+	padding: 10px 40px;
+	border-bottom: @borderStandard;
+	text-align: center;
+}
+.price-list .price-list-plan .price-list-plan-middle ul.price-list-plan-details li:last-child{
+	border-bottom: 0;
+}
+.price-list .price-list-plan .price-list-plan-middle ul.price-list-plan-details li .icon,
+.price-list .price-list-plan .price-list-plan-middle ul.price-list-plan-details li .glyphicon,
+.price-list .price-list-plan .price-list-plan-middle ul.price-list-plan-details li .wi{
+	margin-right: 10px;
+}
+.price-list .price-list-plan .price-list-plan-bottom{
+	padding: 0 15px;
+	text-align: center;
+}

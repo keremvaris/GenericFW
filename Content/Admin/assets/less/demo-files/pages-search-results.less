@@ -1,0 +1,110 @@
+/**
+ * Pages Search Results
+ */
+
+@import "../base.less";
+@import "../mixins.less";
+
+/* Search Results - General */
+.search-term-highlight{
+	color: @circloidActiveColor;
+}
+
+/* Search Results - Classic */
+.search-results-classic{
+	margin: 0 0 20px 0;
+}
+.tags{
+
+}
+
+/* Search Results - Data */
+#data-search-form .checkbox label{
+	padding-left: 0;
+}
+#data-search-form-advanced-search td{
+	display: none;
+}
+
+/* Search Results - Profiles */
+.search-results-profile{
+	background-color: @colorWhite;
+	overflow: hidden;
+	position: relative;
+	margin-bottom: 20px;
+	border-left: @borderStandard;
+	border-right: @borderStandard;
+	border-top: 1px solid lighten(@borderStandardColor, 3%);
+	.roundedCorners(0, 0, 5px, 5px);
+	.boxShadow(1px, 4px, 4px, fadeout(@colorBlack, 80%));
+	padding: 10px 0;
+}
+.search-results-profile:hover{
+	border-bottom: @highlightBorderThinkness solid @circloidActiveColor;
+	border-left: 1px solid @colorGrey4;
+	border-right: 1px solid @colorGrey4;
+	border-top: 1px solid @colorGrey4;
+	margin-bottom: 17px;
+}
+.search-results-profile.highlight-color-blue,
+.search-results-profile.highlight-color-green,
+.search-results-profile.highlight-color-orange,
+.search-results-profile.highlight-color-yellow,
+.search-results-profile.highlight-color-blue,
+.search-results-profile.highlight-color-red,
+.search-results-profile.highlight-color-lime,
+.search-results-profile.highlight-color-purple{
+	border-bottom: @borderStandard;
+}
+.search-results-profile.highlight-color-green:hover,
+.search-results-profile.highlight-color-green:focus{
+	border-bottom: @highlightBorderThinkness solid @baseColorGreen;
+}
+.search-results-profile.highlight-color-orange:hover,
+.search-results-profile.highlight-color-orange:focus{
+	border-bottom: @highlightBorderThinkness solid @baseColorOrange;
+}
+.search-results-profile.highlight-color-yellow:hover,
+.search-results-profile.highlight-color-yellow:focus{
+	border-bottom: @highlightBorderThinkness solid @baseColorYellow;
+}
+.search-results-profile.highlight-color-blue:hover,
+.search-results-profile.highlight-color-blue:focus{
+	border-bottom: @highlightBorderThinkness solid @baseColorBlue;
+}
+.search-results-profile.highlight-color-red:hover,
+.search-results-profile.highlight-color-red:focus{
+	border-bottom: @highlightBorderThinkness solid @baseColorRed;
+}
+.search-results-profile.highlight-color-lime:hover,
+.search-results-profile.highlight-color-lime:focus{
+	border-bottom: @highlightBorderThinkness solid @baseColorLime;
+}
+.search-results-profile.highlight-color-purple:hover,
+.search-results-profile.highlight-color-purple:focus{
+	border-bottom: @highlightBorderThinkness solid @baseColorPurple;
+}
+.search-results-profile .search-results-profile-image{
+	float: left;
+	width: 150px;
+	text-align: center;
+}
+.search-results-profile .search-results-profile-content{
+	position: relative;
+	margin-left: 165px;
+	min-height: 113px;
+}
+.search-results-profile .search-results-profile-content .search-results-profile-title{
+}
+.search-results-profile .search-results-profile-content .search-results-profile-title.h3{
+	line-height: 17px;
+	margin-bottom: 10px;
+}
+.search-results-profile .search-results-profile-content .search-results-profile-more{
+}
+.search-results-profile .search-results-profile-content .search-results-profile-more-block{
+	display: block;
+}
+.search-results-profile .search-results-profile-content .search-results-profile-button{
+	margin-top: 10px;
+}

@@ -1,0 +1,712 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+@using GenericFW.Areas.Yonetim.Controllers;
+@using System.Reflection
+@using GenericFW.Attr;
+@using CMS.Common
+@using PagedList;
+@using PagedList.Mvc;
+@*@using GenericFW.Models.Orm;*@
+@model GenericFW.Models.Orm.ListDTO
+@*@model IPagedList<GenericFW.Models.Orm.ListDTO>*@
+@{
+    //ListDTO Model = new ListDTO();
+    string controllerName = ViewBag.ControllerName;
+    Table Table = (Table)Table.GetCustomAttribute(Model.Type, typeof(Table));
+    PageFeatures page = (PageFeatures)PageFeatures.GetCustomAttribute(Model.Type, typeof(PageFeatures));
+    PropertyInfo PrimaryColumn = null, IdentityColumn = null;
+    List<PropertyInfo> ShowColumns = new List<PropertyInfo>();
+    PropertyInfo[] columns = Model.Type.GetProperties();
+    
+    foreach (var col in columns)
+    {
+        if (col.Name.ToLower() == Table.PrimaryKey.ToLower())
+        {
+            PrimaryColumn = col;
+        }
+        if (col.Name.ToLower() == Table.IdentityColumn.ToLower())
+        {
+            IdentityColumn = col;
+        }
+        Column colAttr = (Column)Column.GetCustomAttribute(col, typeof(Column));
+        if (colAttr != null && colAttr.Visible)
+        {
+            ShowColumns.Add(col);
+        }
+    }
+}
+<div class="row">
+    <div class="col-md-12">
+        <div class="block">
+            <div class="block-heading">
+                <div class="main-text h2">
+                    @page.Caption
+                </div>
+                <div class="block-controls">
+
+                </div>
+            </div>
+            <!--Yeni Kayıt Buton Search Alanı-->
+            <div class="block-content-outer">
+                <div class="block-content-inner">
+                    <div class="table-responsive">
+                        <div class="row">
+                            <div class="col-md-12">
+
+                                <button class="btn btn-success" data-toggle="modal" data-target="#newData">
+                                    Yeni Kayıt
+                                </button>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <table class="datatable table table-striped table-hover">
+                                    <thead>
+                                        <tr>
+                                            @foreach (var col in ShowColumns)
+                                            {
+                                                Column colAttr = (Column)Column.GetCustomAttribute(col, typeof(Column));
+                                            <th>@colAttr.DisplayName</th>
+                                            }
+
+                                            <th>İşlemler</th>
+                                        </tr>
+
+                                    </thead>
+                                    <tbody>
+                                        <tr class="searchs">
+                                            @foreach (var col in ShowColumns)
+                                            {
+                                            <td><input type="text" data-colname="@col.Name" name="@col.Name" value="" class="form-control rounded search" /></td>
+                                            }
+                                            <td></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--Yeni Kayıt Buton Search Alanı Sonu-->
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+
+            </div>
+            <!--Pagination-->
+
+            <div class="col-md-6">
+                <ul id="recordNav" class="pagination" style="float:right">
+                    <li id="datatable-1_previous" tabindex="0" aria-controls="datatable-1" class="paginate_button previous disabled">
+                        <a href="#">Previous</a>
+                    </li>
+                    <li tabindex="0" aria-controls="datatable-1" class="paginate_button active">
+                        <a href="#">1</a>
+                    </li>
+                    <li tabindex="0" aria-controls="datatable-1" class="paginate_button ">
+                        <a href="#">2</a>
+                    </li>
+                    <li id="datatable-1_next" tabindex="0" aria-controls="datatable-1" class="paginate_button next">
+                        <a href="#">Next</a>
+                    </li>
+                </ul>
+
+
+
+
+
+
+
+
+            </div>
+            <!--Paginatio End-->
+        </div>
+    </div>
+
+</div>
+@section scriptsTop{
+    <!--Yeni Kayıt Ekle Başlangıç-->
+    <form id="addForm">
+        <div class="modal fade full-modal" id="newData" tabindex="-1" role="dialog" aria-labelledby="full-modal-label" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content" data-border-top="multi">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="full-modal-label">Yeni Kayıt Ekle</h4>
+                    </div>
+                    <div class="modal-body">
+
+                        <div class="form-horizontal">
+
+                            @foreach (var col in columns)
+                            {
+                                Column colAttr = (Column)Column.GetCustomAttribute(col, typeof(Column));
+                                if (Table.IdentityColumn.ToLower() == col.Name.ToLower())
+                                {
+                                    continue;
+                                }
+                                if (colAttr != null && colAttr.IsForeign == true)
+                                {
+
+                                    @*<select id="input-demo-v" class="form-control" @Html.Raw(colAttr.Required ? "required" : "") name="@col.Name" value="" />*@
+
+
+                                        var result = Tools.Select<ListItem>(
+                                            $"select {colAttr.ForeignValue} [Text], {colAttr.ForeignKey} [Id] from {colAttr.ForeignTable}");
+
+                                        var items = result.Data.Select(k => new SelectListItem
+                                        {
+
+                                            Selected = false,
+                                            Text = k.Text,
+                                            Value = k.Id.ToString(),
+                                        });
+
+
+                                        <div class="form-group">
+                                            <label class="col-md-2 col-sm-12 control-label">@colAttr.DisplayName</label>
+                                            <div class="col-md-10 col-md-12">
+                                                @Html.DropDownListFor(x => colAttr.ForeignKey, items, new { @class = "form-control" })
+                                                <span class="help-block">
+                                                    @Html.Raw(colAttr.Description)
+                                                </span>
+                                            </div>
+                                        </div>
+                                        }
+                                        else if (colAttr != null && colAttr.IsForeign == false)
+                                        {
+                                            <div class="form-group">
+                                                <label class="col-md-2 col-sm-12 control-label">@colAttr.DisplayName</label>
+                                                <div class="col-md-10 col-md-12">
+                                                    <input type="text" class="form-control" @Html.Raw(colAttr.Required ? "required" : "") name="@col.Name" value="" />
+                                                    <span class="help-block">
+                                                        @Html.Raw(colAttr.Description)
+                                                    </span>
+                                                </div>
+                                            </div>
+
+
+                                        }
+                                        else
+                                        {
+                                            <div class="form-group">
+                                                <label class="col-md-2 col-sm-12 control-label">@col.Name</label>
+                                                <div class="col-md-10 col-md-12">
+                                                    <input type="text" class="form-control" required name="@col.Name" value="" />
+                                                    <span class="help-block"></span>
+                                                </div>
+                                            </div>
+                                            }
+
+
+                                        }
+
+                        </div>
+
+
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">İptal</button>
+                        <input type="submit" class="btn btn-primary" value="Kaydet" />
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div>
+    </form>
+    <!--Yeni Kayıt Ekle Sonu-->
+    <!--Kayıt Silme Modal Başlangıç-->
+    <div class="modal fade " id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="full-modal-label" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content" data-border-top="multi">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="full-modal-label">Kayıt Silme</h4>
+                </div>
+                <div class="modal-body">
+
+                    <p>Kayıt Silinecek Emin misiniz ?</p>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">İptal</button>
+                    <button id="btnDeleteConfirm" class="btn btn-danger">Sil</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div>
+    <!--Kayıt Silme Modal Sonu-->
+    <!--Kayıt Detay Modal Başlangıç-->
+    <div class="modal fade full-modal" id="detailModal" tabindex="-1" role="dialog" aria-labelledby="full-modal-label" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content" data-border-top="multi">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="full-modal-label">Kayıt Detay</h4>
+                </div>
+                <div class="modal-body">
+
+                    <div class="form-horizontal">
+
+                        @foreach (var col in columns)
+                        {
+                            Column colAttr = (Column)Column.GetCustomAttribute(col, typeof(Column));
+                            //if (Table.IdentityColumn.ToLower() == col.Name.ToLower())
+                            //{
+                            //    continue;
+                            //}
+                            if (colAttr != null)
+                            {
+                        <div class="form-group">
+                            <label class="col-md-2 col-sm-12 control-label">@colAttr.DisplayName</label>
+                            <div class="col-md-10 col-md-12">
+                                <input type="text" class="form-control" disabled @Html.Raw(colAttr.Required ? "required" : "") name="@col.Name" value="" />
+                                <span class="help-block">
+                                    @Html.Raw(colAttr.Description)
+                                </span>
+                            </div>
+                        </div>
+                            }
+                            else
+                            {
+                        <div class="form-group">
+                            <label class="col-md-2 col-sm-12 control-label">@col.Name</label>
+                            <div class="col-md-10 col-md-12">
+                                <input type="text" class="form-control" disabled name="@col.Name" value="" />
+                                <span class="help-block"></span>
+                            </div>
+                        </div>
+                            }
+                        }
+
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Kapat</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div>
+    <!--Kayıt Detay Modal Sonu-->
+    <!--Kayıt Düzenle Modal Başlangıç-->
+    <div class="modal fade full-modal" id="editModal" tabindex="-1" role="dialog" aria-labelledby="full-modal-label" aria-hidden="true">
+        <form id="editForm">
+            <div class="modal-dialog">
+                <div class="modal-content" data-border-top="multi">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="full-modal-label">Kayıt Düzenle</h4>
+                    </div>
+                    <div class="modal-body">
+
+                        <div class="form-horizontal">
+
+                            @foreach (var col in columns)
+                            {
+                                Column colAttr = (Column)Column.GetCustomAttribute(col, typeof(Column));
+                                if (Table.PrimaryKey.ToLower() == col.Name.ToLower())
+                                {
+                            <input type="hidden" name="@col.Name" value="" />
+                                    continue;
+                                }
+                                if (colAttr != null)
+                                {
+                            <div class="form-group">
+                                <label class="col-md-2 col-sm-12 control-label">@colAttr.DisplayName</label>
+                                <div class="col-md-10 col-md-12">
+                                    <input type="text" class="form-control" @Html.Raw(colAttr.Required ? "required" : "") name="@col.Name" value="" />
+                                    <span class="help-block">
+                                        @Html.Raw(colAttr.Description)
+                                    </span>
+                                </div>
+                            </div>
+                                }
+                                else
+                                {
+                            <div class="form-group">
+                                <label class="col-md-2 col-sm-12 control-label">@col.Name</label>
+                                <div class="col-md-10 col-md-12">
+                                    <input type="text" class="form-control" name="@col.Name" value="" />
+                                    <span class="help-block"></span>
+                                </div>
+                            </div>
+                                }
+                            }
+
+
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">İptal</button>
+                        <input type="submit" class="btn btn-primary" name="btnKaydet" value="Kaydet" />
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </form>
+    </div>
+    <!--Kayıt Düzenle Modal Sonu-->
+}
+@section head{
+    <link type="text/css" href="/Content/Admin/assets/css/optional/toastr.min.css" rel="stylesheet" />
+}
+@section scripts{
+    <script type="text/javascript" src="/Content/Admin/assets/js/optional/toastr.min.js"></script>
+    <!--Action Kolonu Başlangıç-->
+    <script>
+        var jcols=[
+        @foreach (var col in columns)
+        {
+          @Html.Raw("'"+col.Name+"',");
+        }
+        ];
+        var i = -1;
+        var toastCount = 0;
+        var $toastlast;
+
+
+        function UyariVer (msg,title,tip) {
+
+            var $showDuration = 300;
+            var $hideDuration = 1000;
+            var $timeOut = 5000;
+            var $extendedTimeOut = 1000;
+            var $showEasing = "swing";
+            var $hideEasing = "linear";
+            var $showMethod = "fadeIn";
+            var $hideMethod = "fadeOut";
+            var toastIndex = toastCount++;
+
+            toastr.options = {
+                closeButton: true,
+                debug: false,
+                progressBar:false,
+                positionClass:  'toast-top-right',
+                onclick: null
+            };
+
+            var $toast = toastr[tip](msg, title); // Wire up an event handler to a button in the toast, if it exists
+            $toastlast = $toast;
+
+        };
+
+        var showcolumns=[
+      @foreach (var item in ShowColumns)
+        {
+          @Html.Raw("\""+item.Name+"\",");
+        }
+        ];
+        var datatable=$(".datatable");
+        function addRow(row) {
+            var trow=$("<tr class='trow'>");
+            var id;
+            for (var j in row.values) {
+                var col=row.values[j];
+                if(showcolumns.indexOf(col.column)>=0){
+                    var tcol=$("<td>");
+                    tcol.data("columnname",col.column);
+                    tcol.html(col.value);
+                    trow.append(tcol);
+                }
+                if(col.column=="@PrimaryColumn.Name")
+                {
+                    id = col.value;
+                }
+            }
+
+            //action kolonu
+            var td=$("<td>");
+            var contdiv=$("<div class='btn-group' style='float:right'>");
+            td.append(contdiv);
+            var btnDetail=$("<button type='button' class='btn btn-warning btnDetail'>Detay</button>");
+            btnDetail.data("object", row);
+            btnDetail.click(function() {
+                var d=$(this).data("object");
+
+                $("#detailModal input").each(function () {
+                    var name=$(this).attr("name");
+                    for(var i in d.values){
+                        if(d.values[i].column==name){
+                            $(this).val(d.values[i].value);
+                        }
+                    }
+                });
+                $("#detailModal").modal("show");
+            });
+
+            contdiv.append(btnDetail);
+            var btndrp=$("<button type='button' class='btn btn-warning dropdown-toggle' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'><span class='caret'></span><span class='sr-only'>Menü</span></button>");
+            var ul=$("<ul class='dropdown-menu'>");
+            contdiv.append(ul);
+            var editli=$("<li>");
+
+            var btnEdit=$("<a class='btnEdit'  href='Javascript:void(0)'>Düzenle</a>");
+            btnEdit.data("object",row);
+            editli.append(btnEdit);
+            btnEdit.click(function () {
+
+                var d=$(this).data("object");
+
+                $("#editModal input").each(function () {
+                    var name=$(this).attr("name");
+                    for(var i in d.values){
+                        if(d.values[i].column==name){
+                            $(this).val(d.values[i].value);
+                        }
+                    }
+                });
+                $("#editModal").modal("show");
+
+            });
+
+            ul.append(editli);
+
+            var deleteli=$("<li>");
+            var btnDelete=$("<a href='Javascript:void(0)' class='btnDelete'>Sil</a>");
+            btnDelete.data("pk",id);
+            deleteli.append(btnDelete);
+            btnDelete.click(function () {
+                var id=$(this).data("pk");
+                $("#deleteModal").modal("show");
+                $("#btnDeleteConfirm").data("pk",id);
+            });
+            ul.append(deleteli);
+
+
+            contdiv.append(btndrp);
+
+
+            trow.append(td);
+
+            datatable.append(trow);
+        }
+
+        function loadTable(resp) {
+            $(".trow",datatable).remove();
+            for(var i in resp.data)
+            {
+                var row=resp.data[i];
+                addRow(row);
+            }
+        }
+
+    </script>
+    <!--Action Kolonu Sonu-->
+    <!--page_load-->
+    <script>
+        function page_load() {
+            $.get(@Html.Raw("\"/Yonetim/" + @controllerName + "/Select\""),function (resp) {
+                loadTable(resp);
+            });
+
+        }
+        $(document).ready(function () {
+            page_load();
+        });
+    </script>
+    <!--page_load Sonu-->
+    <!--Detaylar Başlangıç-->
+    <script>
+        $("#addForm").on("submit", function () {
+
+            var formData = $(this).serialize();
+            var url=@Html.Raw("'/Yonetim/"+@controllerName+"/Create'");
+            $.ajax({
+                type: "POST",
+                url: url,
+                data: formData,
+                success: function (resp) {
+                    if (resp == "success") {
+                        $("#newData").modal("hide");
+                        UyariVer("Tamam","Başarılı","success");
+                        $("#newData input").val("");
+                        page_load();
+                    } else {
+                        UyariVer("Kayıt Eklenemedi Lütfen Tekrar Deneyiniz.<br\>"+resp,"Hata","error");
+                    }
+
+                }
+
+            });
+            return false;
+        });
+
+        $("#btnDeleteConfirm").click(function () {
+            var id=$(this).data("pk");
+            var data="id="+id;
+            alert(id);
+            var url=@Html.Raw("'/Yonetim/"+@controllerName+"/Delete'");
+            $.ajax({
+                type:"POST",
+                url:url,
+                data:data,
+                success: function (resp) {
+                    if(resp=="success"){
+                        $("#deleteModal").modal("hide");
+                        UyariVer("Kayıt Başarıyla Silindi","Silme Başarılı","success");
+                        page_load();
+                    }else{
+                        UyariVer("Kayıt Silinemedi<br/>"+resp,"Silme Hata!","error");
+                    }
+                }
+            });
+
+        });
+
+        $("#editForm").submit(function () {
+
+            var d = $(this).serialize();
+            var url=@Html.Raw("'/Yonetim/"+@controllerName+"/Edit'");
+            $.ajax({
+                type: "POST",
+                url: url,
+                data: d,
+                success: function (resp) {
+                    if (resp == "success") {
+                        $("#editModal").modal("hide");
+                        UyariVer("Kayıt Başarıyla Güncellendi","Başarılı","success");
+                        $("#editSubmit input").val("");
+                        page_load();
+                    } else {
+                        UyariVer("Kayıt Güncellenemedi.<br\>"+resp,"Hata","error");
+                    }
+
+                }
+            });
+            return false;
+        });
+    </script>
+    <!--Detaylar Sonu-->
+    <!--Search Başlangıç-->
+    <script>
+        $(".search").keyup(function () {
+            var colname=$(this).data("colname");
+            var val=$(this).val();
+            if(val==""||val==undefined){
+                page_load();
+            }else{
+                var url=@Html.Raw("\"/Yonetim/"+@controllerName+"/Search\"");
+                var data="column="+colname+"&value="+val;
+                $.ajax({
+                    type: "POST",
+                    url: url,
+                    data: data,
+                    success: function (resp) {
+                        loadTable(resp);
+                    }
+                });
+            }
+
+        });
+    </script>
+    <!--Search Sonu-->
+    <!--Pagelist-->
+    @*<script type="text/javascript">
+            function al() {
+
+
+            $.ajax({
+                type : "GET",
+                dataType : "json",
+                url : @Html.Raw("\"/Yonetim/" + @controllerName + "/Select\"/getir?sayfa=")+sayfa,
+                success: function(data) {
+                    $("#data").html(msg.d);
+                }
+            });
+            }
+            $(document).ready(function(){
+                al(1); //sayfa yüklenirken birinci sayfada gelecek verileri yüklüyoruz.
+            });
+
+        </script>*@
+
+
+    <script type="text/javascript">
+        var pageSize = 10;
+        var currentPageIndex = 0;
+        var pageCount = 0;
+
+        var startItemIndex = 0;
+        var itemsToDisplay = 0;
+
+        function PaginateSetPageObjects() {
+            $('#pageTitle').text('Page ' + (currentPageIndex + 1) + ' of ' + pageCount);
+
+            if (pageCount <= 1) {
+                $('#nextPage').hide();
+                $('#previousPage').hide();
+                $('#lastPage').hide();
+                $('#firstPage').hide();
+            } else {
+                $('#nextPage').show();
+                $('#previousPage').show();
+                $('#lastPage').show();
+                $('#firstPage').show();
+
+                if (currentPageIndex == 0) {
+                    $('#previousPage').hide();
+                    $('#firstPage').hide();
+                } else if (currentPageIndex == (pageCount - 1)) {
+                    $('#nextPage').hide();
+                    $('#lastPage').hide();
+                }
+            }
+        }
+
+        function PaginateCalculatePageIndexes(length) {
+            pageCount = 1;
+
+            if (length > pageSize) {
+                if (length / pageSize > parseInt(length / pageSize)) {
+                    pageCount = parseInt(length / pageSize) + 1;
+                } else {
+                    pageCount = length / pageSize;
+                }
+            }
+            startItemIndex = currentPageIndex * pageSize;
+            var remainingItems = length - startItemIndex;
+            itemsToDisplay = pageSize + startItemIndex;
+
+            if (remainingItems < pageSize) {
+                itemsToDisplay = remainingItems + startItemIndex;
+            }
+        }
+
+        function displayImages() {
+            var url= @Html.Raw("'/Yonetim/"+@controllerName+"/Select'");
+            $.ajax({
+                type: "POST",
+                dataType: "json",
+                url: url,
+                data: {},
+                success: function (jsonresults) {
+                    $("#imageContent").find("a").remove().end();
+                    PaginateCalculatePageIndexes(jsonresults.length);
+
+                    if (jsonresults.length > 0) {
+                        for (var i = startItemIndex; i < itemsToDisplay; i++) {
+
+                        }
+                    }
+
+                    PaginateSetPageObjects();
+                },
+                error: function (cc, bb, aa) { alert(aa); }
+            });
+        }
+
+        function moveFirstPage() { currentPageIndex = 0; displayObjects(); }
+        function moveLastPage() { currentPageIndex = pageCount - 1; displayObjects(); }
+        function movePreviousPage() { currentPageIndex--; displayObjects(); }
+        function moveNextPage() { currentPageIndex++; displayObjects(); }
+
+        $(document).ready(function () { displayObjects(); });
+    </script>
+    <!--Pagelist Sonu-->
+
+}

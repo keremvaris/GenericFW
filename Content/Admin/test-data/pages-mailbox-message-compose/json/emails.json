@@ -1,0 +1,12 @@
+[
+  { "value": 1, "text": "Ken Adams", "email": "ken@example.com"},
+  { "value": 2, "text": "Samantha Carter", "email": "samantha@example.com"},
+  { "value": 3, "text": "Jack O'Neill", "email": "jack@example.com"},
+  { "value": 4, "text": "Danielle Jackson", "email": "danielle@example.com"},
+  { "value": 5, "text": "Teal'c Jafar", "email": "tealc@example.com"},
+  { "value": 6, "text": "George Hammond", "email": "george@example.com"},
+  { "value": 7, "text": "Sylar Shock", "email": "sylar@example.com"},
+  { "value": 8, "text": "Walter Lock", "email": "walter@example.com"},
+  { "value": 9, "text": "Jay Felger", "email": "felger@example.com"},
+  { "value": 10, "text": "Bra'tac Chappa'ai", "email": "bratac@example.com"}
+]

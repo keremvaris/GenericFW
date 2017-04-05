@@ -1,0 +1,35 @@
+Samantha Carter;785.00|
+Jonas Quinn;750.11|
+George Hammond;549.00|
+Teal'c Jafar;401.21|
+Daniel Jackson;100.02
+||===============||
+Jonas Quinn;631.28|
+Samantha Carter;585.00|
+George Hammond;449.00|
+Daniel Jackson;200.02|
+Teal'c Jafar;101.21
+||===============||
+George Hammond;4490.34|
+Jonas Quinn;2631.28|
+Samantha Carter;585.00|
+Daniel Jackson;200.02|
+Teal'c Jafar;120.21
+||===============||
+Daniel Jackson;5008.21|
+George Hammond;4990.34|
+Jonas Quinn;3631.28|
+Samantha Carter;3585.00|
+Teal'c Jafar;2010.21
+||===============||
+Teal'c Jafar;20010.21|
+Daniel Jackson;15008.21|
+George Hammond;14990.34|
+Jonas Quinn;13631.28|
+Samantha Carter;13585.00
+||===============||
+Teal'c Jafar;150010.21|
+Daniel Jackson;105008.21|
+George Hammond;104990.34|
+Jonas Quinn;99802.28|
+Samantha Carter;56229.00

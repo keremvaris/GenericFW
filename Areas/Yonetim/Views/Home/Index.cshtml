@@ -1,0 +1,42 @@
+﻿
+@{
+    ViewBag.Title = "Hata Mesajı";
+}
+
+
+
+<div id="body-container">
+    <div id="right-column" class="highlight-color-red">
+        <div class="right-column-content">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="page-not-found highlight-color-red">
+                        <div class="not-found-icons highlight-color-red-icon">
+                            <span class="icon icon-number-five icon-size-large"></span>
+                            <span class="icon icon-number-zero icon-size-large"></span>
+                            <span class="icon icon-number-zero icon-size-large"></span>
+                        </div>
+                        <div class="not-found-title">
+                            Server Error
+                        </div>
+                        <div class="not-found-description">
+                            @*<p class="text-center ">@TempData["Mesaj"]</p>*@
+                            <div class="panel panel-danger">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">Hata Mesajı</h3>
+                                </div>
+                                <div class="panel-body">
+                                    @TempData["Mesaj"]
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+

@@ -1,0 +1,230 @@
+﻿
+@{
+    ViewBag.Title = "Kayıt Listesi";
+}
+
+@using GenericFW.Areas.Yonetim.GenericVM;
+@using GenericFW.DataAccessLayer;
+
+@model GenericListVM
+
+@{
+    var searchVM = Model.Page.SearchVM;
+
+}
+
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="block">
+            @using (@Html.BeginForm())
+            { <!--Yeni Kayıt Buton Search Alanı-->
+                <div class="block-content-outer">
+                    <div class="block-content-inner">
+                        <div class="table-responsive">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="main-text h2">
+                                        @Model.Meta.Caption.DisplayName
+
+                                    </div>
+                                    <a href="@Url.Action("Create",Model.Meta.ControllerName)" class="btn btn-success">
+                                        <span class="glyphicon glyphicon-plus-sign"> Yeni Kayıt</span>
+                                    </a>
+                                    <button type="submit" class="btn btn-info" onclick="location.href='@Url.Action("List",Model.Meta.ControllerName)'">
+                                        <span class="glyphicon glyphicon-refresh"> Yenile</span>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <table class="datatable table table-striped table-hover">
+                                        <thead>
+                                            <tr>
+                                                @foreach (var column in Model.Meta.Columns)
+                                                {
+                                                    var displayAttr = column.Display;
+                                                    var col = column.Property;
+
+                                                    if (displayAttr == null || !column.IsVisible || displayAttr.Name=="Id")
+                                                    {
+                                                        continue;
+                                                    }
+                                                    else
+                                                    {
+                                                        <th>@displayAttr.Name</th>
+                                                    }
+                                                }
+
+                                                <th>İşlemler</th>
+                                            </tr>
+
+                                        </thead>
+                                        <tbody>
+                                            <tr class="searchs">
+
+                                                @foreach (var column in Model.Meta.Columns)
+                                                {
+                                                    var displayAttr = column.Display;
+                                                    var col = column.Property;
+                                                    if (displayAttr == null || !column.IsVisible || displayAttr.Name == "Id")
+                                                    {
+                                                        continue;
+                                                    }
+                                                    <td>
+
+                                                        @{                                                        
+
+                                                            var tim = new TemplateItemModel { Model = searchVM, CurrentColumn = column, Mode = RenderMode.Create };
+                                                            var templateName = column.Template ?? column.InnerType.Name;
+                                                        }
+
+                                                        @Html.EditorFor(m => tim, templateName)
+                                                    </td>
+
+                                                            }
+                                                <td>
+
+                                                    <button type="submit" name="Search" class="btn btn-primary active" value="Ara">
+                                                        <span class="glyphicon glyphicon-search"> Ara</span>
+                                                    </button>
+
+                                                </td>
+
+                                            </tr>
+                                            @foreach (var row in Model.Items)
+                                            {
+                                                var key = row[Model.Meta.PrimaryColumn.Name];
+
+                                                <tr>
+                                                    @foreach (var column in Model.Meta.Columns)
+                                                    {
+                                                        var displayAttr = column.Display;
+                                                        var col = column.Property;
+                                                        if (displayAttr == null || !column.IsVisible || displayAttr.Name == "Id")
+                                                        {
+                                                            continue;
+                                                        }
+
+                                                        if (column.PrimaryTable != null)
+                                                        {
+
+                                                            var pkt = column.PrimaryTable;
+                                                            var result = Tools.Select<ListItem>
+                                                                                                (
+                                                            $"select {pkt.DisplayColumn.DisplayColumn} [Text], {pkt.PrimaryColumn.Name} [Id] from {pkt.ActualTableName}"
+                                                            );
+
+                                                            var sval = row[col.Name];
+
+                                                            var items = result.Select(k => new SelectListItem
+                                                            {
+
+                                                                Selected = k.Id.Equals(sval),
+                                                                Text = k.Text,
+                                                                Value = k.Id.ToString(),
+                                                            });
+                                                            if (sval != null)
+                                                            {
+                                                                <td>@items.First(x => x.Selected).Text</td>
+                                                            }
+                                                            else
+                                                            {
+                                                                <td>@row[col.Name]</td>
+                                                            }
+
+                                                        }
+                                                        else
+                                                        {
+                                                            <td>@row[col.Name]</td>
+                                                        }
+
+
+                                                    }
+                                                    <td>
+
+                                                        <div class="btn-group">
+                                                            <button data-toggle="dropdown" class="btn btn-warning dropdown-toggle" type="button">Detaylar <span class="caret"></span></button>
+                                                            <ul role="menu" class="dropdown-menu">
+                                                                <li><a href="@Url.Action("Edit",Model.Meta.ControllerName, new { id = key})">Düzenle</a></li>
+                                                                <li><a href="@Url.Action("Delete",Model.Meta.ControllerName, new { id = key })">Sil</a></li>
+                                                            </ul>
+                                                        </div>
+
+                                                    </td>
+                                                </tr>
+
+                                            }
+                                        </tbody>
+
+                                    </table>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <ul id="recordNav" class="pagination" style="float:right">
+                                                <li id="datatable-1_previous" tabindex="0" aria-controls="datatable-1">
+                                                    @Html.ActionLink("İlk Kayıt", "List", new { activePage = Model.Page.TotalRowCount - (Model.Page.TotalRowCount - 1) }, new { @class = "paginate_button previous disabled" })
+                                                </li>
+                                                <li id="datatable-1_previous" tabindex="0" aria-controls="datatable-1">
+                                                    @if (Model.Page.ActivePage == 1)
+                                                    {
+                                                        @Html.ActionLink("Önceki", "List", new { activePage = Model.Page.ActivePage }, new { @class = "paginate_button previous" })
+                                                    }
+                                                    else
+                                                    {
+                                                        @Html.ActionLink("Önceki", "List", new { activePage = Model.Page.ActivePage - 1 }, new { @class = "paginate_button previous" })
+                                                    }
+                                                </li>
+                                                <li tabindex="0" aria-controls="datatable-1" class="paginate_button active">
+                                                    @Html.ActionLink(Model.Page.ActivePage.ToString(), "List", new { activePage = Model.Page.ActivePage })
+                                                </li>
+                                                <li id="datatable-1_next" tabindex="0" aria-controls="datatable-1">
+                                                    @if (Model.Page.ActivePage == Model.Page.TotalRowCount)
+                                                    {
+                                                        @Html.ActionLink("Sonraki", "List", new { activePage = Model.Page.ActivePage }, new { @class = "paginate_button next " })
+                                                    }
+                                                    else
+                                                    {
+                                                        @Html.ActionLink("Sonraki", "List", new { activePage = Model.Page.ActivePage + 1 }, new { @class = "paginate_button next " })
+                                                    }
+
+
+                                                </li>
+                                                <li id="datatable-1_next" tabindex="0" aria-controls="datatable-1">
+
+                                                    @Html.ActionLink("Son Kayıt", "List", new { activePage = Model.Page.TotalRowCount }, new { @class = "paginate_button next " })
+                                                </li>
+                                                @Model.Page.ActivePage / @Model.Page.TotalRowCount
+                                            </ul>
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                                                            }     <!--Yeni Kayıt Buton Search Alanı Sonu-->
+        </div>
+    </div>
+
+    @section scriptsTop{
+
+        <!--Kayıt Düzenle Modal Sonu-->
+    }
+    @section head{
+        <link type="text/css" href="/Content/Admin/assets/css/optional/toastr.min.css" rel="stylesheet" />
+    }
+    @section scripts{
+        <script type="text/javascript" src="/Content/Admin/assets/js/optional/toastr.min.js"></script>
+        <script src="~/Content/jquery.validate.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function () {
+
+                $('form')
+                .validate();
+
+            });
+        </script>
+    }
+</div>

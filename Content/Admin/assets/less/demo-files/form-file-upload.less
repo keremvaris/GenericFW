@@ -1,0 +1,159 @@
+/**
+ * Form File Upload
+ */
+
+@import "../base.less";
+@import "../mixins.less";
+
+/* Customized Dropzone 1 */
+.dropzone#customized-dropzone{
+	background: @colorGrey1;
+	border: 2px solid @colorWhite;
+	-webkit-border-radius: 75px !important;
+	-moz-border-radius: 75px !important;
+	border-radius: 75px !important;
+	height: 150px;
+	min-height: 0;
+	min-width: 0;
+	opacity: 1;
+	width: 150px;
+	margin: 0 auto;
+	overflow: hidden;
+	-webkit-transition: all 0.2s;
+	-moz-transition: all 0.2s;
+	-o-transition: all 0.2s;
+	transition: all 0.2s;
+}
+.dropzone#customized-dropzone.dz-drag-hover,
+.dropzone#customized-dropzone:hover,
+.dropzone#customized-dropzone:focus{
+	background: @circloidActiveColor;
+	width: 100%;
+	  -webkit-border-radius: 5px !important;
+	  -moz-border-radius: 5px !important;
+	  border-radius: 5px !important;
+}
+.dropzone#customized-dropzone .dz-message{
+	margin-top: 19px;
+	opacity: 1;
+	text-align: center;
+}
+.dropzone#customized-dropzone.dz-drag-hover .dz-message,
+.dropzone#customized-dropzone:hover .dz-message,
+.dropzone#customized-dropzone:focus .dz-message{
+	margin-top: 12px;
+	color: @colorWhite;
+}
+.dropzone#customized-dropzone .dz-message .icon{
+	font-size: 48px;
+}
+.dropzone#customized-dropzone.dz-clickable .dz-message .icon{
+	cursor: pointer;
+}
+.dropzone#customized-dropzone .dz-message .main-text,
+.dropzone#customized-dropzone .dz-message .main-text{
+	display: none;
+	color: @colorWhite;
+	font-size: 15px;
+	font-style: italic;
+}
+.dropzone#customized-dropzone.dz-drag-hover .dz-message .icon,
+.dropzone#customized-dropzone:hover .dz-message .icon,
+.dropzone#customized-dropzone:focus .dz-message .icon{
+	color: @colorWhite;
+}
+.dropzone#customized-dropzone.dz-drag-hover .dz-message .main-text,
+.dropzone#customized-dropzone:hover .dz-message .main-text,
+.dropzone#customized-dropzone:focus .dz-message .main-text{
+	display: block;
+}
+#customized-dropzone-results{
+	border-left: 1px solid @colorGrey3;
+	height: 150px;
+	overflow: hidden;
+	padding: 10px;
+	width: 100%;
+}
+#customized-dropzone-results > div{
+}
+#customized-dropzone-results > div > div{
+}
+#customized-dropzone-results .dz-filename{
+}
+#customized-dropzone-results .dz-status{
+	float: left;
+}
+#customized-dropzone-results .dz-success-mark,
+#customized-dropzone-results .dz-error-mark{
+	display: none;
+}
+#customized-dropzone-results .dz-success .dz-success-mark{
+	color: @baseColorGreen;
+	display: block;
+}
+#customized-dropzone-results .dz-error .dz-error-mark{
+	color: @baseColorRed;
+	display: block;
+}
+#customized-dropzone-results .dz-error-message{
+	color: @baseColorRed;
+	margin-left: 30px;
+}
+
+/* Customized Dropzone 2 (Alt) */
+.dropzone#customized-dropzone-2{
+	background: @circloidActiveColor;
+	color: @colorWhite;
+	text-align: center;
+	border: @highlightBorderThinkness dashed @colorWhite;
+	height: 150px;
+	min-height: 0;
+	min-width: 0;
+	opacity: 0.7;
+	margin: 0 auto;
+	overflow: hidden;
+	-webkit-transition: all 0.2s;
+	-moz-transition: all 0.2s;
+	-o-transition: all 0.2s;
+	transition: all 0.2s;
+  -webkit-border-radius: 5px !important;
+  -moz-border-radius: 5px !important;
+  border-radius: 5px !important;
+}
+.dropzone#customized-dropzone-2.dz-drag-hover,
+.dropzone#customized-dropzone-2:hover,
+.dropzone#customized-dropzone-2:focus{
+	opacity: 1;
+}
+.dropzone#customized-dropzone-2 .dz-message{
+	margin-top: 41px;
+}
+#customized-dropzone-results-2 .dz-preview .dz-custom-file-progress .progress{
+	margin-top: 10px;
+}
+#customized-dropzone-results-2 .dz-preview .dz-custom-file-status .dz-success-mark,
+#customized-dropzone-results-2 .dz-preview .dz-custom-file-status .dz-error-mark{
+	float: left;
+	display: none;
+}
+#customized-dropzone-results-2 .dz-preview .dz-custom-file-status.dz-success .dz-success-mark,
+#customized-dropzone-results-2 .dz-preview .dz-custom-file-status.dz-error .dz-error-mark{
+	display: block;
+}
+#customized-dropzone-results-2 .dz-preview .dz-custom-file-status.dz-success{
+	color: @baseColorGreen;
+}
+#customized-dropzone-results-2 .dz-preview .dz-custom-file-status.dz-error{
+	color: @baseColorRed;
+}
+#customized-dropzone-results-2 .dz-preview .dz-custom-file-status.dz-success .dz-success-mark .icon,
+#customized-dropzone-results-2 .dz-preview .dz-custom-file-status.dz-error .dz-error-mark .icon{
+	float: left;
+	display: block;
+}
+#customized-dropzone-results-2 .dz-preview .dz-custom-file-status.dz-success .dz-success-mark .dz-success-message,
+#customized-dropzone-results-2 .dz-preview .dz-custom-file-status.dz-error .dz-error-mark .dz-error-message{
+	margin-left: 32px;
+	margin-top: 3px;
+	display: block;
+}

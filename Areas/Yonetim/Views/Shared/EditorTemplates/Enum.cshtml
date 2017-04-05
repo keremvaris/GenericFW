@@ -1,0 +1,26 @@
+﻿@using GenericFW.Areas.Yonetim.GenericVM
+@using System.Linq;
+	@model TemplateItemModel
+	@{
+        var col = Model.CurrentColumn;
+        var prop = col.Property;
+        var modelData = Model.Mode == RenderMode.Create ? string.Empty : Model.Model.Data[prop.Name];
+        
+        var list = new List<SelectListItem>();
+       
+
+        list.AddRange(col.ManualLookup.Select(i => new SelectListItem { Text = i.Text, Value = i.Id.ToString() }));
+        ViewData.TemplateInfo.HtmlFieldPrefix = "";
+	}
+
+	@if (col.Required)
+	{
+		@Html.DropDownList(prop.Name, list, "-Seçiniz-", new Dictionary<string, object> { { "class", "form-control" },
+       { "required", "required" }, { "data-val", "true" }, { "placeholder", @col.Display.Name },
+       { "data-val-required", @col.Display.Name + " Alanı Zorunlu!" } });
+        <span class="col-sm-3 control-label text-danger" data-valmsg-for="@prop.Name" data-valmsg-replace="true"></span>
+    }
+    else
+    {
+			@Html.DropDownList(prop.Name, list, "-Seçiniz-", new { @class = "form-control" });
+	}

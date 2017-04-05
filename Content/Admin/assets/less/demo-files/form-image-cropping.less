@@ -1,0 +1,48 @@
+/**
+ * Form Image Cropping
+ */
+
+@import "../base.less";
+@import "../mixins.less";
+
+/*
+Apply these styles only when #preview-pane has
+been placed within the Jcrop widget
+*/
+.jcrop-holder{
+	padding: 11px;
+	border: 1px solid fadeout(@colorBlack, 80%);
+	background-color: @colorGrey1;
+}
+.jcrop-holder > img{
+	margin: 11px;
+}
+.jcrop-holder #preview-pane {
+	border: 1px solid fadeout(@colorBlack, 70%);
+    display: block;
+    padding: 11px;
+    position: absolute;
+    right: -300px;
+    top: 0;
+    z-index: 2000;
+    width: 274px;
+	.boxShadow(1px, 4px, 4px, fadeout(@colorBlack, 80%));
+	.roundedCorners(0, 0, 5px, 5px);
+}
+
+/*
+The Javascript code will set the aspect ratio of the crop
+area based on the size of the thumbnail preview,
+specified here
+*/
+#preview-pane .preview-container {
+	width: 250px;
+	height: 170px;
+	overflow: hidden;
+}
+#coords-box{
+	margin: 0 0 0 20px;
+}
+#coords-box form{
+	margin: 20px 0 0 0;
+}
