@@ -1,7 +1,7 @@
 # GenericFW
 Belli bir notasyonda yazılan modeli reflection ve metadata kullanarak CRUD işlemlerin yapılmasına hazır hale getiren bir Asp.Net MVC Projesidir.
 
-<img src="http://keremvaris.com/image/fw.png" width="800" height="600"/>
+<img src="http://keremvaris.com/image/gfw.png" width="800" height="600"/>
 Web sitelerinin Yönetici panelleri ve / veya orta düzeyde takip
 yazılımları geliştirmede faydalı olabilecek bir micro orm denilebilir. Default
 olarak SQLite desteğiyle gelir Entity Frameworkün desteklediği tüm
