@@ -1,6 +1,6 @@
 ﻿
 @{
-    ViewBag.Title = "Kayıt Listesi";
+    ViewBag.Title = @Model.Meta.Caption.DisplayName + " Kayıt Listesi";
 }
 
 @using GenericFW.Areas.Yonetim.GenericVM;
@@ -14,55 +14,91 @@
 }
 
 
-<div class="row">
-    <div class="col-md-12">
+<div>
+    <div>
         <div class="block">
             @using (@Html.BeginForm())
             { <!--Yeni Kayıt Buton Search Alanı-->
-                <div class="block-content-outer">
-                    <div class="block-content-inner">
-                        <div class="table-responsive">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="main-text h2">
-                                        @Model.Meta.Caption.DisplayName
+                <div class="portlet box grey">
+                    <div class="portlet-title">
+                        <h4><i class="icon-reorder"></i>@Model.Meta.Caption.DisplayName Listesi</h4>
+                        <div class="actions">
+                            <a href="javascript:;" class="collapse"></a>
+                            <a href="javascript:;" class="reload"></a>
+                        </div>
+                    </div>
+                    <div class="portlet-body">
+                        <div class="clearfix">
+                            <a href="@Url.Action("Create",Model.Meta.ControllerName)" class="btn blue">
+                                <span class="icon-plus"> Yeni Kayıt</span>
+                            </a>
+                            <button type="submit" class="btn green blue" onclick="location.href='@Url.Action("List",Model.Meta.ControllerName)'">
+                                <span class="icon-refresh"> Yenile</span>
+                            </button>
 
-                                    </div>
-                                    <a href="@Url.Action("Create",Model.Meta.ControllerName)" class="btn btn-success">
-                                        <span class="glyphicon glyphicon-plus-sign"> Yeni Kayıt</span>
-                                    </a>
-                                    <button type="submit" class="btn btn-info" onclick="location.href='@Url.Action("List",Model.Meta.ControllerName)'">
-                                        <span class="glyphicon glyphicon-refresh"> Yenile</span>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <table class="datatable table table-striped table-hover">
-                                        <thead>
-                                            <tr>
-                                                @foreach (var column in Model.Meta.Columns)
+                        </div>
+
+
+                        <div class="clearfix">
+                            <div class="col-md-12">
+                                <table class="table table-striped table-bordered table-hover" >
+                                    <thead>
+                                        <tr>
+                                            @foreach (var column in Model.Meta.Columns)
+                                            {
+                                                var displayAttr = column.Display;
+                                                var col = column.Property;
+
+                                                if (displayAttr == null || !column.IsVisible || displayAttr.Name == "Id")
                                                 {
-                                                    var displayAttr = column.Display;
-                                                    var col = column.Property;
-
-                                                    if (displayAttr == null || !column.IsVisible || displayAttr.Name=="Id")
-                                                    {
-                                                        continue;
-                                                    }
-                                                    else
-                                                    {
-                                                        <th>@displayAttr.Name</th>
-                                                    }
+                                                    continue;
                                                 }
+                                                else
+                                                {
+                                                    <th class="hidden-480">@displayAttr.Name</th>
+                                                }
+                                            }
 
-                                                <th>İşlemler</th>
-                                            </tr>
+                                            <th class="hidden-480">İşlemler</th>
+                                        </tr>
 
-                                        </thead>
-                                        <tbody>
-                                            <tr class="searchs">
+                                    </thead>
+                                    <tbody>
+                                        <tr class="searchs">
 
+                                            @foreach (var column in Model.Meta.Columns)
+                                            {
+                                                var displayAttr = column.Display;
+                                                var col = column.Property;
+                                                if (displayAttr == null || !column.IsVisible || displayAttr.Name == "Id")
+                                                {
+                                                    continue;
+                                                }
+                                                <td>
+
+                                                    @{
+
+                                                        var tim = new TemplateItemModel { Model = searchVM, CurrentColumn = column, Mode = RenderMode.Create };
+                                                        var templateName = column.Template ?? column.InnerType.Name;
+                                                    }
+
+                                                    @Html.EditorFor(m => tim, templateName)
+                                                </td>
+                                             }
+                                            <td>
+
+                                                <button type="submit" name="Search" class="btn red" value="Ara">
+                                                    <span class="icon-search"> Ara&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;      </span>
+                                                </button>
+
+                                            </td>
+
+                                        </tr>
+                                        @foreach (var row in Model.Items)
+                                        {
+                                            var key = row[Model.Meta.PrimaryColumn.Name];
+
+                                            <tr>
                                                 @foreach (var column in Model.Meta.Columns)
                                                 {
                                                     var displayAttr = column.Display;
@@ -71,107 +107,78 @@
                                                     {
                                                         continue;
                                                     }
-                                                    <td>
 
-                                                        @{                                                        
-
-                                                            var tim = new TemplateItemModel { Model = searchVM, CurrentColumn = column, Mode = RenderMode.Create };
-                                                            var templateName = column.Template ?? column.InnerType.Name;
-                                                        }
-
-                                                        @Html.EditorFor(m => tim, templateName)
-                                                    </td>
-
-                                                            }
-                                                <td>
-
-                                                    <button type="submit" name="Search" class="btn btn-primary active" value="Ara">
-                                                        <span class="glyphicon glyphicon-search"> Ara</span>
-                                                    </button>
-
-                                                </td>
-
-                                            </tr>
-                                            @foreach (var row in Model.Items)
-                                            {
-                                                var key = row[Model.Meta.PrimaryColumn.Name];
-
-                                                <tr>
-                                                    @foreach (var column in Model.Meta.Columns)
+                                                    if (column.PrimaryTable != null)
                                                     {
-                                                        var displayAttr = column.Display;
-                                                        var col = column.Property;
-                                                        if (displayAttr == null || !column.IsVisible || displayAttr.Name == "Id")
+
+                                                        var pkt = column.PrimaryTable;
+                                                        var result = Tools.Select<ListItem>
+                                                                                            (
+                                                        $"select {pkt.DisplayColumn.DisplayColumn} [Text], {pkt.PrimaryColumn.Name} [Id] from {pkt.ActualTableName}"
+                                                        );
+
+                                                        var sval = row[col.Name];
+
+                                                        var items = result.Select(k => new SelectListItem
                                                         {
-                                                            continue;
-                                                        }
 
-                                                        if (column.PrimaryTable != null)
+                                                            Selected = k.Id.Equals(sval),
+                                                            Text = k.Text,
+                                                            Value = k.Id.ToString(),
+                                                        });
+                                                        if (sval != null)
                                                         {
-
-                                                            var pkt = column.PrimaryTable;
-                                                            var result = Tools.Select<ListItem>
-                                                                                                (
-                                                            $"select {pkt.DisplayColumn.DisplayColumn} [Text], {pkt.PrimaryColumn.Name} [Id] from {pkt.ActualTableName}"
-                                                            );
-
-                                                            var sval = row[col.Name];
-
-                                                            var items = result.Select(k => new SelectListItem
-                                                            {
-
-                                                                Selected = k.Id.Equals(sval),
-                                                                Text = k.Text,
-                                                                Value = k.Id.ToString(),
-                                                            });
-                                                            if (sval != null)
-                                                            {
-                                                                <td>@items.First(x => x.Selected).Text</td>
-                                                            }
-                                                            else
-                                                            {
-                                                                <td>@row[col.Name]</td>
-                                                            }
-
+                                                            <td>@items.First(x => x.Selected).Text</td>
                                                         }
                                                         else
                                                         {
                                                             <td>@row[col.Name]</td>
                                                         }
 
-
                                                     }
-                                                    <td>
+                                                    else
+                                                    {
+                                                        <td>@row[col.Name]</td>
+                                                    }
 
-                                                        <div class="btn-group">
-                                                            <button data-toggle="dropdown" class="btn btn-warning dropdown-toggle" type="button">Detaylar <span class="caret"></span></button>
-                                                            <ul role="menu" class="dropdown-menu">
-                                                                <li><a href="@Url.Action("Edit",Model.Meta.ControllerName, new { id = key})">Düzenle</a></li>
-                                                                <li><a href="@Url.Action("Delete",Model.Meta.ControllerName, new { id = key })">Sil</a></li>
-                                                            </ul>
-                                                        </div>
 
-                                                    </td>
-                                                </tr>
+                                                }
+                                                <td>
 
-                                            }
-                                        </tbody>
+                                                    <div class="btn-group">
+                                                        <button data-toggle="dropdown" class="btn yellow dropdown-toggle" type="button"><i class="icon-gift m-icon-white"></i> Detaylar <span class="caret  m-icon-white"></span></button>
+                                                        <ul role="menu" class="dropdown-menu">
+                                                            <li><a href="@Url.Action("Edit",Model.Meta.ControllerName, new { id = key})"><i class="icon-edit black"></i> Düzenle</a></li>
+                                                            <li><a href="@Url.Action("Delete",Model.Meta.ControllerName, new { id = key })"><i class="icon-trash black"></i> Sil</a></li>
+                                                        </ul>
+                                                    </div>
 
-                                    </table>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <ul id="recordNav" class="pagination" style="float:right">
+                                                </td>
+                                            </tr>
+
+                                        }
+                                    </tbody>
+
+                                </table>
+
+                                <div class="row-fluid">
+                                    <div class="span6">
+                                        <div class="dataTables_info" id="sample_3_info">Sayfa @Model.Page.ActivePage / @Model.Page.TotalRowCount Toplam @Model.Page.TotalRowCount Kayıt</div>
+                                    </div>
+                                    <div class="span6">
+                                        <div class="dataTables_paginate paging_bootstrap pagination">
+                                            <ul>
                                                 <li id="datatable-1_previous" tabindex="0" aria-controls="datatable-1">
-                                                    @Html.ActionLink("İlk Kayıt", "List", new { activePage = Model.Page.TotalRowCount - (Model.Page.TotalRowCount - 1) }, new { @class = "paginate_button previous disabled" })
+                                                    @Html.ActionLink("İlk Kayıt", "List", new { activePage = Model.Page.TotalRowCount - (Model.Page.TotalRowCount - 1) }, new { @class = "prev disabled" })
                                                 </li>
                                                 <li id="datatable-1_previous" tabindex="0" aria-controls="datatable-1">
                                                     @if (Model.Page.ActivePage == 1)
                                                     {
-                                                        @Html.ActionLink("Önceki", "List", new { activePage = Model.Page.ActivePage }, new { @class = "paginate_button previous" })
+                                                        @Html.ActionLink(" ← Geri", "List", new { activePage = Model.Page.ActivePage }, new { @class = "prev" })
                                                     }
                                                     else
                                                     {
-                                                        @Html.ActionLink("Önceki", "List", new { activePage = Model.Page.ActivePage - 1 }, new { @class = "paginate_button previous" })
+                                                        @Html.ActionLink(" ← Geri", "List", new { activePage = Model.Page.ActivePage - 1 }, new { @class = "prev" })
                                                     }
                                                 </li>
                                                 <li tabindex="0" aria-controls="datatable-1" class="paginate_button active">
@@ -180,31 +187,30 @@
                                                 <li id="datatable-1_next" tabindex="0" aria-controls="datatable-1">
                                                     @if (Model.Page.ActivePage == Model.Page.TotalRowCount)
                                                     {
-                                                        @Html.ActionLink("Sonraki", "List", new { activePage = Model.Page.ActivePage }, new { @class = "paginate_button next " })
+                                                        @Html.ActionLink("ileri → ", "List", new { activePage = Model.Page.ActivePage }, new { @class = "next " })
                                                     }
                                                     else
                                                     {
-                                                        @Html.ActionLink("Sonraki", "List", new { activePage = Model.Page.ActivePage + 1 }, new { @class = "paginate_button next " })
+                                                        @Html.ActionLink("ileri → ", "List", new { activePage = Model.Page.ActivePage + 1 }, new { @class = "next " })
                                                     }
 
 
                                                 </li>
                                                 <li id="datatable-1_next" tabindex="0" aria-controls="datatable-1">
 
-                                                    @Html.ActionLink("Son Kayıt", "List", new { activePage = Model.Page.TotalRowCount }, new { @class = "paginate_button next " })
+                                                    @Html.ActionLink("Son Kayıt", "List", new { activePage = Model.Page.TotalRowCount }, new { @class = "next " })
                                                 </li>
-                                                @Model.Page.ActivePage / @Model.Page.TotalRowCount
                                             </ul>
-
-
                                         </div>
                                     </div>
                                 </div>
+
                             </div>
                         </div>
+
                     </div>
                 </div>
-                                                            }     <!--Yeni Kayıt Buton Search Alanı Sonu-->
+                                                        }     <!--Yeni Kayıt Buton Search Alanı Sonu-->
         </div>
     </div>
 
@@ -213,18 +219,18 @@
         <!--Kayıt Düzenle Modal Sonu-->
     }
     @section head{
-        <link type="text/css" href="/Content/Admin/assets/css/optional/toastr.min.css" rel="stylesheet" />
+        @*<link type="text/css" href="/Content/Admin/assets/css/optional/toastr.min.css" rel="stylesheet" />*@
     }
     @section scripts{
-        <script type="text/javascript" src="/Content/Admin/assets/js/optional/toastr.min.js"></script>
-        <script src="~/Content/jquery.validate.js"></script>
-        <script type="text/javascript">
-            $(document).ready(function () {
+        @*<script type="text/javascript" src="/Content/Admin/assets/js/optional/toastr.min.js"></script>*@
+        @*<script src="~/Content/jquery.validate.js"></script>*@
+        @*<script type="text/javascript">
+        $(document).ready(function () {
 
-                $('form')
-                .validate();
+            $('form')
+            .validate();
 
-            });
-        </script>
+        });
+    </script>*@
     }
 </div>

@@ -8,11 +8,18 @@
    ViewData.TemplateInfo.HtmlFieldPrefix = "";
 
 }
- 
+
+ @if (Model.Mode == RenderMode.Readonly)
+ {
+    <span>@modelData</span>
+ }
+ else
+ {
     @Html.CheckBox(prop.Name, (bool)@modelData, new { @class = "checkbox" })
+ }
 
 
-    
+
 
 
   

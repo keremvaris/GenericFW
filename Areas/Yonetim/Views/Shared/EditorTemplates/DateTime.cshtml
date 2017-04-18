@@ -7,6 +7,14 @@
 	var prop = col.Property;
 	var modelData = Model.Model.Data[prop.Name];
 }
-<input type="datetime" id="@prop.Name" placeholder="@col.Display.Name" class="form-control" name="@prop.Name" value="@modelData" />
+
+@if (Model.Mode == RenderMode.Readonly)
+{
+    <span>@modelData</span>
+}
+else
+{
+<input type="datetime" id="@prop.Name" placeholder="@col.Display.Name" data-trigger='hover' data-content='Lütfen @col.Display.Name giriniz.' data-original-title='@col.Display.Name' class="span6 m-wrap popovers" name="@prop.Name" value="@modelData" />
 <span class="col-sm-3 control-label text-danger" data-valmsg-for="@prop.Name" data-valmsg-replace="true"></span>
 
+}

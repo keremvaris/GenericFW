@@ -16,6 +16,9 @@ namespace GenericFW
 			AreaRegistration.RegisterAllAreas();
 			RouteConfig.RegisterRoutes(RouteTable.Routes);
 
+            ModelBinders.Binders.Remove(typeof(byte[]));
+            ModelBinders.Binders.Add(typeof(byte[]), new UploadModelBinder());
+            ModelBinders.Binders.DefaultBinder = new CustomModelBinder();
 
             //using (var repo = new Repository<User>())
             //{
@@ -24,11 +27,11 @@ namespace GenericFW
             //    repo.Update(user);
             //};
 
-			//using (var db = new DataAccessLayer.DatabaseContext())
-			//{
-			//	db.Users.ToList().ForEach(c => db.Users.Remove(c));
-			//	db.SaveChanges();
-			//}
-		}
+            //using (var db = new DataAccessLayer.DatabaseContext())
+            //{
+            //	db.Users.ToList().ForEach(c => db.Users.Remove(c));
+            //	db.SaveChanges();
+            //}
+        }
 	}
 }

@@ -1,0 +1,38 @@
+﻿@using GenericFW.Areas.Yonetim.GenericVM
+@using System.ComponentModel.DataAnnotations
+@using GenericFW.Attr
+@model TemplateItemModel
+
+@{
+    var col = Model.CurrentColumn;
+    var prop = col.Property;
+    byte[] modelData = Model.Mode == RenderMode.Create ? null : (byte[])Model.Model.Data[prop.Name];
+    var fileExt = string.Empty;
+    if (Model.Model.Data.ContainsKey(prop.Name + "Ext"))
+    {
+        fileExt = (string)Model.Model.Data[prop.Name + "Ext"];
+    }
+}
+
+
+@if (Model.Mode == RenderMode.Readonly)
+{
+    if (UploadUtils.IsImage(fileExt))
+    {
+        var base64 = Convert.ToBase64String(modelData);
+        var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+
+        <img src="@imgSrc" width="40" height="40" />
+    }
+    else
+    {
+
+    }
+}
+else if (col.DataType.DataType == DataType.Upload)
+{
+    <input type="file" class="span6 m-wrap popovers" name="@prop.Name" value="@modelData" id="@prop.Name">
+    <br>
+    <span class="label label-important">NOT!</span>
+    <span>Desteklenen dosya biçimleri jpeg, jpg, gif, ve png </span>
+}

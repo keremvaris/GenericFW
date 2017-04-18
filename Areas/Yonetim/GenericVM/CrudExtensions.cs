@@ -207,5 +207,10 @@ namespace GenericFW.Areas.Yonetim.GenericVM
 
             return result;
         }
+
+        public static TableMeta Get(Type type)
+        {
+            return _metaCache[type];
+        }
 	}
 }

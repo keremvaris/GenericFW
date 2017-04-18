@@ -1,22 +1,35 @@
 ﻿<!DOCTYPE html>
-<html lang="tr">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="/Content/Admin/assets/images/required/ico/favicon.png">
-    <!-- Fav and touch icons -->
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/Content/Admin/assets/images/required/ico/apple-touch-icon-144-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/Content/Admin/assets/images/required/ico/apple-touch-icon-114-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/Content/Admin/assets/images/required/ico/apple-touch-icon-72-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" href="/Content/Admin/assets/images/required/ico/apple-touch-icon-57-precomposed.png">
-    <link rel="shortcut icon" href="/Content/Admin/assets/images/required/ico/favicon.png">
 
-    <title>@ViewBag.Title</title>
-    <link href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" rel="stylesheet" />
-    <script src="~/Content/Admin/tinymce/tinymce.min.js"></script>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head runat="server">
+    <title>GenericFW | @ViewBag.Title</title>
+    <link href="~/Areas/Theme/assets/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Areas/Theme/assets/css/metro.css" rel="stylesheet" />
+    <link href="~/Areas/Theme/assets/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" />
+    <link href="~/Areas/Theme/assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
+    <link href="~/Areas/Theme/assets/css/style.css" rel="stylesheet" />
+    <link href="~/Areas/Theme/assets/css/style_responsive.css" rel="stylesheet" />
+    <link href="~/Areas/Theme/assets/css/style_blue.css" rel="stylesheet" id="style_color" />
+    <link rel="stylesheet" type="text/css" href="~/Areas/Theme/assets/gritter/css/jquery.gritter.css" />
+    <link rel="stylesheet" type="text/css" href="~/Areas/Theme/assets/uniform/css/uniform.default.css" />
+    <link rel="shortcut icon" href="~/Areas/Theme/favicon.ico" />
+    <link href="~/Areas/Theme/assets/fancybox/source/jquery.fancybox.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="~/Areas/Theme/assets/chosen-bootstrap/chosen/chosen.css" />
+    <link rel="stylesheet" href="~/Areas/Theme/assets/data-tables/DT_bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="~/Areas/Theme/assets/bootstrap-wysihtml5/bootstrap-wysihtml5.css" />
+    <link rel="stylesheet" type="text/css" href="~/Areas/Theme/assets/bootstrap-datepicker/css/datepicker.css" />
+    <link rel="stylesheet" type="text/css" href="~/Areas/Theme/assets/bootstrap-timepicker/compiled/timepicker.css" />
+    <link rel="stylesheet" type="text/css" href="~/Areas/Theme/assets/bootstrap-colorpicker/css/colorpicker.css" />
+    <link rel="stylesheet" href="~/Areas/Theme/assets/bootstrap-toggle-buttons/static/stylesheets/bootstrap-toggle-buttons.css" />
+    <link rel="stylesheet" type="text/css" href="~/Areas/Theme/assets/bootstrap-daterangepicker/daterangepicker.css" />
+
+    @*   Video Upload *@
+    <link href="~/Areas/Theme/Scripts/AjaxUpload/fileuploader.css" rel="stylesheet" type="text/css" />
+    <script src="~/Areas/Theme/Scripts/AjaxUpload/fileuploader.js" type="text/javascript"></script>
+    <script src="~/Areas/Theme/Scripts/jquery-1.5.2.min.js" type="text/javascript"></script>
+    <script src="~/Areas/Theme/SystemFiles/flowplayer/example/flowplayer-3.2.6.min.js" type="text/javascript"></script>
+    @*   Video Upload *@
+    <script src="~/Areas/Theme/assets/tinymce/tinymce.min.js"></script>
 
     <script>
         tinymce.init({
@@ -80,724 +93,574 @@
             ]
 
         });</script>
-    <!-- Required CSS Files -->
-    <link type="text/css" href="/Content/Admin/assets/css/required/bootstrap/bootstrap.min.css" rel="stylesheet">
-    <link href='http://fonts.googleapis.com/css?family=Roboto:400,300&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
-    <link type="text/css" href="/Content/Admin/assets/js/required/jquery-ui-1.11.0.custom/jquery-ui.min.css" rel="stylesheet" />
-    <link type="text/css" href="/Content/Admin/assets/js/required/jquery-ui-1.11.0.custom/jquery-ui.structure.min.css" rel="stylesheet" />
-    <link type="text/css" href="/Content/Admin/assets/js/required/jquery-ui-1.11.0.custom/jquery-ui.theme.min.css" rel="stylesheet" />
-    <link type="text/css" href="/Content/Admin/assets/css/required/mCustomScrollbar/jquery.mCustomScrollbar.min.css" rel="stylesheet" />
-    <link type="text/css" href="/Content/Admin/assets/css/required/icheck/all.css" rel="stylesheet" />
-    <link type="text/css" href="/Content/Admin/assets/fonts/metrize-icons/styles-metrize-icons.css" rel="stylesheet">
+    <script type="text/javascript">
+         /* <![CDATA[ */
+         var PROGRESS_INTERVAL = 500;
+         var PROGRESS_COLOR = '#000080';
 
-    <!-- Optional JS Files -->
-    <link type="text/css" href="/Content/Admin/assets/css/optional/jqvmap/jqvmap.css" rel="stylesheet" />
-    <link type="text/css" href="/Content/Admin/assets/css/optional/jqvmap/circloid-jqvmap.css" rel="stylesheet" />
-    <link type="text/css" href="/Content/Admin/assets/css/optional/fullcalendar/fullcalendar.min.css" rel="stylesheet" />
-    <link type="text/css" href="/Content/Admin/assets/css/optional/fullcalendar/circloid-fullcalendar.css" rel="stylesheet" />
-    <link type="text/css" href="/Content/Admin/assets/css/optional/fullcalendar/fullcalendar.print.css" rel="stylesheet" media="print" />
-    <link type="text/css" href="/Content/Admin/assets/css/optional/bootstrapValidator.min.css" rel="stylesheet" />
-    <link type="text/css" href="/Content/Admin/assets/css/optional/toastr.min.css" rel="stylesheet" />
-    <!-- add CSS files here -->
-    <!-- More Required CSS Files -->
-    <link type="text/css" href="/Content/Admin/assets/css/styles-core.css" rel="stylesheet" />
-    <link type="text/css" href="/Content/Admin/assets/css/styles-core-responsive.css" rel="stylesheet" />
+         var _divFrame;
+         var _divUploadMessage;
+         var _divUploadProgress;
+         var _ifrPhoto;
 
-    <link type="text/css" href="/Content/Admin/assets/css/styles-core.css" rel="stylesheet" />
-    <link type="text/css" href="/Content/Admin/assets/css/styles-core-responsive.css" rel="stylesheet" />
+         var _loopCounter = 1;
+         var _maxLoop = 10;
+         var _photoUploadProgressTimer;
 
-    <!-- Demo CSS Files -->
-    <link type="text/css" href="/Content/Admin/assets/css/demo-files/pages-404-500.css" rel="stylesheet" />
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="/Content/Admin/assets/js/required/misc/ie10-viewport-bug-workaround.js"></script>
+         function initPhotoUpload() {
+             _divFrame = document.getElementById('divFrame');
+             _divUploadMessage = document.getElementById('divUploadMessage');
+             _divUploadProgress = document.getElementById('divUploadProgress');
+             _ifrPhoto = document.getElementById('ifrPhoto');
 
-    <!--[if IE 7]>
-    <link type="text/css" href="/Content/Admin/assets/css/required/misc/style-ie7.css" rel="stylesheet">
-    <script type="text/javascript" src="/Content/Admin/assets/fonts/lte-ie7.js"></script>
-    <![endif]-->
-    <!--[if IE 8]>
-    <link type="text/css" href="/Content/Admin/assets/css/required/misc/style-ie8.css" rel="stylesheet">
-    <![endif]-->
-    <!--[if lte IE 8]>
-    <script type="text/javascript" src="/Content/Admin/assets/css/required/misc/excanvas.min.js"></script>
-    <![endif]-->
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
+             var btnUpload = _ifrPhoto.contentWindow.document.getElementById('btnUpload');
+
+             btnUpload.onclick = function (event) {
+                 var filPhoto = _ifrPhoto.contentWindow.document.getElementById('filPhoto');
+
+                 //Baisic validation for Photo
+                 _divUploadMessage.style.display = 'none';
+
+                 if (filPhoto.value.length == 0) {
+                     _divUploadMessage.innerHTML = '<span style=\"color:#ff0000\">Lütfen dosyanızı seçiniz.</span>';
+                     _divUploadMessage.style.display = '';
+                     filPhoto.focus();
+                     return;
+                 }
+
+                 var regExp = /^(([a-zA-Z]:)|(\\{2}\w+)\$?)(\\(\w[\w].*))(.jpg|.JPG|.gif|.GIF|.png|.PNG|.bmp|.BMP)$/;
+
+                 if (!regExp.test(filPhoto.value)) //Somehow the expression does not work in Opera
+                 {
+                     _divUploadMessage.innerHTML = '<span style=\"color:#ff0000\">Geçersiz dosya biçimi. Desteklenen dosya biçimleri jpg, gif, png ve bmp.</span>';
+                     _divUploadMessage.style.display = '';
+                     filPhoto.focus();
+                     return;
+                 }
+
+                 beginPhotoUploadProgress();
+                 _ifrPhoto.contentWindow.document.getElementById('photoUpload').submit();
+                 _divFrame.style.display = 'none';
+             }
+         }
+
+         function beginPhotoUploadProgress() {
+             _divUploadProgress.style.display = '';
+             clearPhotoUploadProgress();
+             _photoUploadProgressTimer = setTimeout(updatePhotoUploadProgress, PROGRESS_INTERVAL);
+         }
+
+         function clearPhotoUploadProgress() {
+             for (var i = 1; i <= _maxLoop; i++) {
+                 document.getElementById('tdProgress' + i).style.backgroundColor = 'transparent';
+             }
+
+             document.getElementById('tdProgress1').style.backgroundColor = PROGRESS_COLOR;
+             _loopCounter = 1;
+         }
+
+         function updatePhotoUploadProgress() {
+             _loopCounter += 1;
+
+             if (_loopCounter <= _maxLoop) {
+                 document.getElementById('tdProgress' + _loopCounter).style.backgroundColor = PROGRESS_COLOR;
+             }
+             else {
+                 clearPhotoUploadProgress();
+             }
+
+             if (_photoUploadProgressTimer) {
+                 clearTimeout(_photoUploadProgressTimer);
+             }
+
+             _photoUploadProgressTimer = setTimeout(updatePhotoUploadProgress, PROGRESS_INTERVAL);
+         }
+
+         function photoUploadComplete(message, isError) {
+             clearPhotoUploadProgress();
+
+             if (_photoUploadProgressTimer) {
+                 clearTimeout(_photoUploadProgressTimer);
+             }
+
+             _divUploadProgress.style.display = 'none';
+             _divUploadMessage.style.display = 'none';
+             _divFrame.style.display = '';
+
+             if (message.length) {
+                 var color = (isError) ? '#ff0000' : '#008000';
+
+                 _divUploadMessage.innerHTML = '<span style=\"color:' + color + '\;font-weight:bold">' + message + '</span>';
+                 _divUploadMessage.style.display = '';
+
+                 if (isError) {
+                     _ifrPhoto.contentWindow.document.getElementById('filPhoto').focus();
+                 }
+             }
+         }
+         /* ]]> */
+    </script>
     @RenderSection("head", false)
-
 </head>
-<body>
-
-    <div class="container-fluid">
-        <!-- START Header Container -->
-        <div id="header-container">
-            <div class="header-bar navbar navbar-inverse" role="navigation">
-                <!-- NOTE TO READER: Accepts the following class(es) "navbar-fixed-top" class -->
-                <div class="container">
-                    <div class="navbar-header">
-                        <!-- START logo -->
-                        <div class="logo">
-                            <a href="/Content/Admin/index.html">
-                                <img class="default-logo" src="/Content/Admin/assets/images/required/logo-default.png" width="156" height="44" alt="Logo" />
-                                <img class="small-logo" src="/Content/Admin/assets/images/required/logo-small.png" width="48" height="44" alt="Logo" />
+<body class="fixed-top">    
+        <div>
+            <asp:ContentPlaceHolder id="ContentTopPlaceHolder" runat="server">
+                <!-- BEGIN HEADER -->
+                <div class="header navbar navbar-inverse navbar-fixed-top">
+                    <!-- BEGIN TOP NAVIGATION BAR -->
+                    <div class="navbar-inner">
+                        <div class="container-fluid">
+                            <!-- BEGIN LOGO -->
+                            <a class="brand" href="@Url.Action("List","User")">
+                                <img src="~/Areas/Theme/assets/img/logo.png" alt="logo" width="147" height="20" />
                             </a>
-                        </div>
-                        <!-- END logo -->
-                        <!-- START Mobile Menu Toggle -->
-                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                            <span class="sr-only">Toggle navigation</span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </button>
-                        <!-- END Mobile Menu Toggle -->
-                        <!-- START Language Selector -->
-                        <div class="header-language">
-                            <!-- NOTE TO READER: Accepts the following class(es) "animate" class -->
-                            <ul>
-                                <li>
-                                    <a href="/Content/Admin/#" class="language-closed">
-                                        <span aria-hidden="true" class="icon icon-wireframe-globe"></span>
-                                        <span class="main-text">Language</span>
-                                    </a>
-                                    <a href="/Content/Admin/#" class="language-opened">
-                                        <span aria-hidden="true" class="icon icon-cross"></span>
-                                        <span class="main-text">Language</span>
-                                    </a>
-                                    <ul>
-                                        <li class="language-list-item">
-                                            <div class="language-block">
-                                                <a href="/Content/Admin/#">
-                                                    <span class="language-flag">
-                                                        <img src="/Content/Admin/assets/images/optional/flags/turkey.png" width="32" height="32" alt="turkish-flag" />
-                                                    </span>
-                                                    <span class="language-name">
-                                                        Türkçe
-                                                    </span>
-                                                </a>
-                                            </div>
-                                        </li>
-                                        <li class="language-list-item">
-                                            <div class="language-block">
-                                                <a href="/Content/Admin/#">
-                                                    <span class="language-flag">
-                                                        <img src="/Content/Admin/assets/images/optional/flags/spain.png" width="32" height="32" alt="espanol-flag" />
-                                                    </span>
-                                                    <span class="language-name">
-                                                        Español
-                                                    </span>
-                                                </a>
-                                            </div>
-                                        </li>
-                                        <li class="language-list-item">
-                                            <div class="language-block">
-                                                <a href="/Content/Admin/#">
-                                                    <span class="language-flag">
-                                                        <img src="/Content/Admin/assets/images/optional/flags/germany.png" width="32" height="32" alt="germany-flag" />
-                                                    </span>
-                                                    <span class="language-name">
-                                                        Deutsch
-                                                    </span>
-                                                </a>
-                                            </div>
-                                        </li>
-                                        <li class="language-list-item">
-                                            <div class="language-block">
-                                                <a href="/Content/Admin/#">
-                                                    <span class="language-flag">
-                                                        <img src="/Content/Admin/assets/images/optional/flags/china.png" width="32" height="32" alt="china-flag" />
-                                                    </span>
-                                                    <span class="language-name">
-                                                        中文
-                                                    </span>
-                                                </a>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </div>
-                        <!-- END Language Selector -->
-                        <!-- START Search Bar -->
-                        <div class="header-search">
-                            <!-- NOTE TO READER: Accepts the following class(es) "animate" class -->
-                            <form role="form" class="icheck-square" method="post" action="pages-search-results.html">
-                                <ul>
-                                    <li>
-                                        <a href="/Content/Admin/#" class="search-closed">
-                                            <span aria-hidden="true" class="icon icon-search"></span>
-                                            <span class="main-text">Search</span>
-                                        </a>
-                                        <a href="/Content/Admin/#" class="search-opened">
-                                            <span aria-hidden="true" class="icon icon-cross"></span>
-                                            <span class="main-text">Search</span>
-                                        </a>
-                                        <ul>
-                                            <li class="simple-search">
-                                                <div class="simple-search-inner">
-                                                    <div class="simple-search-block">
-                                                        <div class="input-group">
-                                                            <input type="text" class="form-control" id="input-search" placeholder="Enter Search Terms...">
-                                                            <span class="input-group-btn">
-                                                                <button type="submit" class="btn btn-default">
-                                                                    <span class="main-text">Search</span>
-                                                                </button>
-                                                            </span>
-                                                        </div>
-                                                        <div class="checkbox">
-                                                            <label>
-                                                                <input type="checkbox" id="input-advanced-search"> Use Advanced Search
-                                                            </label>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li class="advanced-search">
-                                                <div class="advanced-search-block">
-                                                    <div class="form-group">
-                                                        <label for="input-advanced-select">Advanced Option as dropdown list</label>
-                                                        <select id="input-advanced-select" class="form-control">
-                                                            <option>Advanced Option 1</option>
-                                                            <option>Advanced Option 2</option>
-                                                            <option>Advanced Option 3</option>
-                                                            <option>Advanced Option 4</option>
-                                                        </select>
-                                                    </div>
+                            <!-- END LOGO -->
+                            <!-- BEGIN RESPONSIVE MENU TOGGLER -->
+                            <a href="javascript:;" class="btn-navbar collapsed" data-toggle="collapse" data-target=".nav-collapse">
+                                @*<img src="~/Areas/Theme/assets/img/menu-toggler.png" alt="" />*@
+                                <i class="icon-reorder"></i> 
+                            </a>
+                            <!-- END RESPONSIVE MENU TOGGLER -->
+                            <!-- BEGIN TOP NAVIGATION MENU -->
+                            <ul class="nav pull-right">
+                                <!-- BEGIN INBOX DROPDOWN -->
 
-                                                    <div class="checkbox">
-                                                        <label>
-                                                            <input type="checkbox" value="" id="input-advanced-checkbox-1">
-                                                            Must contain at least one search term
-                                                        </label>
-                                                    </div>
-
-                                                    <div class="radio">
-                                                        <label>
-                                                            <input type="radio" name="input-advanced-radio-set-1" id="input-advanced-radio-1" value="option1" checked>
-                                                            Must only be in "Themes" category
-                                                        </label>
-                                                    </div>
-                                                    <div class="radio">
-                                                        <label>
-                                                            <input type="radio" name="input-advanced-radio-set-1" id="input-advanced-radio-2" value="option2">
-                                                            Must only be in "Plugins" category
-                                                        </label>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </form>
-                        </div>
-                        <!-- END Search Bar -->
-                        <!-- START Header Info Container -->
-                        <div class="header-info">
-                            <!-- START Header User Profile -->
-                            <div class="header-profile">
-                                <!-- NOTE TO READER: Accepts the following class(es) "animate" class -->
-                                <ul class="header-profile-menu">
-                                    <li>
-                                        <a href="/Content/Admin/#" class="top">
-                                            <span class="header-profile-menu-icon">
-                                                <img class="list-thumbnail" src="http://placehold.it/39x39" width="39" height="39" alt="39x39" />
-                                            </span>
-                                            <span class="main-menu-text">
-                                                Ken Adams
-                                                <i class="icon icon-arrow-down-bold-round icon-size-small"></i>
-                                            </span>
-                                        </a>
-                                        <ul>
-                                            <li>
-                                                <a href="/Content/Admin/pages-profile-admin.html">
-                                                    <span aria-hidden="true" class="icon icon-user"></span>
-                                                    <span class="main-text">Profile</span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="/Content/Admin/pages-mailbox-inbox.html">
-                                                    <span aria-hidden="true" class="icon icon-mail"></span>
-                                                    <span class="main-text">
-                                                        <span class="badge pull-right">42</span>
-                                                        Mailbox
-                                                    </span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="/Content/Admin/pages-calendar.html">
-                                                    <span aria-hidden="true" class="icon icon-star "></span>
-                                                    <span class="main-text">
-                                                        Calendar
-                                                        <span class="badge pull-right">9</span>
-                                                    </span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="/Content/Admin/pages-signin-1.html">
-                                                    <span aria-hidden="true" class="icon icon-arrow-curve-right"></span>
-                                                    <span class="main-text">Logout</span>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </div>
-                            <!-- END Header User Profile -->
-                            <!-- START Header Notification Alert -->
-                            <div class="header-notifications">
-                                <!-- NOTE TO READER: Accepts the following class(es) "animate" class -->
-                                <ul class="header-notifications-inner">
-                                    <li class="notifications-alert-info notifications-alert notifications-alert-mobile">
-                                        <a href="/Content/Admin/#">
-                                            <span aria-hidden="true" class="icon icon-three-points"></span>
-                                        </a>
-                                    </li>
-                                    <li class="notifications-alert-info notifications-alert">
-                                        <a href="/Content/Admin/#">
-                                            <span aria-hidden="true" class="icon icon-email-download"></span>
-                                        </a>
-                                        <span class="badge badge-bordered pull-bottom-right">4</span>
-                                        <ul>
-                                            <li class="notifications-alert-desc">
-                                                <p>You have 4 new messages</p>
-                                            </li>
-                                            <li class="notifications-alert-block">
-                                                <ul class="notifications-alert-list">
-                                                    <li class="notifications-alert-list-item">
-                                                        <a href="/Content/Admin/#">
-                                                            <span class="notifications-alert-list-text">
-                                                                <span class="notifications-alert-list-image">
-                                                                    <img class="list-thumbnail" src="http://placehold.it/40x40" width="40" height="40" alt="40x40" />
-                                                                </span>
-                                                                <span class="notifications-alert-list-header">Samantha Carter</span>
-                                                                Re: Updated proposal. Approved.
-                                                                <span class="timestamp">Just now</span>
-                                                            </span>
-                                                        </a>
-                                                    </li>
-                                                    <li class="notifications-alert-list-item">
-                                                        <a href="/Content/Admin/#">
-                                                            <span class="notifications-alert-list-text">
-                                                                <span class="notifications-alert-list-image">
-                                                                    <img class="list-thumbnail" src="http://placehold.it/40x40" width="40" height="40" alt="40x40" />
-                                                                </span>
-                                                                <span class="notifications-alert-list-header">Daniel Jackson</span>
-                                                                Meeting minutes attached
-                                                                <span class="timestamp">2 minutes ago</span>
-                                                            </span>
-                                                        </a>
-                                                    </li>
-                                                    <li class="notifications-alert-list-item">
-                                                        <a href="/Content/Admin/#">
-                                                            <span class="notifications-alert-list-text">
-                                                                <span class="notifications-alert-list-image">
-                                                                    <img class="list-thumbnail" src="http://placehold.it/40x40" width="40" height="40" alt="40x40" />
-                                                                </span>
-                                                                <span class="notifications-alert-list-header">Sally Skyler</span>
-                                                                Bug Report #2
-                                                                <span class="timestamp">2 hours ago</span>
-                                                            </span>
-                                                        </a>
-                                                    </li>
-                                                    <li class="notifications-alert-list-item">
-                                                        <a href="/Content/Admin/#">
-                                                            <span class="notifications-alert-list-text">
-                                                                <span class="notifications-alert-list-image">
-                                                                    <img class="list-thumbnail" src="http://placehold.it/40x40" width="40" height="40" alt="40x40" />
-                                                                </span>
-                                                                <span class="notifications-alert-list-header">Teal'c Jafar</span>
-                                                                Interesting Sales Tips
-                                                                <span class="timestamp">5 hours ago</span>
-                                                            </span>
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li class="notifications-alert-more">
-                                                <p>
-                                                    <a href="/Content/Admin/#">See all messages<i class="icon icon-arrow-right-bold-round icon-size-small"></i></a>
-                                                </p>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li class="notifications-alert-info notifications-alert">
-                                        <a href="/Content/Admin/#">
-                                            <span aria-hidden="true" class="icon icon-info"></span>
-                                        </a>
-                                        <span class="badge badge-bordered pull-bottom-right">5</span>
-                                        <ul>
-                                            <li class="notifications-alert-desc">
-                                                <p>You have 5 new notifications</p>
-                                            </li>
-                                            <li class="notifications-alert-block">
-                                                <ul class="notifications-alert-list">
-                                                    <li class="notifications-alert-list-item">
-                                                        <a href="/Content/Admin/#">
-                                                            <span class="notifications-alert-list-text">
-                                                                <span class="notifications-alert-list-icon">
-                                                                    <span class="icon icon-settings"></span>
-                                                                </span>
-                                                                System upgrade complete
-                                                                <span class="timestamp">Just now</span>
-                                                            </span>
-                                                        </a>
-                                                    </li>
-                                                    <li class="notifications-alert-list-item">
-                                                        <a href="/Content/Admin/#">
-                                                            <span class="notifications-alert-list-text">
-                                                                <span class="notifications-alert-list-icon">
-                                                                    <span class="icon icon-user-add"></span>
-                                                                </span>
-                                                                <span class="main-text">
-                                                                    Bulk user email import
-                                                                    <span class="progress">
-                                                                        <span class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
-                                                                            <span class="sr-only">40% Complete (success)</span>
-                                                                        </span>
-                                                                    </span>
-                                                                </span>
-                                                                <span class="timestamp">4 minutes ago</span>
-                                                            </span>
-                                                        </a>
-                                                    </li>
-                                                    <li class="notifications-alert-list-item">
-                                                        <a href="/Content/Admin/#">
-                                                            <span class="notifications-alert-list-text">
-                                                                <span class="notifications-alert-list-icon">
-                                                                    <span class="icon icon-info"></span>
-                                                                </span>
-                                                                You now have a total of 2500 registered users.
-                                                                <span class="timestamp">5 minutes ago</span>
-                                                            </span>
-                                                        </a>
-                                                    </li>
-                                                    <li class="notifications-alert-list-item">
-                                                        <a href="/Content/Admin/#">
-                                                            <span class="notifications-alert-list-text">
-                                                                <span class="notifications-alert-list-icon">
-                                                                    <span class="icon icon-sos"></span>
-                                                                </span>
-                                                                General maintenance
-                                                                <span class="progress">
-                                                                    <span class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
-                                                                        <span class="sr-only">60% Complete (success)</span>
-                                                                    </span>
-                                                                </span>
-                                                                <span class="timestamp">10 minutes ago</span>
-                                                            </span>
-                                                        </a>
-                                                    </li>
-                                                    <li class="notifications-alert-list-item">
-                                                        <a href="/Content/Admin/#">
-                                                            <span class="notifications-alert-list-text">
-                                                                <span class="notifications-alert-list-icon">
-                                                                    <span class="icon icon-user-add"></span>
-                                                                </span>
-                                                                New user registration
-                                                                <span class="timestamp">30 minutes ago</span>
-                                                            </span>
-                                                        </a>
-                                                    </li>
-                                                    <li class="notifications-alert-list-item">
-                                                        <a href="/Content/Admin/#">
-                                                            <span class="notifications-alert-list-text">
-                                                                <span class="notifications-alert-list-icon">
-                                                                    <span class="icon icon-comments"></span>
-                                                                </span>
-                                                                You have a new chat message
-                                                                <span class="timestamp">1 hour ago</span>
-                                                            </span>
-                                                        </a>
-                                                    </li>
-                                                    <li class="notifications-alert-list-item">
-                                                        <a href="/Content/Admin/#">
-                                                            <span class="notifications-alert-list-text">
-                                                                <span class="notifications-alert-list-icon">
-                                                                    <span class="icon icon-pin"></span>
-                                                                </span>
-                                                                New location added
-                                                                <span class="timestamp">Yesterday</span>
-                                                            </span>
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li class="notifications-alert-more">
-                                                <p>
-                                                    <a href="/Content/Admin/#">See all notifications<i class="icon icon-arrow-right-bold-round icon-size-small"></i></a>
-                                                </p>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </div>
-                            <!-- END Header Notification Alert -->
-
-                        </div>
-                        <!-- END Header Info Container -->
-
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- END Header Container -->
-        <div id="body-container">
-            <div id="right-column">
-                <div class="mainnav-horizontal-outer">
-                    <div id="mainnav-horizontal-inner" class="">
-                        <!-- NOTE TO READER: Accepts the following class(es) "menu-text-only", "fixed" class -->
-                        <div id="mainnav-horizontal">
-                            <ul class="mainnav-horizontal">
-                                <!-- NOTE TO READER: Accepts the following class(es) "animate" class -->
-                                <li class="menu-item-top">
-                                    <a href="/Content/Admin/index.html" class="top">
-                                        <span class="main-menu-icon">
-                                            <span aria-hidden="true" class="icon icon-grid-big icon-size-medium"></span>
-                                        </span>
-                                        <span class="main-menu-text">Dashboard</span>
+                                <li class="dropdown" id="header_notification_bar">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                        <i class="icon-warning-sign"></i>
+                                        <span class="badge">5</span>
                                     </a>
-                                </li>
-                                <li class="menu-item-top">
-                                    <a href="/Content/Admin/#" class="top">
-                                        <span class="main-menu-icon">
-                                            <span aria-hidden="true" class="icon icon-dollar icon-size-medium"></span>
-                                        </span>
-                                        <span class="main-menu-text">eCommerce</span>
-                                    </a>
-                                    <ul>
-                                        <li><a href="/Content/Admin/ecommerce-dashboard-1.html">Dashboard</a></li>
-                                        <li><a href="/Content/Admin/ecommerce-order-list.html">Order List</a></li>
-                                        <li><a href="/Content/Admin/ecommerce-order-view.html">Order View</a></li>
-                                        <li><a href="/Content/Admin/ecommerce-product-list.html">Product List</a></li>
-                                        <li><a href="/Content/Admin/ecommerce-product-edit.html">Product Edit</a></li>
-                                    </ul>
-                                </li>
-                                <li class="menu-item-top selected">
-                                    <a href="/Content/Admin/#" class="top">
-                                        <span class="main-menu-icon">
-                                            <span aria-hidden="true" class="icon icon-layers icon-size-medium"></span>
-                                        </span>
-                                        <span class="badge pull-right">6</span>
-                                        <span class="main-menu-text">Layouts</span>
-                                    </a>
-                                    <ul>
-                                        <li><a href="/Content/Admin/menu-left-header-fixed.html">Left Menu (Fixed Header)</a></li>
-                                        <li><a href="/Content/Admin/menu-left-icon-only.html">Left Menu (Icon Only)</a></li>
-                                        <li><a href="/Content/Admin/menu-left-fixed.html">Left Menu (Fixed)</a></li>
-                                        <li><a href="/Content/Admin/menu-left-boxed.html">Boxed Layout</a></li>
-                                        <li><a href="/Content/Admin/menu-horizontal-normal.html">Horizontal Menu (Normal)</a></li>
-                                        <li><a href="/Content/Admin/menu-horizontal-text-only.html">Horizontal Menu (Text Only)</a></li>
-                                        <li><a href="/Content/Admin/menu-horizontal-fixed.html">Horizontal Menu (Fixed + Header)</a></li>
-                                        <li><a href="/Content/Admin/menu-horizontal-boxed.html">Boxed Layout (Horizontal Menu)</a></li>
-                                    </ul>
-                                </li>
-                                <li class="menu-item-top">
-                                    <a href="/Content/Admin/#" class="top">
-                                        <span class="main-menu-icon">
-                                            <span aria-hidden="true" class="icon icon-star icon-size-medium"></span>
-                                        </span>
-                                        <span class="main-menu-text">UI Kits</span>
-                                    </a>
-                                    <ul>
-                                        <li><a href="/Content/Admin/ui-blocks.html">Blocks</a></li>
-                                        <li><a href="/Content/Admin/ui-panels-wells.html">Panels &amp; Wells</a></li>
-                                        <li><a href="/Content/Admin/ui-buttons.html">Buttons</a></li>
-                                        <li><a href="/Content/Admin/ui-widgets.html">Widgets</a></li>
-                                        <li><a href="/Content/Admin/ui-charts.html">Charts</a></li>
-                                        <li><a href="/Content/Admin/ui-icons.html">Icons</a></li>
-                                        <li><a href="/Content/Admin/ui-typography.html">Typography</a></li>
-                                        <li><a href="/Content/Admin/ui-tabs-accordions.html">Tabs &amp; Accordions</a></li>
-                                        <li><a href="/Content/Admin/ui-tooltips-popover.html">Tooltips &amp; Popover</a></li>
-                                        <li><a href="/Content/Admin/ui-modal.html">Modal</a></li>
-                                        <li><a href="/Content/Admin/ui-bootstrap-others.html">Other Bootstrap Elements</a></li>
-                                        <li><a href="/Content/Admin/ui-notification-toastr.html">Notifications (Toastr)</a></li>
-                                        <li><a href="/Content/Admin/ui-grid-layout.html">Grid Layout</a></li>
-                                    </ul>
-                                </li>
-                                <li class="menu-item-top">
-                                    <a href="/Content/Admin/#" class="top">
-                                        <span class="main-menu-icon">
-                                            <span aria-hidden="true" class="icon icon-documents icon-size-medium"></span>
-                                        </span>
-                                        <span class="badge pull-right hidden-collapsed highlight-color-green">7</span>
-                                        <span class="main-menu-text">Pages</span>
-                                    </a>
-                                    <ul>
-                                        <li><a href="/Content/Admin/pages-blank.html">Blank Page</a></li>
-                                        <li><a href="/Content/Admin/pages-basic-text.html">Basic Text Page</a></li>
-                                        <li><a href="/Content/Admin/pages-search-results.html">Search Results</a></li>
-                                        <li><a href="/Content/Admin/pages-mailbox-inbox.html">Mailbox - Inbox</a></li>
-                                        <li><a href="/Content/Admin/pages-profile.html">Profile - Customer</a></li>
-                                        <li><a href="/Content/Admin/pages-profile-admin.html">Profile - Admin</a></li>
-                                        <li><a href="/Content/Admin/pages-signup.html">Sign Up</a></li>
-                                        <li><a href="/Content/Admin/pages-signin-1.html">Sign In - Type 1</a></li>
+                                    <ul class="dropdown-menu extended notification">
                                         <li>
-                                            <a href="/Content/Admin/pages-signin-2.html">
-                                                <span class="badge pull-right">Fancy Effects</span>
-                                                Sign In - Type 2
-                                            </a>
+                                            <p>Toplam <asp:Label ID="lblTotalWarning" runat="server" Text=""></asp:Label> uyarınız var</p>
                                         </li>
-                                        <li><a href="/Content/Admin/pages-forgot-password.html">Forgot Password</a></li>
-                                        <li><a href="/Content/Admin/pages-404.html">404 Page</a></li>
-                                        <li><a href="/Content/Admin/pages-500.html">500 Page</a></li>
-                                        <li><a href="/Content/Admin/pages-invoice.html">Invoice</a></li>
-                                        <li><a href="/Content/Admin/pages-changelog-faqs.html">Changelog/FAQs</a></li>
-                                        <li><a href="/Content/Admin/pages-calendar.html">Calendar</a></li>
-                                        <li><a href="/Content/Admin/pages-task-list.html">Task List</a></li>
-                                        <li><a href="/Content/Admin/pages-timeline.html">Timeline</a></li>
-                                        <li><a href="/Content/Admin/pages-pricelist.html">Price List</a></li>
+                                        <asp:Panel ID="pnlSysUserMessage" runat="server">
+                                            <li>
+                                                <a href="@Url.Action("List","SystemUserMessages")">
+                                                    <span class="label label-important"><i class="icon-envelope"></i></span>
+                                                    Sistem kullanıcılarından <span class="time"><asp:Label ID="lblSysUserMessageCount" runat="server" Text=""></asp:Label></span> okunmamış mesajın var.
+                                                </a>
+                                            </li>
+                                        </asp:Panel>
+                                        <asp:Panel ID="pnlSiteUserMessage" runat="server">
+                                            <li>
+                                                <a href="@Url.Action("List","SiteUserMessage")">
+                                                    <span class="label label-important"><i class="icon-envelope"></i></span>
+                                                    Siteden gelen <span class="time"><asp:Label ID="lblSiteUserMessageCount" runat="server" Text=""></asp:Label></span> okunmamış mesaj var.
+                                                </a>
+                                            </li>
+                                        </asp:Panel>
+                                        <asp:Panel ID="pnlEvents" runat="server">
+                                            <li>
+                                                <a href="@Url.Action("List","Events")">
+                                                    <span class="label label-warning"><i class="icon-bell"></i></span>
+                                                    Bugün <span class="time"><asp:Label ID="lblTodayEvents" runat="server" Text=""></asp:Label></span> etkinlik bulunmaktadır.
+                                                </a>
+                                            </li>
+                                        </asp:Panel>
+                                        <asp:Panel ID="pnlNewsComment" runat="server">
+                                            <li>
+                                                <a href="@Url.Action("List","NewsPendingComments")">
+                                                    <span class="label label-success"><i class="icon-comment"></i></span>
+                                                    Haberlere gelen <span class="time"><asp:Label ID="lblNewsComment" runat="server" Text=""></asp:Label></span> onay bekleyen yorum var.
+                                                </a>
+                                            </li>
+                                        </asp:Panel>
+                                        <asp:Panel ID="pnlBlogComment" runat="server">
+                                            <li>
+                                                <a href="@Url.Action("List","BlogPendingComments")">
+                                                    <span class="label label-success"><i class="icon-comment"></i></span>
+                                                    Makalelere gelen <span class="time"><asp:Label ID="lblBlogComment" runat="server" Text=""></asp:Label></span> onay bekleyen yorum var.
+                                                </a>
+                                            </li>
+                                        </asp:Panel>
+                                        <asp:Panel ID="pnlVideoComment" runat="server">
+                                            <li>
+                                                <a href="@Url.Action("List","VideoPendingComments")">
+                                                    <span class="label label-success"><i class="icon-comment"></i></span>
+                                                    Videolara gelen <span class="time"><asp:Label ID="lblVideoComment" runat="server" Text=""></asp:Label></span> onay bekleyen yorum var.
+                                                </a>
+                                            </li>
+                                        </asp:Panel>
+                                        <asp:Panel ID="pnlPhoneFalse" runat="server">
+                                            <li>
+                                                <a href="@Url.Action("List","PhoneList")">
+                                                    <span class="label label-info"><i class="icon-phone"></i></span>
+                                                    Site kullanıcılarından <span class="time"><asp:Label ID="lblFalsePhone" runat="server" Text=""></asp:Label></span> telefon araması bekleyen numara var.
+                                                </a>
+                                            </li>
+                                        </asp:Panel>
+                                        <asp:Panel ID="pnlMailFalse" runat="server">
+                                            <li>
+                                                <a href="@Url.Action("List","MailList")">
+                                                    <span class="label label-info"><i class="icon-envelope"></i></span>
+                                                    Site kullanıcılarından <span class="time"><asp:Label ID="lblFalseMail" runat="server" Text=""></asp:Label></span> email listenize kayıt var.
+                                                </a>
+                                            </li>
+                                        </asp:Panel>
                                     </ul>
                                 </li>
-                                <li class="menu-item-top">
-                                    <a href="/Content/Admin/#" class="top">
-                                        <span class="main-menu-icon">
-                                            <span aria-hidden="true" class="icon icon-settings icon-size-medium"></span>
-                                        </span>
-                                        <span class="main-menu-text">Forms</span>
-                                    </a>
-                                    <ul>
-                                        <li><a href="/Content/Admin/form-elements.html">Form Elements</a></li>
+
+                                <li class="dropdown" id="header_inbox_bar">
+
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-envelope-alt"></i><span class="badge">7</span> </a>
+
+                                    <ul class="dropdown-menu extended inbox">
                                         <li>
-                                            <a href="/Content/Admin/form-extras.html">
-                                                <span class="badge pull-right">Goodies</span>
-                                                Form Extras
-                                            </a>
+                                            <p>
+                                                Toplam <asp:Label ID="lblTotalUnreadedSiteMessage" runat="server" Text=""></asp:Label> okunmamış mesaj
+                                            </p>
                                         </li>
-                                        <li><a href="/Content/Admin/form-validation.html">Form Validation</a></li>
-                                        <li><a href="/Content/Admin/form-wizard.html">Form Wizard</a></li>
-                                        <li><a href="/Content/Admin/form-file-upload.html">Form Upload</a></li>
-                                        <li><a href="/Content/Admin/form-image-cropping.html">Image Cropping</a></li>
-                                    </ul>
-                                </li>
-                                <li class="menu-item-top">
-                                    <a href="/Content/Admin/#" class="top">
-                                        <span class="main-menu-icon">
-                                            <span aria-hidden="true" class="icon icon-grids icon-size-medium"></span>
-                                        </span>
-                                        <span class="main-menu-text">Tables</span>
-                                    </a>
-                                    <ul>
-                                        <li><a href="/Content/Admin/tables-basic.html">Basic Tables</a></li>
-                                        <li><a href="/Content/Admin/tables-responsive.html">Responsive Tables</a></li>
-                                        <li><a href="/Content/Admin/tables-datatables.html">Data Tables</a></li>
-                                    </ul>
-                                </li>
-                                <li class="menu-item-top">
-                                    <a href="/Content/Admin/#" class="top">
-                                        <span class="main-menu-icon">
-                                            <span aria-hidden="true" class="icon icon-block-menu icon-size-medium"></span>
-                                        </span>
-                                        <span class="main-menu-text">Menu Levels</span>
-                                    </a>
-                                    <ul>
-                                        <li>
-                                            <a href="/Content/Admin/#">Menu Level 1.1</a>
-                                            <ul>
-                                                <li>
-                                                    <a href="/Content/Admin/#">Menu Level 2.1</a>
-                                                    <ul>
+                                        <asp:UpdatePanel ID="UpdatePanel2" runat="server">
+                                            <ContentTemplate>
+                                                <asp:ListView ID="ListAllSiteMessage" runat="server" DataSourceID="SqlSourceAllSiteMessage" DataKeyNames="MsgID" OnPagePropertiesChanging="ListAllSysUserMessage_PagePropertiesChanging">
+                                                    <ItemTemplate>
                                                         <li>
-                                                            <a href="/Content/Admin/#">Menu Level 3.1</a>
-                                                            <ul>
-                                                                <li>
-                                                                    <a href="/Content/Admin/#">Menu Level 4.1</a>
-                                                                    <ul>
-                                                                        <li><a href="/Content/Admin/#">Menu Level 5.1</a></li>
-                                                                        <li><a href="/Content/Admin/#">Menu Level 5.2</a></li>
-                                                                        <li><a href="/Content/Admin/#">Menu Level 5.3</a></li>
-                                                                    </ul>
-                                                                </li>
-                                                                <li><a href="/Content/Admin/#">Menu Level 4.2</a></li>
-                                                                <li><a href="/Content/Admin/#">Menu Level 4.3</a></li>
-                                                            </ul>
+                                                            <asp:HyperLink ID="HyperLink4"
+                                                                           runat="server"
+                                                                           NavigateUrl='<%#"SiteMessageDetail.aspx?MessageGuid="+Eval("rowguid")%>'>
+                                                                <span class="photo">
+                                                                    <img ID="imgPic"  ImageUrl="~/Areas/Theme/SystemFiles/DefaultImages/commentuser.png" width="45" height="45" alt="" />
+                                                                </span> <span class="subject">
+                                                                    <span class="from"><%# Eval("NameSurname")%></span>
+                                                                    <span class="time"><%# Eval("Subject")%></span>
+                                                                    <br />
+                                                                    <%# Eval("ModifiedDate")%>
+                                                                </span><br />
+                                                                <span class="message"><%# Eval("Message")%>...</span>
+                                                            </asp:HyperLink>
                                                         </li>
-                                                        <li><a href="/Content/Admin/#">Menu Level 3.2</a></li>
-                                                        <li><a href="/Content/Admin/#">Menu Level 3.3</a></li>
-                                                    </ul>
-                                                </li>
-                                                <li><a href="/Content/Admin/#">Menu Level 2.2</a></li>
-                                                <li><a href="/Content/Admin/#">Menu Level 2.3</a></li>
-                                            </ul>
+                                                    </ItemTemplate>
+                                                </asp:ListView>
+                                                <asp:DataPager ID="dPagerSiteUserMessage" runat="server"
+                                                               PagedControlID="ListAllSiteMessage"
+                                                               PageSize="4">
+                                                    <Fields>
+                                                        <asp:NumericPagerField CurrentPageLabelCssClass="current"
+                                                                               NextPreviousButtonCssClass="nextpostslink"
+                                                                               ButtonType="Link" />
+                                                    </Fields>
+                                                </asp:DataPager>
+                                                <asp:SqlDataSource ID="SqlSourceAllSiteMessage" runat="server"
+                                                                   ProviderName="System.Data.SqlClient"
+                                                                   ConnectionString="<%$ ConnectionStrings:EBAdminPlusConnectionString %>"
+                                                                   SelectCommand="Select [MsgID]
+      ,[NameSurname]
+      ,[Tel]
+      ,[Email]
+      ,[Subject]
+      ,LEFT(Message,65) as Message
+      ,[Status]
+      ,[rowguid]
+      ,[ModifiedDate]
+  FROM [SiteUserMessage] Where Status = 0 order by ModifiedDate desc">
+                                                </asp:SqlDataSource>
+                                            </ContentTemplate>
+                                        </asp:UpdatePanel>
+                                        <li class="external">
+                                            <a href="SiteUserMessage.aspx">Tüm mesajları gör <i class="m-icon-swapright"></i></a>
                                         </li>
-                                        <li><a href="/Content/Admin/#">Menu Level 1.2</a></li>
-                                        <li><a href="/Content/Admin/#">Menu Level 1.3</a></li>
+
                                     </ul>
                                 </li>
-                                <li class="menu-item-top">
-                                    <a href="/Content/Admin/#" class="top">
-                                        <span class="main-menu-icon">
-                                            <span aria-hidden="true" class="icon icon-map icon-size-medium"></span>
-                                        </span>
-                                        <span class="main-menu-text">Maps</span>
+                                <!-- END INBOX DROPDOWN -->
+                                <!-- BEGIN INBOX DROPDOWN -->
+                                <li class="dropdown" id="header_inbox_bar">
+
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-envelope-alt"></i><span class="badge">16</span> </a>
+
+                                    <ul class="dropdown-menu extended inbox">
+                                        <li>
+                                            <p>
+                                                Toplam <asp:Label ID="lblTotalUnreadedMessage" runat="server" Text=""></asp:Label> okunmamış mesaj
+                                            </p>
+                                        </li>
+                                        <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                                            <ContentTemplate>
+                                                <asp:ListView ID="ListAllSysUserMessage" runat="server" DataSourceID="SqlSourceAllSysUserMessage" DataKeyNames="MsgID" OnPagePropertiesChanging="ListAllSysUserMessage_PagePropertiesChanging">
+                                                    <ItemTemplate>
+                                                        <li>
+                                                            <asp:HyperLink ID="HyperLink4"
+                                                                           runat="server"
+                                                                           NavigateUrl='<%#"SystemUserMessageDetail.aspx?MessageGuid="+Eval("rowguid")%>'>
+                                                                <span class="photo">
+                                                                    <asp:Image ID="imgPic" runat="server" ImageUrl='<%# GetImageUrl(Container.DataItem) %>' width="45" height="45" alt="" />
+                                                                </span> <span class="subject">
+                                                                    <span class="from"><%# GetUserNameSurname(Container.DataItem) %></span>
+                                                                    <br />
+                                                                    <%# Eval("ModifiedDate")%>
+                                                                </span><br />
+                                                                <span class="message"><%# Eval("Subject")%></span>
+                                                            </asp:HyperLink>
+                                                        </li>
+                                                    </ItemTemplate>
+                                                </asp:ListView>
+                                                <asp:DataPager ID="dPagerSysUserMessage" runat="server"
+                                                               PagedControlID="ListAllSysUserMessage"
+                                                               PageSize="4">
+                                                    <Fields>
+                                                        <asp:NumericPagerField CurrentPageLabelCssClass="current"
+                                                                               NextPreviousButtonCssClass="nextpostslink"
+                                                                               ButtonType="Link" />
+                                                    </Fields>
+                                                </asp:DataPager>
+                                                <asp:SqlDataSource ID="SqlSourceAllSysUserMessage" runat="server"
+                                                                   ProviderName="System.Data.SqlClient"
+                                                                   ConnectionString="<%$ ConnectionStrings:EBAdminPlusConnectionString %>">
+                                                </asp:SqlDataSource>
+                                            </ContentTemplate>
+                                        </asp:UpdatePanel>
+                                        <li class="external">
+                                            <a href="SystemUserMessages.aspx">Tüm mesajları gör <i class="m-icon-swapright"></i></a>
+                                        </li>
+
+                                    </ul>
+                                </li>
+                                <!-- END INBOX DROPDOWN -->
+                                <!-- BEGIN USER LOGIN DROPDOWN -->
+                                <li class="dropdown user">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                        <img ID="imgProfilTop" src="~/Areas/Theme/SystemFiles/DefaultImages/commentuser.png" Height="29" Width="29" />
+                                        <span class="username">
+                                           Yönetici
+                                        </span><i class="icon-angle-down"></i>
                                     </a>
-                                    <ul>
-                                        <li><a href="/Content/Admin/maps-google.html">Google Maps</a></li>
-                                        <li><a href="/Content/Admin/maps-vector.html">Vector Maps</a></li>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="Profile.aspx"><i class="icon-user"></i> Profilim
+                                        <li><a href="LogOut.aspx"><i class="icon-key"></i> Çıkış</a></li>
                                     </ul>
                                 </li>
+                                <!-- END USER LOGIN DROPDOWN -->
                             </ul>
+                            <!-- END TOP NAVIGATION MENU -->
                         </div>
                     </div>
+                    <!-- END TOP NAVIGATION BAR -->
                 </div>
-                <div class="right-column-content">
-                    @RenderBody()
+                <!-- END HEADER -->
+            </asp:ContentPlaceHolder>
+
+            <asp:ContentPlaceHolder id="ContentLeftPlaceHolder" runat="server">
+                <!-- BEGIN CONTAINER -->
+                <div class="page-container row-fluid">
+                    <!-- BEGIN SIDEBAR -->
+                    <div class="page-sidebar nav-collapse collapse">
+                        <!-- BEGIN SIDEBAR MENU -->
+                        <br />
+                        <ul>
+                            <li class="start "><a href="@Url.Action("List","Role")"><i class="icon-home"></i><span class="title">Anasayfa</span> </a></li>
+                            <li class=""><a href="@Url.Action("List","SiteDetail")"><i class="icon-book"></i><span class="title">Site Bilgileri</span> </a></li>
+                            <li class="has-sub ">
+                                <a href="javascript:;"><i class="icon-comments"></i><span class="title">Mesajlar</span> <span class="arrow"></span></a>
+                                <ul class="sub">
+                                    <li><a href="@Url.Action("List","SystemUserMessages")">Kurum İçi Mesajlar</a></li>
+                                    <li><a href="@Url.Action("List","SiteUserMessage")">Siteden Gelen Mesajlar</a></li>
+                                </ul>
+                            </li>
+                            <li class="has-sub ">
+                                <a href="javascript:;"><i class="icon-rss"></i><span class="title">Haberler</span> <span class="arrow"></span></a>
+                                <ul class="sub">
+                                    <li><a href="@Url.Action("List","NewsCategory")">Kategoriler</a></li>
+                                    <li><a href="@Url.Action("List","News")">Haberler</a></li>
+                                    <li><a href="@Url.Action("List","NewsPendingComments")">Onay Bekleyen Yorumlar</a></li>
+                                </ul>
+                            </li>
+                            <li class="has-sub ">
+                                <a href="javascript:;"><i class="icon-edit"></i><span class="title">Makaleler</span> <span class="arrow "></span></a>
+                                <ul class="sub">
+                                    <li><a href="@Url.Action("List","BlogsCategory")">Kategoriler</a></li>
+                                    <li><a href="@Url.Action("List","Blogs")">Makaleler</a></li>
+                                    <li><a href="@Url.Action("List","BlogPendingComments")">Onay Bekleyen Yorumlar</a></li>
+                                </ul>
+                            </li>
+                            <li class=""><a href="@Url.Action("List","Service")"><i class="icon-reorder"></i><span class="title">Hizmetler</span></a></li>
+                            <li class=""><a href="@Url.Action("List","Campaign")"><i class="icon-star"></i><span class="title">Kampanyalar</span></a></li>
+
+                            <li class=""><a href="@Url.Action("List","Events")"><i class="icon-calendar"></i><span class="title">Etkinlikler</span></a></li>
+
+                            <li class="has-sub ">
+                                <a href="javascript:;"><i class="icon-briefcase"></i><span class="title">Referanslar</span> <span class="arrow"></span></a>
+                                <ul class="sub">
+                                    <li><a href="@Url.Action("List","ReferanceCategory")">Kategoriler</a></li>
+                                    <li><a href="@Url.Action("List","References")">Referanslar</a></li>
+                                </ul>
+                            </li>
+
+                            <li class="has-sub ">
+                                <a href="javascript:;"><i class="icon-globe"></i><span class="title">Projeler</span> <span class="arrow"></span></a>
+                                <ul class="sub">
+                                    <li><a href="@Url.Action("List","ProjectCategory")">Kategoriler</a></li>
+                                    <li><a href="@Url.Action("List","Projects")">Projeler</a></li>
+                                </ul>
+                            </li>
+
+                            <li class="has-sub ">
+                                <a href="javascript:;"><i class="icon-eye-open"></i><span class="title">Ürünler</span> <span class="arrow"></span></a>
+                                <ul class="sub">
+                                    <li><a href="@Url.Action("List","ProductsCategory")">Kategoriler</a></li>
+                                    <li><a href="@Url.Action("List","Products")">Ürünler</a></li>
+                                </ul>
+                            </li>
+
+                            <li class="has-sub ">
+                                <a href="javascript:;"><i class="icon-facetime-video"></i><span class="title">Videolar</span> <span class="arrow"></span></a>
+                                <ul class="sub">
+                                    <li><a href="@Url.Action("List","VideoCategory")">Kategoriler</a></li>
+                                    <li><a href="@Url.Action("List","Videos")">Videolar</a></li>
+                                    <li><a href="@Url.Action("List","VideoPendingComments")">Onay Bekleyen Yorumlar</a></li>
+                                </ul>
+                            </li>
+                            <li class="has-sub ">
+                                <a href="javascript:;"><i class="icon-camera"></i><span class="title">Resimler</span> <span class="arrow"></span></a>
+                                <ul class="sub">
+                                    <li><a href="@Url.Action("List","FotoAlbums")">Albümler</a></li>
+                                    <li><a href="@Url.Action("List","SlideImage")">Anasayfa Slide Resimleri</a></li>
+                                </ul>
+                            </li>
+                            <li class="has-sub ">
+                                <a href="javascript:;"><i class="icon-envelope"></i><span class="title">Email Listeleri</span> <span class="arrow"></span></a>
+                                <ul class="sub">
+                                    <li><a href="@Url.Action("List","MailGroup")">Gruplar</a></li>
+                                    <li><a href="@Url.Action("List","MailList")">Email Hesapları</a></li>
+                                    <li><a href="@Url.Action("List","SendEmail")">Tekli Mail Gönder</a></li>
+                                    <li><a href="@Url.Action("List","SendCollectiveMail")">Toplu Mail Gönder</a></li>
+                                </ul>
+                            </li>
+                            <li class="has-sub ">
+                                <a href="javascript:;"><i class="icon-phone"></i><span class="title">Telefon Listeleri</span> <span class="arrow"></span></a>
+                                <ul class="sub">
+                                    <li><a href="@Url.Action("List","SendCollectiveMailPhoneGroups")">Gruplar</a></li>
+                                    <li><a href="@Url.Action("List","SendCollectiveMailPhoneList")">Telefonlar</a></li>
+                                    <li><a href="@Url.Action("List","SendCollectiveMailSendSMS")">Tekli SMS Gönder</a></li>
+                                    <li><a href="@Url.Action("List","SendCollectiveMailSendCollectiveSMS")">Toplu SMS Gönder</a></li>
+                                </ul>
+                            </li>
+                            <li class=""><a href="@Url.Action("List","Clients")"><i class="icon-leaf"></i><span class="title">Çözüm Ortakları</span> </a></li>
+                            <li class="has-sub ">
+                                <a href="javascript:;"><i class="icon-download"></i><span class="title">Dosya Merkezi</span> <span class="arrow"></span></a>
+                                <ul class="sub">
+                                    <li><a href="@Url.Action("List","FileCategory")">Kategoriler</a></li>
+                                    <li><a href="@Url.Action("List","Files")">Dosyalar</a></li>
+                                </ul>
+                            </li>
+                            <li class=""><a href="@Url.Action("List","FAQCategory")"><i class="icon-question-sign"></i><span class="title">Sıkça Sorulan Sorular</span></a></li>
+                            <li class="has-sub ">
+                                <a href="javascript:;"><i class="icon-bar-chart"></i><span class="title">İstatistik & LOG</span> <span class="arrow"></span></a>
+                                <ul class="sub">
+                                    <li><a href="@Url.Action("List","Statistics")">Genel İstatistikler</a></li>
+                                    <li><a href="@Url.Action("List","Visitors")">Ziyaretçi İstatistikleri</a></li>
+                                    <li><a href="@Url.Action("List","SystemLogs")">Log (İşlem Geçmişleri)</a></li>
+                                </ul>
+                            </li>
+                            <li class="has-sub ">
+                                <a href="javascript:;"><i class="icon-group"></i><span class="title">Sistem Kullanıcıları</span> <span class="arrow "></span></a>
+                                <ul class="sub">
+                                    <li><a href="@Url.Action("List","Departments")">Departmanlar</a></li>
+                                    <li><a href="@Url.Action("List","Users")">Sistem Kullanıcıları</a></li>
+                                    <li><a href="@Url.Action("List","DeletedUsers")">Silinen Kullanıcılar</a></li>
+                                </ul>
+                            </li>
+                            <li class="has-sub ">
+                                <a href="javascript:;"><i class="icon-wrench"></i><span class="title">Ayarlar</span> <span class="arrow "></span></a>
+                                <ul class="sub">
+                                    <li><a href="@Url.Action("List","SiteSetting")">Site Ayarları</a></li>
+                                    <li><a href="@Url.Action("List","BanList")">Yasaklı IP Listesi</a></li>
+                                    <li><a href="@Url.Action("List","SMTPSetting")">SMTP Mail Ayarları</a></li>
+                                    <li><a href="@Url.Action("List","SMSSetting")">SMS Ayarları</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <!-- END SIDEBAR MENU -->
+                    </div>
+                    <!-- END SIDEBAR -->
                 </div>
-                <div id="footer-container">
-                    <div class="footer-content">
-                        &copy; <a href="/Content/Admin/#?ref=Base5Builder">Circloid</a> was made with <span style="color:#FF0000;">&#10084;</span> and supported by - <a href="http://base5builder.com/" target="_blank" style="font-weight:300;color:#ffffff;background:#1d1d1d;padding:0 3px;">Base<span style="color:#ffa733;font-weight:bold">5</span>Builder</a>
+               
+                <!-- BEGIN PAGE -->
+                <div class="page-content">
+                    <div class="container-fluid">
+                        <!-- BEGIN PAGE HEADER-->
+                        <div class="row-fluid">
+                            <div class="span12">
+
+                                <!-- BEGIN PAGE TITLE & BREADCRUMB-->                                
+                                @*<ul class="breadcrumb">
+                                    <li><i class="icon-home"></i><a href="index.html">Home</a> <i class="icon-angle-right"></i></li>
+                                    <li><a href="#">UI Features</a> <i class="icon-angle-right"></i></li>
+                                    <li><a href="#">General</a></li>
+                                </ul>*@
+                                <!-- END PAGE TITLE & BREADCRUMB-->
+                            </div>
+                        </div>
+                        <!-- END PAGE HEADER-->
+                        <!-- BEGIN PAGE CONTENT-->
+                        <div class="row-fluid">
+                            <div class="span12">
+                                @RenderBody()
+                            </div>
+                        </div>
+                        <!-- END PAGE CONTENT-->
+                    </div>
+                    <!-- END PAGE CONTAINER-->
+                </div>
+                <!-- BEGIN PAGE -->
+           
+
+                <!-- END CONTAINER -->
+                <!-- BEGIN FOOTER -->
+                <div class="footer">
+                    <br /> 
+                    <span style="color:whitesmoke">2017 - @DateTime.Now.Year &copy; GenericFW Asp.Net MVC İçerik Yönetim Sistemi Ver 1.0</span>
+                    <div class="span pull-right">
+                        <span class="go-top"><i class="icon-angle-up"></i></span>
                     </div>
                 </div>
-            </div>
+                <!-- END FOOTER -->
+                <!-- BEGIN JAVASCRIPTS -->
+                <!-- Load javascripts at bottom, this will reduce page load time -->
+                @RenderSection("scriptsTop", false)
+                <script src="~/Areas/Theme/assets/js/jquery-1.8.3.min.js"></script>               
+                <script src="~/Areas/Theme/assets/breakpoints/breakpoints.js"></script>
+                <script src="~/Areas/Theme/assets/bootstrap/js/bootstrap.min.js"></script>
+                <script src="~/Areas/Theme/assets/js/jquery.blockui.js"></script>
+                <script src="~/Areas/Theme/assets/js/jquery.cookie.js"></script>
+                <script src="~/Areas/Theme/assets/fancybox/source/jquery.fancybox.pack.js"></script>
+                <script src="~/Areas/Theme/assets/bootstrap-wizard/jquery.bootstrap.wizard.min.js"></script>
+                <!-- ie8 fixes -->
+                <!--[if lt IE 9]>
+                <script src="assets/js/excanvas.js"></script>
+                <script src="assets/js/respond.js"></script>
+                <![endif]-->
+                <script type="text/javascript" src="~/Areas/Theme/assets/uniform/jquery.uniform.min.js"></script>
+                <script type="text/javascript" src="~/Areas/Theme/assets/chosen-bootstrap/chosen/chosen.jquery.min.js"></script>
+                <script type="text/javascript" src="~/Areas/Theme/assets/gritter/js/jquery.gritter.js"></script>
+                <script type="text/javascript" src="~/Areas/Theme/assets/js/jquery.pulsate.min.js"></script>
+                <script src="~/Areas/Theme/assets/js/app.js"></script>
+                <script type="text/javascript" src="~/Areas/Theme/assets/data-tables/jquery.dataTables.js"></script>
+                <script type="text/javascript" src="~/Areas/Theme/assets/data-tables/DT_bootstrap.js"></script>
+                <script type="text/javascript" src="~/Areas/Theme/assets/bootstrap-wysihtml5/wysihtml5-0.3.0.js"></script>
+                <script type="text/javascript" src="~/Areas/Theme/assets/bootstrap-wysihtml5/bootstrap-wysihtml5.js"></script>
+                <script type="text/javascript" src="~/Areas/Theme/assets/bootstrap-toggle-buttons/static/js/jquery.toggle.buttons.js"></script>
+                <script type="text/javascript" src="~/Areas/Theme/assets/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+                <script type="text/javascript" src="~/Areas/Theme/assets/bootstrap-daterangepicker/date.js"></script>
+                <script type="text/javascript" src="~/Areas/Theme/assets/bootstrap-daterangepicker/daterangepicker.js"></script>
+                <script type="text/javascript" src="~/Areas/Theme/assets/bootstrap-colorpicker/js/bootstrap-colorpicker.js"></script>
+                <script type="text/javascript" src="~/Areas/Theme/assets/bootstrap-timepicker/js/bootstrap-timepicker.js"></script>
+                <script src="~/Areas/Theme/assets/jquery-ui/jquery-ui-1.10.1.custom.min.js"></script>
+                <script src="~/Areas/Theme/assets/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+                <script src="~/Areas/Theme/assets/flot/jquery.flot.js"></script>
+                <script src="~/Areas/Theme/assets/flot/jquery.flot.resize.js"></script>      
+                    
+                <script>
+                jQuery(document).ready(function () {
+                    // initiate layout and plugins
+                    App.setPage("table_managed");
+                    App.init();
+                });
+                </script>
+                <!-- END JAVASCRIPTS -->
+            </asp:ContentPlaceHolder>
         </div>
-    </div><!-- /.container -->
-    @RenderSection("scriptsTop", false)
-    <!-- Placed at the end of the document so the pages load faster -->
-    <!-- Required JS Files -->
-    <script type="text/javascript" src="/Content/Admin/assets/js/required/jquery-1.11.1.min.js"></script>
-    <script type="text/javascript" src="/Content/Admin/assets/js/required/jquery-ui-1.11.0.custom/jquery-ui.min.js"></script>
-    <script type="text/javascript" src="/Content/Admin/assets/js/required/bootstrap/bootstrap.min.js"></script>
-    <script type="text/javascript" src="/Content/Admin/assets/js/required/jquery.easing.1.3-min.js"></script>
-    <script type="text/javascript" src="/Content/Admin/assets/js/required/jquery.mCustomScrollbar.min.js"></script>
-    <script type="text/javascript" src="/Content/Admin/assets/js/required/misc/jquery.mousewheel-3.0.6.min.js"></script>
-    <script type="text/javascript" src="/Content/Admin/assets/js/required/misc/retina.min.js"></script>
-    <script type="text/javascript" src="/Content/Admin/assets/js/required/icheck.min.js"></script>
-    <script type="text/javascript" src="/Content/Admin/assets/js/required/misc/jquery.ui.touch-punch.min.js"></script>
-    <script type="text/javascript" src="/Content/Admin/assets/js/required/circloid-functions.js"></script>
-    <script type="text/javascript" src="/Content/Admin/assets/js/optional/ckeditor/ckeditor.js"></script>
-    <script type="text/javascript" src="/Content/Admin/assets/js/optional/ckeditor/adapters/jquery.js"></script> <!-- This jQuery Adapter is REQUIRED for CKEditor to function properly -->
-    <script type="text/javascript" src="/Content/Admin/assets/js/optional/bootstrapValidator.min.js"></script>
-
-    <!-- Optional JS Files -->
-    <script type="text/javascript" src="/Content/Admin/assets/js/optional/circloid-functions-optional.js"></script>
-    <script type="text/javascript" src="/Content/Admin/assets/js/optional/jqvmap/jquery.vmap.min.js"></script>
-    <script type="text/javascript" src="/Content/Admin/assets/js/optional/jqvmap/maps/jquery.vmap.world.js"></script>
-    <script type="text/javascript" src="/Content/Admin/assets/js/optional/jqvmap/data/jquery.vmap.sampledata.js"></script> <!-- JQVMap Sample Data -->
-    <script type="text/javascript" src="/Content/Admin/assets/js/optional/flot/jquery.flot.min.js"></script>
-    <script type="text/javascript" src="/Content/Admin/assets/js/optional/flot/jquery.flot.JUMlib.min.js"></script>
-    <script type="text/javascript" src="/Content/Admin/assets/js/optional/flot/jquery.flot.resize.min.js"></script>
-    <script type="text/javascript" src="/Content/Admin/assets/js/optional/flot/jquery.flot.tooltip.min.js"></script>
-    <script type="text/javascript" src="/Content/Admin/assets/js/optional/flot/jquery.flot.pie.min.js"></script>
-    <script type="text/javascript" src="/Content/Admin/assets/js/optional/flot/jquery.flot.stack.min.js"></script>
-    <script type="text/javascript" src="/Content/Admin/assets/js/optional/flot/jquery.flot.bubbles.min.js"></script>
-    <script type="text/javascript" src="/Content/Admin/assets/js/optional/flot/jquery.flot.time.min.js"></script>
-    <script type="text/javascript" src="/Content/Admin/assets/js/optional/flot/jquery.flot.orderBars.js"></script>
-    <script type="text/javascript" src="/Content/Admin/assets/js/optional/easy-pie-chart/jquery.easypiechart.min.js"></script>
-    <script type="text/javascript" src="/Content/Admin/assets/js/optional/misc/moment.js"></script>
-    <script type="text/javascript" src="/Content/Admin/assets/js/optional/fullcalendar/fullcalendar.min.js"></script>
-    <!-- add optional JS plugin files here -->
-    <!-- REQUIRED: User Editable JS Files -->
-    <script type="text/javascript" src="/Content/Admin/assets/js/script.js"></script>
-    <script type="text/javascript" src="/Content/Admin/assets/js/optional/toastr.min.js"></script>
-    <script type="text/javascript" src="/Content/Admin/assets/js/demo-files/ui-notification-toastr.js"></script>
-
-    <!-- add additional User Editable files here -->
-    <!-- Demo JS Files
-    <script type="text/javascript" src="/Content/Admin/assets/js/demo-files/index.js"></script>-->
-
-
+   
     @RenderSection("scripts", false)
 </body>
 </html>

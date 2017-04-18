@@ -6,5 +6,12 @@
 	var modelData = Model.Mode == RenderMode.Create ? string.Empty : Model.Model.Data[prop.Name];
 }
 
-<input type="number" id="@prop.Name" pattern="[0-9]{10}" placeholder="@col.Display.Name" class="form-control" @Html.Raw(col.Required ? "data-rule-required='true' data-val='true' aria-required='true' data-val-required='" + @col.Display.Name + " Alanı Boş ya da Sayısal Bir Değer İçermiyor !' " : "") name="@prop.Name" value="@modelData" />
+@if (Model.Mode == RenderMode.Readonly)
+{
+    <span>@modelData</span>
+}
+else
+{
+<input type="number" id="@prop.Name" pattern="[0-9]{10}" placeholder="@col.Display.Name" data-trigger='hover' data-content='Lütfen "+@prop.Name+" giriniz.' data-original-title='"+@prop.Name+"' class="span6 m-wrap popovers" @Html.Raw(col.Required ? "data-rule-required='true' data-val='true' aria-required='true' data-val-required='" + @col.Display.Name + " Alanı Boş ya da Sayısal Bir Değer İçermiyor !' " : "") name="@prop.Name" value="@modelData" />
 <span class="col-sm-3 control-label text-danger" data-valmsg-for="@prop.Name" data-valmsg-replace="true"></span>
+}

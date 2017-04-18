@@ -1,92 +1,98 @@
 ﻿
 @{
-	ViewBag.Title = "Yeni Kayıt";
+    ViewBag.Title = @Model.Meta.Caption.DisplayName+" Yeni Kayıt";
 }
 
 @using GenericFW.Areas.Yonetim.GenericVM;
 @using GenericFW.DataAccessLayer;
 @model GenericVM
 
-<div class="row">
-	<div class="col-md-12">
-		<div class="block">
-			<div class="block-heading">
-				<div class="main-text h2">
-					Yeni Kayıt
-				</div>
-				<div class="block-controls">
-					<span aria-hidden="true" class="icon icon-cross icon-size-medium block-control-remove"></span>
-					<span aria-hidden="true" class="icon icon-arrow-down icon-size-medium block-control-collapse"></span>
-				</div>
-			</div>
-			<div class="block-content-outer">
-				<div class="block-content-inner">
-					@using (@Html.BeginForm())
-					{
-						@Html.ValidationSummary(true)
-						<div class="form-horizontal">
-							@foreach (var column in Model.Meta.Columns)
-							{
-								var displayAttr = column.Display;
-								var col = column.Property;
-								if (displayAttr == null )
-								{
-									<input type="hidden" name="@col.Name" value="" />
-									continue;
-								}
-								<div class="form-group">
-									<label class="col-md-2 col-sm-12 control-label">@displayAttr.Name</label>
-									<div class="col-md-10 col-md-12">
-										@{
-											var tim = new TemplateItemModel { Model = Model, CurrentColumn = column, Mode = RenderMode.Create };
-											var templateName = column.Template ?? column.InnerType.Name;
-										}
-										@Html.EditorFor(m => tim, templateName)
 
-										<span class="help-block">
-											@Html.Raw(displayAttr.Description)
-										</span>
-									</div>
-								</div>
 
-							}
 
-						</div>
-						<input type="button" class="btn btn-default" value="İptal" onclick="location.href='@Url.Action("List",Model.Meta.ControllerName)'" />
-												<input type="submit" name="submitButton" class="btn btn-primary" value="Kaydet" />
-					}
-				</div>
-			</div>
-		</div>
-	</div>
+<div class="row-fluid">
+    <div class="span12">
+        <div class="portlet box blue" id="form_wizard_1">
+            <div class="portlet-title">
+                <h4>
+                    <i class="icon-plus"></i> @Model.Meta.Caption.DisplayName Ekleme Sihirbazı
+                </h4>
+            </div>
+            <div class="portlet-body form">
+                <div class="form-wizard">
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="tab1">
+                            @using (@Html.BeginForm("Create", Model.Meta.ControllerName, FormMethod.Post, htmlAttributes: new { enctype = "multipart/form-data" }))
+                            {
+                                @Html.ValidationSummary(true)
+                                <div class="form-horizontal">
+                                    @foreach (var column in Model.Meta.Columns)
+                                    {
+                                        var displayAttr = column.Display;
+                                        var col = column.Property;
+                                        if (displayAttr == null)
+                                        {
+                                            <input type="hidden" name="@col.Name" value="" />
+                                            continue;
+                                        }
+                                        <div class="control-group">
+                                            <label class="control-label">@displayAttr.Name</label>
+                                            <div class="controls">
+                                                @{
+                                                    var tim = new TemplateItemModel { Model = Model, CurrentColumn = column, Mode = RenderMode.Create };
+                                                    var templateName = column.Template ?? column.InnerType.Name;
+                                                }
+                                                @Html.EditorFor(m => tim, templateName)
+
+                                                <span class="help-block">
+                                                    @Html.Raw(displayAttr.Description)
+                                                </span>
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
+                                <div class="form-actions clearfix">
+                                    <button type="submit" name="submitButton" class="btn green button-submit" value="Kaydet"><i class="icon-ok m-icon-white"></i> Kaydet</button>
+                                    <button type="button" class="btn red btn-default" value="İptal" onclick="location.href='@Url.Action("List",Model.Meta.ControllerName)'"><i class="icon-share m-icon-white"></i> İptal</button>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 @section scriptsTop{
-	<!--Kayıt Düzenle Modal Sonu-->
+
 }
 @section head{
-	<link type="text/css" href="/Content/Admin/assets/css/optional/toastr.min.css" rel="stylesheet" />
-	<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-	<link rel="stylesheet" href="/resources/demos/style.css">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+
 }
 @section scripts{
-	<script src="//code.jquery.com/jquery-1.10.2.js"></script>
-	<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-	<script type="text/javascript" src="/Content/Admin/assets/js/optional/toastr.min.js"></script>
-	@*<script src="~/Content/jquery.validate.js"></script>*@
-	<script src="~/Content/jquery.validate.min.js"></script>
-	<script src="~/Content/jquery.validate.unobtrusive.min.js"></script>
-	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/i18n/jquery-ui-i18n.min.js"></script>
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+<script src="~/Areas/Theme/assets/jquery.validate.min.js"></script>
+<script src="~/Areas/Theme/assets/jquery.validate.unobtrusive.min.js"></script>
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/i18n/jquery-ui-i18n.min.js"></script>
 
-	<script type="text/javascript">
-		$(document).ready(function () {
+    <script type="text/javascript">
+        $(document).ready(function () {
 
-			$.datepicker.setDefaults($.datepicker.regional['tr']);
-			$("input[type=datetime]").datepicker({ dateFormat: 'dd.mm.yy' });
+            $.datepicker.setDefaults($.datepicker.regional['tr']);
+            $("input[type=datetime]").datepicker({
+                changeMonth: true,
+                changeYear: true,
+                showButtonPanel: true,
+                dateFormat: 'dd.mm.yy'
+            });
 
-			$('form')
-			.validate();
+            $('form')
+            .validate();
 
-		});
-	</script>
+
+        });
+
+    </script>
 }

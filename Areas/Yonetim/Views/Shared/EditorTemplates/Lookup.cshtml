@@ -25,12 +25,23 @@
     ViewData.TemplateInfo.HtmlFieldPrefix = "";
 }
 
-@if (col.Required)
+@if (Model.Mode == RenderMode.Readonly)
 {
-    @Html.DropDownList(prop.Name, items, "-Seçiniz-", new Dictionary<string, object> { { "class", "form-control" }, { "required", "required" }, { "data-val", "true" }, { "placeholder", @col.Display.Name }, { "data-val-required", @col.Display.Name + " Alanı Zorunlu!" } });
-    <span class="col-sm-3 control-label text-danger" data-valmsg-for="@prop.Name" data-valmsg-replace="true"></span>
+    <span>@modelData</span>
+}
+else if (col.Required)
+{
+    @Html.DropDownList(prop.Name, items, "-Seçiniz-", new Dictionary<string, object> {
+    { "class", "span6 m-wrap popovers" }, { "required", "required" }, { "data-val", "true" },{"data-trigger","hover" },
+       { "data-content","Lütfen "+@col.Display.Name  +" giriniz." }, {"data-original-title", col.Display.Name },
+    { "placeholder", @col.Display.Name }, { "data-val-required", @col.Display.Name + " Alanı Zorunlu!" }
+});
+    <span class="col-sm-3 control-label text-danger" data-valmsg-for="@prop.Name" data-valmsg-replace="true"></span> 
 }
 else
 {
-    @Html.DropDownList(prop.Name, items, "", new { @class = "form-control" });
+    @Html.DropDownList(prop.Name, items, "-Seçiniz-", new Dictionary<string, object> {
+           { "class" ,"span6 m-wrap popovers" },{"data-trigger","hover" },
+       { "data-content","Lütfen "+@col.Display.Name  +" giriniz." }, {"data-original-title", col.Display.Name }
+       });
 }

@@ -4,12 +4,14 @@ using System.Linq;
 using System.Web.Mvc;
 using GenericFW.Areas.Yonetim.GenericVM;
 using GenericFW.Areas.Yonetim.JsonManager;
-using System.Reflection; 
+using System.Reflection;
 using System.Linq.Dynamic;
 using GenericFW.DataAccessLayer;
 using GenericFW.Entities;
 using System.Data.Entity.Core.Objects;
 using System.Web;
+using System.IO;
+using System.ComponentModel.DataAnnotations;
 
 namespace GenericFW.Areas.Yonetim.Controllers
 {
@@ -186,6 +188,20 @@ namespace GenericFW.Areas.Yonetim.Controllers
         [ValidateInput(false)]
         public virtual ActionResult Edit(E entity)
         {
+            /*
+            if(Request.Files.Count>0)
+            {
+                var file = Request.Files[0];
+                var meta = CrudExtensions.Get(typeof(E));
+                // Ilk byte[] alani bul
+                var col = meta.Columns.FirstOrDefault(c => c.DataType.DataType == DataType.Upload);
+                using(var ms = new MemoryStream())
+                {
+                    file.InputStream.CopyTo(ms);
+                    col.Property.SetValue(entity, ms.ToArray());
+                }
+            }
+            */
             if (Db.Update(entity) > 0)
             {
                 return RedirectToAction("List");
@@ -236,20 +252,28 @@ namespace GenericFW.Areas.Yonetim.Controllers
         }
 
         [HttpPost]
-        public JsonResult Upload()
+        public ActionResult UploadFiles(HttpPostedFileBase file)
         {
-            string fileName = Request.Headers["X-File-Name"];
-            string fileType = Request.Headers["X-File-Type"];
-            int fileSize = Convert.ToInt32(Request.Headers["X-File-Size"]);
-            //File's content is available in Request.InputStream property
-            System.IO.Stream fileContent = Request.InputStream;
-            //Creating a FileStream to save file's content
-            System.IO.FileStream fileStream = System.IO.File.Create(Server.MapPath("~/") + fileName);
-            fileContent.Seek(0, System.IO.SeekOrigin.Begin);
-            //Copying file's content to FileStream
-            fileContent.CopyTo(fileStream);
-            fileStream.Dispose();
-            return Json("File uploaded");
+           
+                try
+                {
+
+                    if (file != null)
+                    {
+                        string path = Path.Combine(Server.MapPath("~/UploadedFiles"), Path.GetFileName(file.FileName));
+                        file.SaveAs(path);
+
+                    }
+                    ViewBag.FileStatus = "File uploaded successfully.";
+                }
+                catch (Exception)
+                {
+
+                    ViewBag.FileStatus = "Error while file uploading.";
+                }
+
+            
+            return View();
         }
 
         JSONData ToJSON(List<E> data)
